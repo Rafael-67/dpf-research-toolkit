@@ -20,12 +20,7 @@ describe("Documents and Issues independence", () => {
       active: true,
     } as SupportingDocument;
     expect(
-      createDocumentVersion(
-        first,
-        "2.0",
-        "v2.pdf",
-        `sha256:${"b".repeat(64)}`,
-      ),
+      createDocumentVersion(first, "2.0", "v2.pdf", `sha256:${"b".repeat(64)}`),
     ).toMatchObject({ version: "2.0", supersedesDocumentId: "D1" });
     expect(first.version).toBe("1.0");
   });
