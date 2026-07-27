@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0.0",
+  "exportType": "study-config",
+  "appVersion": "0.1.0",
+  "generatedAt": "2026-07-22T17:45:00.000Z",
+  "entities": {
+    "studies": [
+      {
+        "studyId": "study-demo-aligned",
+        "title": "DPF-RP v1.1 — Five aligned demo scenarios (E1–E5)",
+        "description": "Five fictional demonstration scenarios (E1–E5) shared across Supplementary Material S1, Supplementary Material S2, and DPF-RP v1.1. E1: repetitive pipetting. E2: lentiviral ultracentrifugation. E3: time-critical AAV neuron transduction. E4: cryo-stock with glove removal. E5: static microscopy. E2–E4 appear in full narrative form in Supplementary Material S2. All five appear in condensed table form in Supplementary Material S1. NOTICE: All scenarios are entirely fictional. Not for operational use.",
+        "createdAt": "2025-01-20T09:00:00.000Z",
+        "status": "active",
+        "config": {
+          "instrumentVersion": "1.1.0",
+          "includeRtlx": true,
+          "includeSus": true,
+          "confidenceScalePoints": 4,
+          "relevanceClarityScalePoints": 4
+        }
+      }
+    ],
+    "rounds": [
+      {
+        "roundId": "round-demo-001",
+        "studyId": "study-demo-aligned",
+        "roundNumber": 1,
+        "label": "Demo round — all five aligned scenarios (E1–E5)",
+        "frameworkVersion": "0.1.0-draft",
+        "instrumentVersion": "1.1.0",
+        "status": "open",
+        "evaluatorGroup": "Biosafety officers and ergonomists",
+        "openedAt": "2025-01-20T09:00:00.000Z",
+        "lockedAt": null
+      }
+    ],
+    "scenarios": [
+      {
+        "scenarioId": "demo-E1",
+        "scenarioVersion": "1.0",
+        "title": "E1: Repetitive pipetting / lentiviral aliquoting",
+        "taskDescription": "Repeated aliquoting of a concentrated lentiviral stock (fictional titer, fictional vector) into cryovials (50 µL each, 20–30 aliquots) using a P200 micropipette under a Class II biosafety cabinet, doubled-glove protocol. Single non-interruptible session. Final 3–5 vials require tube tilting and tip repositioning as the bulk-tube volume decreases.",
+        "operatingConditions": "BSC throughout. Standing. 40–60 minutes continuous. Doubled nitrile gloves. No scheduled pause. Standard bench height.",
+        "availableInformation": "Fictional SOP for lentiviral aliquoting. No ergonomic assessment for this task sequence on file. Operator experience: intermediate (fictional, >20 aliquoting sessions).",
+        "vectorMaterialDescription": "Fictional lentiviral vector, VSV-G pseudotyped, non-therapeutic fictional transgene. Concentrated product at high titer (fictional). Titer uniform throughout all aliquoting events.",
+        "volumeOrConcentration": "Bulk tube: 200–400 µL at fictional high titer. Each vial: 50 µL. 20–30 open-vessel pipetting events. Titer does not decrease during the sequence.",
+        "existingControls": "Class II BSC for all open-vessel steps. Doubled nitrile gloves. Sealed screw-cap cryovials after filling. Controlled-rate freezing container. No engineering control addressing fine-motor fatigue accumulation at late-sequence vials.",
+        "contextualConstraints": "Fictional protocol prohibits partial aliquoting — single non-interruptible session. No second operator available.",
+        "intendedEvaluatorGroup": "Biosafety officers and ergonomists with viral-vector laboratory experience",
+        "frameworkVersion": "0.1.0-draft",
+        "adminNotes": "Scenario E1. Simplest scenario in the set; anchors Table 2 of the main manuscript. Also appears in condensed form in Supplementary Material S1. Not developed in narrative form in Supplementary Material S2 (Table 2 serves this function). Admin note only — not shown to evaluators.",
+        "isDemo": true
+      },
+      {
+        "scenarioId": "demo-E2",
+        "scenarioVersion": "1.0",
+        "title": "Lentiviral vector concentration by ultracentrifugation",
+        "taskDescription": "The operator concentrates a large-volume lentiviral supernatant (fictional vector, fictional titer) by ultracentrifugation using a swinging-bucket rotor. The sequence involves: transferring the supernatant from collection flasks into sealed ultracentrifuge tubes using a serological pipette under the BSC, balancing the tube pairs by mass on a precision balance outside the BSC, loading the rotor in the centrifuge, running the spin (90 min, no active operator presence), returning to the centrifuge, decanting the post-spin supernatant (now inactivated waste, per fictional protocol) into a bleach-containing waste container, and resuspending the pellet in a small volume (200–500 µL) of storage buffer using a micropipette. The concentrated product is then aliquoted into cryovials inside the BSC. Total active operator time approximately 45 minutes across two separate contact windows (pre-spin and post-spin).",
+        "operatingConditions": "Class II BSC for open-vessel steps; bench-adjacent centrifuge at standard lab height (low-set, requiring repeated bending); standing throughout; doubled nitrile gloves; no scheduled pause between pre-spin and post-spin steps if volume of work demands immediate return. Resuspension step requires sustained fine motor control with a P200 micropipette after approximately 90 minutes of other activity.",
+        "availableInformation": "Fictional SOP for lentiviral concentration. Centrifuge and rotor certified for sealed containment. BSC certification current. No ergonomic assessment for this specific task sequence on file. Operator experience level: intermediate (fictional characterization, >20 concentrations performed).",
+        "vectorMaterialDescription": "Fictional third-generation lentiviral vector, VSV-G pseudotyped, encoding a non-therapeutic fictional transgene. Pre-spin supernatant: low titer, high volume. Post-spin concentrated product: high titer (fictional), small volume — the point at which both concentration-dependent risk and fine-motor demands are simultaneously highest.",
+        "volumeOrConcentration": "Pre-spin: 200 mL at fictional low titer. Post-spin concentrated product: 200–500 µL at fictional high titer (concentration factor approximately 400×). Fictional titer not specified further for this demo.",
+        "existingControls": "BSC for all open-vessel handling; sealed rotor and sealed ultracentrifuge tubes for spin step; doubled nitrile gloves; decontamination of rotor exterior before removal from centrifuge per fictional SOP; bleach-containing waste for supernatant decanting; no engineering control specifically targeting fine-motor degradation during resuspension.",
+        "contextualConstraints": "Fictional institutional policy requires that concentrated product be aliquoted and placed in liquid nitrogen storage the same day as concentration. This creates a fixed endpoint that may compress available time for the post-spin steps if the spin runs late. The centrifuge is shared equipment, so delay is not always possible.",
+        "intendedEvaluatorGroup": "Biosafety officers and ergonomists with experience in viral-vector laboratory practice",
+        "frameworkVersion": "0.1.0-draft",
+        "adminNotes": "Scenario E2. Full narrative analysis in Supplementary Material S2 (EX-001). Condensed in S1.",
+        "isDemo": true
+      },
+      {
+        "scenarioId": "demo-E3",
+        "scenarioVersion": "1.0",
+        "title": "Time-critical primary neuron transduction with AAV",
+        "taskDescription": "The operator transduces primary cortical neurons (fictional cell preparation) with a high-titer recombinant AAV vector (fictional serotype, fictional transgene) at a specific developmental time point (DIV5, where DIV = days in vitro). The transduction window is narrow (±2 hours from the optimal fictional time point); missing it means losing the entire cell preparation. The task involves: removing half the conditioned medium from each well of a 24-well plate (12 wells, using a P1000 micropipette, working under the BSC), adding the AAV dilution, returning the plate to the incubator, and updating the experimental log. The dilution is prepared immediately before use from a high-titer frozen stock: the stock tube must be thawed on ice, diluted in conditioned medium in a separate tube, and the dilution used within 20 minutes of preparation to preserve transduction efficiency (fictional constraint). The entire procedure must be completed within approximately 35 minutes of removing the plate from the incubator.",
+        "operatingConditions": "Class II BSC throughout. Seated position available but operator frequently stands for plate visibility. 12-well repetitive pipetting sequence under time pressure. Doubled nitrile gloves. Parallel cognitive load: tracking 12 individual wells in a defined order while monitoring elapsed time since plate removal from incubator. Procedure is typically performed mid-morning after 2–3 hours of other lab work.",
+        "availableInformation": "Fictional SOP for AAV transduction of primary neurons. Frozen stock management SOP. No cognitive-load assessment for time-critical multi-step protocols on file. Cell preparation is not replaceable within the experimental timeline if the transduction window is missed.",
+        "vectorMaterialDescription": "Fictional recombinant AAV, serotype and transgene not specified beyond 'research-grade, fictional.' High-titer frozen stock (fictional titer). The dilution in use during the procedure is at a lower effective concentration, but the stock tube handling — thaw, open, pipette — represents the highest-concentration contact point.",
+        "volumeOrConcentration": "Frozen stock: fictional high titer (~1e13 vg/mL order of magnitude, fictional). Working dilution added to wells: much lower effective MOI, volume approximately 2–5 µL per well in a background of 500 µL conditioned medium. The stock handling step, though brief, involves direct pipetting from the high-titer tube.",
+        "existingControls": "BSC for all open-vessel steps; doubled gloves; ice bucket for stock thawing (reduces exposure window); a timer set at plate removal. No control specifically addressing the attentional cost of simultaneous time-monitoring and 12-well sequential pipetting. No engineering barrier between the high-titer stock handling step and the subsequent fine-motor pipetting sequence.",
+        "contextualConstraints": "Fictional cell preparation schedule makes same-week replacement impossible if this transduction fails. Operator is aware of this before starting. No technician assistance available during this step (fictional staffing model). Shared incubator access means plate removal time is sometimes shifted by ±30 minutes from plan.",
+        "intendedEvaluatorGroup": "Biosafety officers and ergonomists with experience in viral-vector laboratory practice",
+        "frameworkVersion": "0.1.0-draft",
+        "adminNotes": "Scenario E3. Full narrative analysis in Supplementary Material S2 (EX-002). Condensed in S1.",
+        "isDemo": true
+      },
+      {
+        "scenarioId": "demo-E4",
+        "scenarioVersion": "1.0",
+        "title": "Cryo-stock preparation: fill, label, seal, and inventory of viral vector aliquots",
+        "taskDescription": "The operator prepares a cryo-stock library from a concentrated lentiviral vector batch (fictional vector, fictional titer — output of a concentration run performed earlier in the day or on the previous day). The task involves: retrieving the concentrated bulk from 4°C storage, working at the BSC to aliquot 20–30 cryovials (50 µL each using a P200 micropipette), capping each vial with a screw cap and pressing a pre-printed barcode label onto the external surface of each capped vial, placing each labelled vial in a cryo-rack in a defined order (row A left-to-right, then row B, etc.), transferring the rack to a Mr. Frosty isopropanol container for controlled-rate freezing in a -80°C freezer, and entering each vial's position in the fictional electronic inventory. The labelling step requires removing one glove to handle the label roll and apply labels without wrinkling (fictional local practice — the label adhesive does not adhere well through doubled gloves).",
+        "operatingConditions": "BSC for pipetting steps. Bench outside BSC for labelling (vials are sealed before removal from BSC). Standing throughout. Repetitive fine-motor sequence: 20–30 identical pipetting actions, 20–30 cap-tightening actions, 20–30 label applications, 20–30 rack placements. Right hand dominant for pipetting; alternating hand use for cap-tightening introduces intermittent posture change. Labelling step requires removal and replacement of right-hand glove, breaking the continuous doubled-glove barrier. The inventory entry step at the computer requires reading small barcode text under variable lighting.",
+        "availableInformation": "Fictional SOP for cryo-stock preparation. Fictional inventory database. Barcode label specification sheet. No formal assessment of glove-removal and replacement steps during the workflow. No assessment of the cumulative fine-motor demand across the full 20–30-vial sequence.",
+        "vectorMaterialDescription": "Fictional concentrated lentiviral vector — same fictional vector as the concentration step earlier. High-titer product (concentrated from a large upstream batch). Each 50 µL aliquot contains a significant number of functional viral particles at high concentration. The bulk tube from which aliquots are drawn is the highest-concentration open-vessel contact point in this task.",
+        "volumeOrConcentration": "Bulk tube: 200–400 µL of concentrated product at fictional high titer (output of concentration step). Each cryovial: 50 µL. Total number of open-vessel pipetting events from the high-titer bulk: 20–30. Residual volume in the bulk tube after aliquoting: 0–50 µL (operator typically pipettes until the tube is nearly empty, requiring tilting the tube and adjusting pipette angle to avoid air aspiration).",
+        "existingControls": "BSC for all open-vessel steps; doubled nitrile gloves during BSC work; sealed screw-cap cryovials after filling; controlled-rate freezing container. Glove removal for labelling is not addressed by any engineering control — it is a workflow accommodation to the limitation of the adhesive label stock currently in use. No control for cumulative fine-motor fatigue across the 20–30-vial sequence. Inventory entry step has no control relevant to biological material (it follows sealing and removal from BSC).",
+        "contextualConstraints": "The concentrated bulk must be kept cold to preserve titer (on ice during the BSC work). The fictional local protocol requires that the entire batch be aliquoted in one sitting — partial aliquoting followed by refreezing of the bulk degrades titer per fictional SOP. This creates a single, non-interruptible workflow of approximately 40–60 minutes for a 25-vial batch. No second operator present.",
+        "intendedEvaluatorGroup": "Biosafety officers and ergonomists with experience in viral-vector laboratory practice",
+        "frameworkVersion": "0.1.0-draft",
+        "adminNotes": "Scenario E4. Full narrative analysis in Supplementary Material S2 (EX-003). Condensed in S1.",
+        "isDemo": true
+      },
+      {
+        "scenarioId": "demo-E5",
+        "scenarioVersion": "1.0",
+        "title": "E5: Static microscopy / fluorescence imaging",
+        "taskDescription": "Sustained fluorescence microscopy of fixed (non-infectious, per fictional SOP) cell samples following upstream work with a fictional viral vector. Static posture at the eyepiece or camera-coupled monitor. 90-minute imaging-core booking in dim-room conditions.",
+        "operatingConditions": "Imaging-core suite, dim-room conditions. Seated or standing at microscope. Static shoulder elevation during eyepiece/camera adjustment. 90-minute fixed booking — duration cannot be shortened without forfeiting the slot.",
+        "availableInformation": "Fictional SOP confirming fixation/inactivation of samples prior to imaging. No ergonomic assessment of this posture duration on file. Scheduled posture breaks every 20 min per fictional departmental guidelines (interval empirically unvalidated for this context).",
+        "vectorMaterialDescription": "Fictional viral vector used in upstream step only. At the imaging step, samples are fixed and non-infectious per fictional protocol. Adjacent non-fixed material may be present in the same workspace as a residual identification-failure pathway.",
+        "volumeOrConcentration": "Not applicable at the imaging step. Risk pathway is sample misidentification, not direct material handling.",
+        "existingControls": "Sample fixation/inactivation per fictional SOP (removes direct biological risk at this step). Eyepiece or monitor height adjustment. Scheduled posture break every 20 min. No engineering control addressing dim-room postural feedback limitation.",
+        "contextualConstraints": "Fixed 90-minute imaging-core booking. Dim-room conditions limit spontaneous postural correction. No co-worker present during the session.",
+        "intendedEvaluatorGroup": "Biosafety officers and ergonomists with viral-vector laboratory experience",
+        "frameworkVersion": "0.1.0-draft",
+        "adminNotes": "Scenario E5. Illustrates sustained static-posture demand — the task type for which the shoulder-elevation indicator in Section 2.3 of the main manuscript is most directly applicable. Appears in condensed form in Supplementary Material S1. Not in Supplementary Material S2. Admin note only — not shown to evaluators.",
+        "isDemo": true
+      }
+    ],
+    "changelog": []
+  }
+}
