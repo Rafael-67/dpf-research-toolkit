@@ -1,0 +1,1082 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "evaluation-session.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "exportType": {
+      "type": "string",
+      "const": "evaluation-session"
+    },
+    "appVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    },
+    "exportVersion": {
+      "type": "string",
+      "const": "1.1.0"
+    },
+    "entities": {
+      "type": "object",
+      "properties": {
+        "sessions": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sessionId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evaluatorPseudonym": {
+                "type": "string",
+                "minLength": 1
+              },
+              "studyId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "roundId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenarioId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenarioVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenarioClass": {
+                "type": "string",
+                "enum": [
+                  "reference",
+                  "research-extension",
+                  "user"
+                ]
+              },
+              "referenceSet": {
+                "type": "boolean"
+              },
+              "studyAlignment": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "instrumentVersion": {
+                "type": "string",
+                "enum": [
+                  "1.0.0",
+                  "1.1.0"
+                ]
+              },
+              "frameworkVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "fieldDefinitionVersions": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string",
+                  "enum": [
+                    "F1",
+                    "F2",
+                    "F3",
+                    "F4",
+                    "F5",
+                    "F6"
+                  ]
+                },
+                "additionalProperties": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "required": [
+                  "F1",
+                  "F2",
+                  "F3",
+                  "F4",
+                  "F5",
+                  "F6"
+                ]
+              },
+              "evaluationStatus": {
+                "type": "string",
+                "enum": [
+                  "not_started",
+                  "in_progress",
+                  "in_review",
+                  "completed",
+                  "abandoned",
+                  "submitted",
+                  "returned_for_revision",
+                  "resubmitted",
+                  "locked",
+                  "included_in_analysis",
+                  "excluded_from_analysis"
+                ]
+              },
+              "metadata": {
+                "type": "object",
+                "properties": {
+                  "appVersion": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "userAgent": {
+                    "type": "string"
+                  },
+                  "viewportClass": {
+                    "type": "string",
+                    "enum": [
+                      "desktop",
+                      "tablet"
+                    ]
+                  },
+                  "locale": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "appVersion",
+                  "userAgent",
+                  "viewportClass",
+                  "locale"
+                ],
+                "additionalProperties": {}
+              },
+              "fieldResponses": {
+                "minItems": 6,
+                "maxItems": 6,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fieldId": {
+                      "type": "string",
+                      "enum": [
+                        "F1",
+                        "F2",
+                        "F3",
+                        "F4",
+                        "F5",
+                        "F6"
+                      ]
+                    },
+                    "narrativeAnswer": {
+                      "type": "string"
+                    },
+                    "categoricalAnswer": {
+                      "type": "string"
+                    },
+                    "openComment": {
+                      "type": "string"
+                    },
+                    "changeProposal": {
+                      "type": "string"
+                    },
+                    "confidenceRating": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 4
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "relevance": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 4
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "clarity": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 4
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "exhaustiveness": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 4
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "redundancy": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 4
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "applicability": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 4
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "interpretationDifficulty": {
+                      "anyOf": [
+                        {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 4
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "insufficientInformation": {
+                      "type": "boolean"
+                    },
+                    "timeSpentSeconds": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "revisionCount": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "helpAccessedCount": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "responseMode": {
+                      "type": "string",
+                      "enum": [
+                        "legacy_narrative",
+                        "structured_narrative"
+                      ]
+                    },
+                    "observations": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "observationId": {
+                                "type": "string"
+                              },
+                              "fieldId": {
+                                "type": "string",
+                                "enum": [
+                                  "F1",
+                                  "F2",
+                                  "F3",
+                                  "F4",
+                                  "F5",
+                                  "F6"
+                                ]
+                              },
+                              "category": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "otherText": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "taskPhases": {
+                                "minItems": 1,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "otherText": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "value"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "evidenceSources": {
+                                "minItems": 1,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "otherText": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "value"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "ratings": {
+                                "type": "object",
+                                "properties": {
+                                  "analyticalRelevance": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 5
+                                  },
+                                  "evidenceStrength": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 5
+                                  },
+                                  "expectedInfluenceOnDeliveredProtection": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 5
+                                  },
+                                  "evaluatorCertainty": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 5
+                                  },
+                                  "consensusPriority": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 5
+                                  }
+                                },
+                                "required": [
+                                  "analyticalRelevance",
+                                  "evidenceStrength",
+                                  "expectedInfluenceOnDeliveredProtection",
+                                  "evaluatorCertainty"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "reasoningSummary": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 500
+                              },
+                              "extendedComments": {
+                                "type": "string",
+                                "maxLength": 2000
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                              }
+                            },
+                            "required": [
+                              "observationId",
+                              "fieldId",
+                              "category",
+                              "taskPhases",
+                              "evidenceSources",
+                              "ratings",
+                              "reasoningSummary",
+                              "createdAt"
+                            ],
+                            "additionalProperties": {}
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "fieldId": {
+                                "type": "string",
+                                "enum": [
+                                  "F1",
+                                  "F2",
+                                  "F3",
+                                  "F4",
+                                  "F5",
+                                  "F6"
+                                ]
+                              },
+                              "category": {
+                                "type": "string"
+                              },
+                              "isOtherCategory": {
+                                "type": "boolean"
+                              },
+                              "otherCategoryText": {
+                                "type": "string"
+                              },
+                              "taskPhases": {
+                                "minItems": 1,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "otherText": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "value"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "analyticalRelevance": {
+                                "type": "string",
+                                "enum": [
+                                  "low",
+                                  "moderate",
+                                  "high",
+                                  "undetermined"
+                                ]
+                              },
+                              "evidenceSources": {
+                                "minItems": 1,
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "value": {
+                                      "type": "string"
+                                    },
+                                    "otherText": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "value"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "evaluatorCertainty": {
+                                "type": "string",
+                                "enum": [
+                                  "low",
+                                  "moderate",
+                                  "high"
+                                ]
+                              },
+                              "rationale": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 500
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "fieldId",
+                              "category",
+                              "isOtherCategory",
+                              "taskPhases",
+                              "analyticalRelevance",
+                              "evidenceSources",
+                              "evaluatorCertainty",
+                              "rationale",
+                              "createdAt"
+                            ],
+                            "additionalProperties": {}
+                          }
+                        ]
+                      }
+                    },
+                    "noObservationReason": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "enum": [
+                            "insufficient_information",
+                            "field_not_applicable"
+                          ]
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "overallSynthesis": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "fieldSummary": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "fieldId": {
+                              "type": "string",
+                              "enum": [
+                                "F1",
+                                "F2",
+                                "F3",
+                                "F4",
+                                "F5",
+                                "F6"
+                              ]
+                            },
+                            "dominantCategories": {
+                              "minItems": 1,
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "type": "string"
+                                  },
+                                  "otherText": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "value"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "overallAnalyticalRelevance": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 5
+                            },
+                            "informationSufficiency": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 5
+                            },
+                            "internalConsistencyOfEvidence": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 5
+                            },
+                            "consensusPriority": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 5
+                            },
+                            "reasoningSummary": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 500
+                            },
+                            "extendedComments": {
+                              "type": "string",
+                              "maxLength": 2000
+                            }
+                          },
+                          "required": [
+                            "fieldId",
+                            "dominantCategories",
+                            "overallAnalyticalRelevance",
+                            "informationSufficiency",
+                            "internalConsistencyOfEvidence",
+                            "consensusPriority",
+                            "reasoningSummary"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "fieldId",
+                    "narrativeAnswer",
+                    "openComment",
+                    "changeProposal",
+                    "confidenceRating",
+                    "relevance",
+                    "clarity",
+                    "exhaustiveness",
+                    "redundancy",
+                    "applicability",
+                    "interpretationDifficulty",
+                    "insufficientInformation",
+                    "timeSpentSeconds",
+                    "revisionCount",
+                    "helpAccessedCount"
+                  ],
+                  "additionalProperties": {}
+                }
+              },
+              "nasaTlx": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "propertyNames": {
+                      "type": "string"
+                    },
+                    "additionalProperties": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "sus": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "itemScores": {
+                        "minItems": 10,
+                        "maxItems": 10,
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 5
+                        }
+                      }
+                    },
+                    "required": [
+                      "itemScores"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "openFeedback": {
+                "type": "object",
+                "properties": {
+                  "burden": {
+                    "type": "string"
+                  },
+                  "ambiguity": {
+                    "type": "string"
+                  },
+                  "usefulness": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "burden",
+                  "ambiguity",
+                  "usefulness"
+                ],
+                "additionalProperties": false
+              },
+              "fictionalScenarioConfirmed": {
+                "type": "boolean"
+              },
+              "startedAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "reviewedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "finishedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "abandonedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "resumedAt": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "dataSchemaVersion": {
+                "type": "string",
+                "enum": [
+                  "1.0",
+                  "1.1",
+                  "1.2"
+                ]
+              },
+              "structuredItemSetVersion": {
+                "type": "string",
+                "const": "0.1-exploratory"
+              },
+              "taxonomyItemRatings": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "fieldId": {
+                            "type": "string",
+                            "enum": [
+                              "F1",
+                              "F2",
+                              "F3",
+                              "F4",
+                              "F5",
+                              "F6"
+                            ]
+                          },
+                          "taxonomyGroup": {
+                            "type": "string"
+                          },
+                          "taxonomyItemValue": {
+                            "type": "string"
+                          },
+                          "relevance": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 5
+                          },
+                          "clarity": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 5
+                          },
+                          "distinctiveness": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 5
+                          },
+                          "expectedFrequencyOfUse": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 5
+                          },
+                          "missingContext": {
+                            "type": "boolean"
+                          },
+                          "suggestedReplacement": {
+                            "type": "string"
+                          },
+                          "comment": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "fieldId",
+                          "taxonomyGroup",
+                          "taxonomyItemValue",
+                          "relevance",
+                          "clarity",
+                          "distinctiveness"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "fieldId": {
+                            "type": "string",
+                            "enum": [
+                              "F1",
+                              "F2",
+                              "F3",
+                              "F4",
+                              "F5",
+                              "F6"
+                            ]
+                          },
+                          "categoryId": {
+                            "type": "string"
+                          },
+                          "rating": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 4
+                          },
+                          "otherCategoryText": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "fieldId",
+                          "categoryId",
+                          "rating"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "taxonomyReview": {
+                "type": "object",
+                "properties": {
+                  "taxonomyItemRatings": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "missingItems": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fieldId": {
+                          "type": "string",
+                          "enum": [
+                            "F1",
+                            "F2",
+                            "F3",
+                            "F4",
+                            "F5",
+                            "F6"
+                          ]
+                        },
+                        "taxonomyGroup": {
+                          "type": "string"
+                        },
+                        "proposedValue": {
+                          "type": "string"
+                        },
+                        "rationale": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "fieldId",
+                        "taxonomyGroup",
+                        "proposedValue"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "redundantItems": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fieldId": {
+                          "type": "string",
+                          "enum": [
+                            "F1",
+                            "F2",
+                            "F3",
+                            "F4",
+                            "F5",
+                            "F6"
+                          ]
+                        },
+                        "taxonomyGroup": {
+                          "type": "string"
+                        },
+                        "firstItemValue": {
+                          "type": "string"
+                        },
+                        "secondItemValue": {
+                          "type": "string"
+                        },
+                        "rationale": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "fieldId",
+                        "taxonomyGroup",
+                        "firstItemValue",
+                        "secondItemValue",
+                        "rationale"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "taxonomyItemRatings",
+                  "missingItems",
+                  "redundantItems"
+                ],
+                "additionalProperties": false
+              },
+              "submittedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "lockedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "exclusionReason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "assignedEvaluatorId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "sessionId",
+              "evaluatorPseudonym",
+              "studyId",
+              "roundId",
+              "scenarioId",
+              "scenarioVersion",
+              "frameworkVersion",
+              "fieldDefinitionVersions",
+              "evaluationStatus",
+              "metadata",
+              "fieldResponses",
+              "nasaTlx",
+              "sus",
+              "openFeedback",
+              "fictionalScenarioConfirmed",
+              "startedAt",
+              "reviewedAt",
+              "finishedAt",
+              "abandonedAt",
+              "resumedAt"
+            ],
+            "additionalProperties": {}
+          }
+        }
+      },
+      "required": [
+        "sessions"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "exportType",
+    "appVersion",
+    "generatedAt",
+    "exportVersion",
+    "entities"
+  ],
+  "additionalProperties": false
+}

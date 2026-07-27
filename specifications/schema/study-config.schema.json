@@ -1,0 +1,647 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "study-config.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "exportType": {
+      "type": "string",
+      "const": "study-config"
+    },
+    "appVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+    },
+    "exportVersion": {
+      "type": "string",
+      "const": "1.1.0"
+    },
+    "entities": {
+      "type": "object",
+      "properties": {
+        "studies": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "studyId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "draft",
+                  "active",
+                  "closed",
+                  "archived"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "instrumentVersion": {
+                    "type": "string",
+                    "enum": [
+                      "1.0.0",
+                      "1.1.0"
+                    ]
+                  },
+                  "includeRtlx": {
+                    "type": "boolean"
+                  },
+                  "includeSus": {
+                    "type": "boolean"
+                  },
+                  "confidenceScalePoints": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "relevanceClarityScalePoints": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "instrumentVersion",
+                  "includeRtlx",
+                  "includeSus",
+                  "confidenceScalePoints",
+                  "relevanceClarityScalePoints"
+                ],
+                "additionalProperties": {}
+              }
+            },
+            "required": [
+              "studyId",
+              "title",
+              "description",
+              "createdAt",
+              "status",
+              "config"
+            ],
+            "additionalProperties": {}
+          }
+        },
+        "rounds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "roundId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "studyId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "roundNumber": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "frameworkVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "instrumentVersion": {
+                "type": "string",
+                "enum": [
+                  "1.0.0",
+                  "1.1.0"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "open",
+                  "locked"
+                ]
+              },
+              "evaluatorGroup": {
+                "type": "string",
+                "minLength": 1
+              },
+              "openedAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "lockedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "roundId",
+              "studyId",
+              "roundNumber",
+              "label",
+              "frameworkVersion",
+              "instrumentVersion",
+              "status",
+              "evaluatorGroup",
+              "openedAt",
+              "lockedAt"
+            ],
+            "additionalProperties": {}
+          }
+        },
+        "roundScenarios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "roundId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenarioId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenarioVersion": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "roundId",
+              "scenarioId",
+              "scenarioVersion"
+            ],
+            "additionalProperties": {}
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scenarioId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "scenarioVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "taskDescription": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operatingConditions": {
+                "type": "string",
+                "minLength": 1
+              },
+              "availableInformation": {
+                "type": "string",
+                "minLength": 1
+              },
+              "vectorMaterialDescription": {
+                "type": "string",
+                "minLength": 1
+              },
+              "volumeOrConcentration": {
+                "type": "string"
+              },
+              "existingControls": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contextualConstraints": {
+                "type": "string",
+                "minLength": 1
+              },
+              "intendedEvaluatorGroup": {
+                "type": "string",
+                "minLength": 1
+              },
+              "frameworkVersion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "adminNotes": {
+                "type": "string"
+              },
+              "isDemo": {
+                "type": "boolean"
+              },
+              "scenarioClass": {
+                "type": "string",
+                "enum": [
+                  "reference",
+                  "research-extension",
+                  "user"
+                ]
+              },
+              "referenceSet": {
+                "type": "boolean"
+              },
+              "studyAlignment": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "scenarioId",
+              "scenarioVersion",
+              "title",
+              "taskDescription",
+              "operatingConditions",
+              "availableInformation",
+              "vectorMaterialDescription",
+              "existingControls",
+              "contextualConstraints",
+              "intendedEvaluatorGroup",
+              "frameworkVersion",
+              "adminNotes",
+              "isDemo",
+              "scenarioClass",
+              "referenceSet",
+              "studyAlignment"
+            ],
+            "additionalProperties": {}
+          }
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entryId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "fieldId": {
+                "type": "string",
+                "enum": [
+                  "F1",
+                  "F2",
+                  "F3",
+                  "F4",
+                  "F5",
+                  "F6"
+                ]
+              },
+              "previousDefinitionVersion": {
+                "type": "string"
+              },
+              "newDefinitionVersion": {
+                "type": "string"
+              },
+              "previousText": {
+                "type": "string"
+              },
+              "newText": {
+                "type": "string"
+              },
+              "changeType": {
+                "type": "string",
+                "enum": [
+                  "wording",
+                  "response-type",
+                  "scale",
+                  "merge",
+                  "split",
+                  "removal",
+                  "addition",
+                  "taxonomy_revision"
+                ]
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "approvedInRound": {
+                "type": "string"
+              },
+              "approvedBy": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "breakingChange": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "entryId",
+              "fieldId",
+              "previousDefinitionVersion",
+              "newDefinitionVersion",
+              "previousText",
+              "newText",
+              "changeType",
+              "rationale",
+              "approvedInRound",
+              "approvedBy",
+              "createdAt",
+              "breakingChange"
+            ],
+            "additionalProperties": {}
+          }
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "profileId": {
+                "type": "string"
+              },
+              "pseudonym": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "system_administrator",
+                  "study_coordinator",
+                  "evaluator",
+                  "consensus_reviewer",
+                  "read_only_analyst"
+                ]
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              }
+            },
+            "required": [
+              "profileId",
+              "pseudonym",
+              "role",
+              "active",
+              "createdAt"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "assignments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "assignmentId": {
+                "type": "string"
+              },
+              "studyId": {
+                "type": "string"
+              },
+              "roundId": {
+                "type": "string"
+              },
+              "scenarioId": {
+                "type": "string"
+              },
+              "evaluatorProfileId": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "assigned",
+                  "completed",
+                  "withdrawn"
+                ]
+              }
+            },
+            "required": [
+              "assignmentId",
+              "studyId",
+              "roundId",
+              "scenarioId",
+              "evaluatorProfileId",
+              "createdAt",
+              "status"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "consensusRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "consensusId": {
+                "type": "string"
+              },
+              "studyId": {
+                "type": "string"
+              },
+              "roundId": {
+                "type": "string"
+              },
+              "scenarioId": {
+                "type": "string"
+              },
+              "fieldId": {
+                "type": "string",
+                "enum": [
+                  "F1",
+                  "F2",
+                  "F3",
+                  "F4",
+                  "F5",
+                  "F6"
+                ]
+              },
+              "sourceSessionIds": {
+                "minItems": 2,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reviewerProfileId": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string",
+                "enum": [
+                  "retain",
+                  "revise",
+                  "unresolved"
+                ]
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "lockedAt": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "consensusId",
+              "studyId",
+              "roundId",
+              "scenarioId",
+              "fieldId",
+              "sourceSessionIds",
+              "reviewerProfileId",
+              "decision",
+              "rationale",
+              "createdAt",
+              "lockedAt"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "auditEvents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "auditEventId": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string",
+                "enum": [
+                  "creation",
+                  "editing",
+                  "submission",
+                  "reopening",
+                  "locking",
+                  "exclusion",
+                  "import",
+                  "export",
+                  "taxonomy_change",
+                  "consensus_decision",
+                  "role_change",
+                  "archive",
+                  "duplication"
+                ]
+              },
+              "entityType": {
+                "type": "string"
+              },
+              "entityId": {
+                "type": "string"
+              },
+              "actorProfileId": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "occurredAt": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "details": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string"
+                },
+                "additionalProperties": {}
+              }
+            },
+            "required": [
+              "auditEventId",
+              "action",
+              "entityType",
+              "entityId",
+              "actorProfileId",
+              "occurredAt",
+              "details"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "studies",
+        "rounds",
+        "scenarios",
+        "changelog"
+      ],
+      "additionalProperties": {}
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "exportType",
+    "appVersion",
+    "generatedAt",
+    "exportVersion",
+    "entities"
+  ],
+  "additionalProperties": false
+}
