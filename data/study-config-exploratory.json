@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "exportType": "study-config",
+  "appVersion": "1.1.0",
+  "generatedAt": "2026-07-23T00:00:00.000Z",
+  "entities": {
+    "studies": [
+      {
+        "studyId": "study-exploratory-001",
+        "title": "DPF-RP — Research-extension scenarios (ORG-01, INC-01)",
+        "description": "Two research-extension scenarios exploring organisational disruption and post-incident task recovery. These scenarios are NOT part of the reference set (E1–E5) shared across Supplementary Materials S1 and S2. They are exploratory applications of the six-field instrument to two additional human-factors domains. They did not participate in the same design or validation process as E1–E5. If you wish to evaluate the reference scenarios, import study-config-aligned.json instead. NOTICE: All scenarios are entirely fictional. Not for operational use.",
+        "createdAt": "2026-07-23T00:00:00.000Z",
+        "status": "draft",
+        "config": {
+          "instrumentVersion": "1.1.0",
+          "includeRtlx": true,
+          "includeSus": true,
+          "confidenceScalePoints": 4,
+          "relevanceClarityScalePoints": 4
+        }
+      }
+    ],
+    "rounds": [
+      {
+        "roundId": "round-exploratory-001",
+        "studyId": "study-exploratory-001",
+        "roundNumber": 1,
+        "label": "Exploratory round — organisational and recovery domains",
+        "frameworkVersion": "0.1.0-draft",
+        "instrumentVersion": "1.1.0",
+        "status": "open",
+        "evaluatorGroup": "Human-factors specialists, biosafety professionals, laboratory supervisors",
+        "openedAt": "2026-07-23T00:00:00.000Z",
+        "lockedAt": null
+      }
+    ],
+    "roundScenarios": [
+      {
+        "roundId": "round-exploratory-001",
+        "scenarioId": "ORG-01",
+        "scenarioVersion": "1.0"
+      },
+      {
+        "roundId": "round-exploratory-001",
+        "scenarioId": "INC-01",
+        "scenarioVersion": "1.0"
+      }
+    ],
+    "scenarios": [
+      {
+        "scenarioId": "ORG-01",
+        "scenarioVersion": "1.0",
+        "title": "ORG-01: Organisational interruption during multi-step vector preparation",
+        "taskDescription": "An operator is preparing a series of fictional viral-vector aliquots in a single work session. The procedure involves preparation of the work area, sequential pipetting into destination tubes, closure and labelling of each tube, verification of label identity, electronic inventory entry, and transfer to cryostorage. The procedure requires continuous tracking of correspondence among source material, destination tube, aliquot number, label, and electronic record. Approximately halfway through, a colleague asks for help locating a reagent; shortly afterward, the laboratory telephone rings with a non-emergency administrative call; the operator also becomes aware that scheduled laboratory closing time is approaching. No single interruption is urgent. Together they fragment the continuity of the procedure. The planned recovery pause is omitted. No equipment fails, no spill occurs, and the material, concentration, volume, BSC, and PPE remain unchanged throughout. The distinguishing feature is the change in the organisational context under which the procedure is completed.",
+        "operatingConditions": "Class II BSC for open-vessel phases. Standing. Approximately 45–60 minutes. Doubled nitrile gloves. Sequential workflow linking physical samples to documentary records. Multiple non-emergency interruptions mid-procedure. No replacement operator available. Laboratory closing time approaching.",
+        "availableInformation": "Fictional SOP for viral-vector aliquoting specifying the sequence and documentation requirements. No formal interruption-and-resumption protocol on file. No procedure specifying how the operator should mark the last completed step, whether the procedure may be paused, or what to do when remaining time is shorter than the expected task duration.",
+        "vectorMaterialDescription": "Fictional third-generation, self-inactivating, VSV-G-pseudotyped lentiviral vector carrying a non-oncogenic fictional reporter transgene. Working material: fictional concentrated preparation. Material identity, concentration, and per-aliquot volume remain constant throughout the task regardless of the number or timing of organisational interruptions. No concentration step occurs during this procedure.",
+        "volumeOrConcentration": "24 aliquots of 50 µL each, prepared from one source tube. The source tube contains a single fictional high-titer working preparation. Concentration and volume per aliquot are fixed and do not change as a result of the interruptions described in this scenario. The analytical variable is not material concentration but the correspondence between physical samples and their documentary records across interruptions.",
+        "existingControls": "Class II BSC for open-vessel manipulation. Written SOP. Doubled gloves. Organised tube rack. Preprinted labels. Electronic inventory. No formal interruption-and-resumption method. No specification of how to verify procedural state before resumption. No policy on interrupting operators during defined critical phases.",
+        "contextualConstraints": "Scheduled laboratory closing time is approaching. No replacement operator is available. The planned recovery pause is not taken. Multiple non-emergency interruptions occur in succession.",
+        "intendedEvaluatorGroup": "Human-factors specialists, biosafety professionals, and laboratory supervisors with experience in complex multi-step laboratory procedures",
+        "frameworkVersion": "0.1.0-draft",
+        "scenarioClass": "research-extension",
+        "referenceSet": false,
+        "studyAlignment": "separate-exploratory-round",
+        "adminNotes": "Research-extension scenario ORG-01. Primary analytical domain: organisational and cognitive demand. The critical interaction: repeated interruption fragments prospective memory and sequence tracking during a linked sample-label-record workflow. Neither a standard ergonomic assessment (which would rate the physical demand as modest) nor a standard biosafety assessment (which would find material and engineering controls unchanged) captures this conjunction. The control gap is the absence of a formal interruption-and-resumption method. Full worked-example narrative with six-field responses, evaluator notes, and proposed revisions available in proposed Supplementary Material S3 (pending editorial decision). isDemo: true indicates this scenario is a built-in fictional scenario distributed with the platform (not a real protocol or agent). Admin note only — not shown to evaluators.",
+        "isDemo": true
+      },
+      {
+        "scenarioId": "INC-01",
+        "scenarioVersion": "1.0",
+        "title": "INC-01: Contained spill followed by procedure resumption",
+        "taskDescription": "An operator is conducting a sequential precision-pipetting procedure inside a Class II BSC. Several destination tubes or wells are processed in a predefined order. The work requires the operator to maintain awareness of the last completed sample, the current pipette setting, the identity of the active source material, consumables already used, the remaining sequence, and the documentation corresponding to each step. A small spill occurs entirely within the BSC work area. The operator stops the original procedure and follows the established institutional incident-response process. The immediate response is completed: engineering controls remain functional and no confirmed exposure is identified. Replacement consumables are available. The operator must then determine whether and how to resume the unfinished experimental sequence. The scenario does not examine whether the spill-response procedure is correct or adequate. It examines the transition from incident response back to the original task and whether this transition changes the reliability with which the remaining procedure is performed.",
+        "operatingConditions": "Class II BSC throughout. Standing or seated at BSC. Precision pipetting sequence requiring tracking of sample identity, position, and documentation. Small spill contained within BSC work area. Incident-response phase followed by workspace reorganisation. Post-incident resumption of the original sequence with potentially altered workspace layout and uncertain procedural state.",
+        "availableInformation": "Fictional SOP for the original experimental procedure. Fictional institutional incident-response procedure specifying how to respond to a contained spill. The incident-response procedure specifies how to stop work, manage the event, remove affected items, and document the incident. It does not specify how to identify the last confirmed experimental step, how to reconcile physical samples with records, whether resumption is permitted, or whether a structured restart process is required.",
+        "vectorMaterialDescription": "Fictional third-generation, self-inactivating, VSV-G-pseudotyped lentiviral vector carrying a non-oncogenic fictional reporter transgene. Working material: fictional concentrated preparation used for sequential precision pipetting. The intrinsic biological characteristics of the material do not change as a result of the incident. No new agent or concentration is introduced by the spill or the response.",
+        "volumeOrConcentration": "Sequential transfer of 50 µL per destination tube from the same fictional working preparation. The contained spill involves less than one routine transfer volume and is managed entirely within the BSC. After the immediate response, replacement consumables are available. The relevant analytical variable is not material concentration but the operator's certainty about material state and procedural state after the interruption.",
+        "existingControls": "Class II BSC. Doubled gloves. Written experimental procedure. Written institutional incident-response procedure. Replacement consumables. Incident documentation process. Gap: no bridge between formal completion of incident response and structured resumption of the interrupted experimental sequence. The incident-response procedure ends when the event is contained; it does not specify how to restore procedural reliability before continuing.",
+        "contextualConstraints": "The incident interrupts an ongoing precision sequence. Workspace organisation may differ after the response. Some consumables have been replaced; their exact status may be uncertain. Elapsed time may affect experimental validity. The operator may retain residual cognitive and emotional load after the incident. The original SOP does not specify restart criteria.",
+        "intendedEvaluatorGroup": "Human-factors specialists, biosafety professionals, and laboratory supervisors with experience in incident response and task recovery",
+        "frameworkVersion": "0.1.0-draft",
+        "scenarioClass": "research-extension",
+        "referenceSet": false,
+        "studyAlignment": "separate-exploratory-round",
+        "adminNotes": "Research-extension scenario INC-01. Primary analytical domain: recovery, interruption, and cognitive demand. The critical interaction: formal incident control is completed, but procedural state, workspace organisation, and operator readiness must still be restored. A biosafety assessment ends when containment is confirmed; an ergonomic assessment characterises the physical work; neither examines the interface between incident response and reliable resumption of the interrupted procedure. The control gap: a structural missing bridge between the incident-response procedure and a structured task-resumption process. Full worked-example narrative with six-field responses, evaluator notes, and proposed revisions available in proposed Supplementary Material S3 (pending editorial decision). isDemo: true indicates this scenario is a built-in fictional scenario distributed with the platform (not a real protocol or agent). Admin note only — not shown to evaluators.",
+        "isDemo": true
+      }
+    ],
+    "changelog": []
+  },
+  "_fixture": true,
+  "_fixtureNote": "Dates in this file are placeholder values. The platform must replace generatedAt with the actual timestamp on export. createdAt and openedAt will be set by the platform when the study is first activated."
+}
