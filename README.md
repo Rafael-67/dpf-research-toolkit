@@ -17,6 +17,66 @@ DPF-RP is a static, client-side research platform for Phase 0 content and usabil
 
 It does **not** calculate Delivered Protection, biological risk, or biosafety levels, and it does not recommend laboratory decisions. Use fictional/demo information only. Real research use requires institutional data-protection review.
 
+## Reviewer quick start
+
+The anonymous repository displays and distributes the source code; it does not
+run the application itself. Reviewers can evaluate the complete application
+locally without an account, database, credentials or external server.
+
+### Requirements
+
+- [Node.js](https://nodejs.org/) 20.19 or later (Node.js 22 LTS is recommended).
+- An internet connection for the initial dependency installation only.
+
+### Run the application
+
+1. Select **Full repo ZIP** in the anonymous repository and extract the ZIP.
+2. Open a terminal in the extracted directory (the directory containing
+   `package.json`).
+3. Run:
+
+   ```sh
+   npm install
+   npm run dev
+   ```
+
+4. Open the URL printed by Vite. It will normally be:
+
+   ```text
+   http://localhost:5173/Delivered-Protection-Framework/
+   ```
+
+The application runs entirely in the browser. Evaluation data remain in that
+browser's local storage unless a user explicitly exports them. Use only the
+included fictional/demo scenarios; do not enter real personal, institutional,
+agent, protocol or incident information.
+
+### Run the validation checks
+
+The principal automated checks are:
+
+```sh
+npm run typecheck
+npm run test:unit
+npm run lint
+npm run build
+```
+
+The optional end-to-end browser suite requires one additional installation:
+
+```sh
+npx playwright install chromium
+npm run test:e2e
+```
+
+### Troubleshooting
+
+- Run the commands from the extracted directory containing `package.json`.
+- If the default port is occupied, use the alternative URL printed in the
+  terminal.
+- If `npm` is not recognised, install or update Node.js and reopen the terminal.
+- Stop the local development server with `Ctrl+C`.
+
 ## Current state — v0.1.0-rc.2 anonymous-review candidate
 
 - Hash-based Administrator and Evaluator navigation.
