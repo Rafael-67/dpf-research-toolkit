@@ -17,6 +17,10 @@ DPF-RP is a static, client-side research platform for Phase 0 content and usabil
 
 It does **not** calculate Delivered Protection, biological risk, or biosafety levels, and it does not recommend laboratory decisions. Use fictional/demo information only. Real research use requires institutional data-protection review.
 
+For a concise explanation of the application's purpose, roles, F1-F6 workflow,
+data handling and a suggested 10-minute walkthrough, see
+**[`QUICK_USER_GUIDE.md`](QUICK_USER_GUIDE.md)**.
+
 ## Reviewer quick start
 
 The anonymous repository displays and distributes the source code; it does not
