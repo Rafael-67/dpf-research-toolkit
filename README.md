@@ -25,7 +25,7 @@ locally without an account, database, credentials or external server.
 
 ### Requirements
 
-- [Node.js](https://nodejs.org/) 20.19 or later (Node.js 22 LTS is recommended).
+- Node.js 20.19 or later (Node.js 22 LTS is recommended).
 - An internet connection for the initial dependency installation only.
 
 ### Run the application
@@ -40,11 +40,7 @@ locally without an account, database, credentials or external server.
    npm run dev
    ```
 
-4. Open the URL printed by Vite. It will normally be:
-
-   ```text
-   http://localhost:5173/Delivered-Protection-Framework/
-   ```
+4. Open the local address printed by Vite in the terminal.
 
 The application runs entirely in the browser. Evaluation data remain in that
 browser's local storage unless a user explicitly exports them. Use only the
