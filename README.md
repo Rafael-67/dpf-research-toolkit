@@ -24,6 +24,22 @@ run the application itself. A portable peer-review build is provided so that
 reviewers can evaluate the complete application without installing software,
 creating an account or using an external server.
 
+### Two complementary review options
+
+This repository offers two ways to review the **same DPF-RP application**:
+
+1. **Portable functional review (recommended):** download
+   `DPF-RP-PORTABLE-PEER-REVIEW.zip`, extract it and open
+   `OPEN_DPF_RP.html`. No installation is required.
+2. **Source-code and reproducibility review (optional):** inspect the remaining
+   repository files or rebuild the application using the development commands
+   below. This route requires Node.js and initial dependency installation.
+
+The portable ZIP is a pre-built, self-contained distribution supplied solely
+to simplify functional peer review. It is not a different application. Do not
+select **Full repo ZIP** when following the portable route; that control
+downloads the complete source repository instead.
+
 ### Portable version — no installation required
 
 1. Download `DPF-RP-PORTABLE-PEER-REVIEW.zip` from the repository file list.
@@ -42,6 +58,22 @@ The SHA-256 checksum of the portable ZIP is:
 ```text
 F3B68045B01E0B6AAD418F6A17614D51C0413DE5D49972240AC6523A472E600F
 ```
+
+### What else is included in this repository?
+
+The files outside the portable ZIP support transparent technical and
+reproducibility review. They are not required to use the portable application.
+
+- `src/` — complete application source code.
+- `data/` — fictional scenarios and versioned study configurations.
+- `tests/` — unit, integration, accessibility and browser tests.
+- `specifications/` — versioned research and technical specifications.
+- `docs/` — methodology, privacy, deployment and research-use documentation.
+- `scripts/` — schema, validation and reproducibility utilities.
+- `package.json` and lock files — dependencies and commands for rebuilding and
+  testing the application.
+- `ARCHITECTURE.md`, `DATA_SCHEMA.md` and `SCIENTIFIC_CONSTRAINTS.md` — detailed
+  architecture, data-model and scientific-scope documentation.
 
 ### Source-code execution (optional)
 
