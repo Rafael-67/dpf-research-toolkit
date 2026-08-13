@@ -20,8 +20,33 @@ It does **not** calculate Delivered Protection, biological risk, or biosafety le
 ## Reviewer quick start
 
 The anonymous repository displays and distributes the source code; it does not
-run the application itself. Reviewers can evaluate the complete application
-locally without an account, database, credentials or external server.
+run the application itself. A portable peer-review build is provided so that
+reviewers can evaluate the complete application without installing software,
+creating an account or using an external server.
+
+### Portable version — no installation required
+
+1. Download `DPF-RP-PORTABLE-PEER-REVIEW.zip` from the repository file list.
+2. Extract the complete ZIP to a normal folder. Do not open the HTML file from
+   inside the ZIP archive.
+3. Double-click `OPEN_DPF_RP.html`.
+4. Use a current version of Chrome, Edge or Firefox.
+
+The portable build works locally and does not require Node.js, npm, an account,
+credentials or an internet connection. If a browser displays a warning about
+opening a local file, choose the option to open it; the package does not install
+or execute a native program.
+
+The SHA-256 checksum of the portable ZIP is:
+
+```text
+F3B68045B01E0B6AAD418F6A17614D51C0413DE5D49972240AC6523A472E600F
+```
+
+### Source-code execution (optional)
+
+The following procedure is provided for reviewers who wish to build the
+application from source or run its automated validation suite.
 
 ### Requirements
 
