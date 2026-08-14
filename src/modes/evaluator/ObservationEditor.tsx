@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import type {
   FieldId,
   EvidenceSource,
@@ -18,6 +18,28 @@ import {
 
 const selections = (values: string[]): Selection<string>[] =>
   values.map((value) => ({ value }));
+
+interface ObservationEditorDraft {
+  category: string;
+  categoryOther: string;
+  selectionOtherText: string;
+  phases: string[];
+  evidence: string[];
+  ratings: QuantitativeObservationRatings;
+  reasoningSummary: string;
+  extendedComments: string;
+  values: Record<string, string | string[] | number>;
+}
+
+function readDraft(key: string): Partial<ObservationEditorDraft> {
+  try {
+    return JSON.parse(
+      localStorage.getItem(key) ?? "{}",
+    ) as Partial<ObservationEditorDraft>;
+  } catch {
+    return {};
+  }
+}
 const phaseSelections = (values: string[]): Selection<TaskPhase>[] =>
   values.map((value) => ({ value: value as TaskPhase }));
 const evidenceSelections = (values: string[]): EvidenceSourceSelection[] =>
@@ -124,28 +146,73 @@ function Rating({
 
 export function ObservationEditor({
   fieldId,
+  draftKey,
   onSave,
 }: {
   fieldId: FieldId;
+  draftKey: string;
   onSave: (value: Observation) => void;
 }) {
-  const [category, setCategory] = useState(fieldTaxonomies[fieldId][0]);
-  const [categoryOther, setCategoryOther] = useState("");
-  const [selectionOtherText, setSelectionOtherText] = useState("");
-  const [phases, setPhases] = useState<string[]>(["whole_task"]);
-  const [evidence, setEvidence] = useState<string[]>(["scenario_information"]);
+  const storageKey = `dpft:observation-draft:${draftKey}`;
+  const [initialDraft] = useState(() => readDraft(storageKey));
+  const [category, setCategory] = useState(
+    initialDraft.category ?? fieldTaxonomies[fieldId][0],
+  );
+  const [categoryOther, setCategoryOther] = useState(
+    initialDraft.categoryOther ?? "",
+  );
+  const [selectionOtherText, setSelectionOtherText] = useState(
+    initialDraft.selectionOtherText ?? "",
+  );
+  const [phases, setPhases] = useState<string[]>(
+    initialDraft.phases ?? ["whole_task"],
+  );
+  const [evidence, setEvidence] = useState<string[]>(
+    initialDraft.evidence ?? ["scenario_information"],
+  );
   const [ratings, setRatings] = useState<QuantitativeObservationRatings>({
-    analyticalRelevance: 3,
-    evidenceStrength: 3,
-    expectedInfluenceOnDeliveredProtection: 3,
-    evaluatorCertainty: 3,
+    analyticalRelevance: initialDraft.ratings?.analyticalRelevance ?? 3,
+    evidenceStrength: initialDraft.ratings?.evidenceStrength ?? 3,
+    expectedInfluenceOnDeliveredProtection:
+      initialDraft.ratings?.expectedInfluenceOnDeliveredProtection ?? 3,
+    evaluatorCertainty: initialDraft.ratings?.evaluatorCertainty ?? 3,
+    consensusPriority: initialDraft.ratings?.consensusPriority,
   });
-  const [reasoningSummary, setReasoningSummary] = useState("");
-  const [extendedComments, setExtendedComments] = useState("");
+  const [reasoningSummary, setReasoningSummary] = useState(
+    initialDraft.reasoningSummary ?? "",
+  );
+  const [extendedComments, setExtendedComments] = useState(
+    initialDraft.extendedComments ?? "",
+  );
   const [values, setValues] = useState<
     Record<string, string | string[] | number>
-  >({});
+  >(initialDraft.values ?? {});
   const [error, setError] = useState("");
+  useEffect(() => {
+    const draft: ObservationEditorDraft = {
+      category,
+      categoryOther,
+      selectionOtherText,
+      phases,
+      evidence,
+      ratings,
+      reasoningSummary,
+      extendedComments,
+      values,
+    };
+    localStorage.setItem(storageKey, JSON.stringify(draft));
+  }, [
+    category,
+    categoryOther,
+    selectionOtherText,
+    phases,
+    evidence,
+    ratings,
+    reasoningSummary,
+    extendedComments,
+    values,
+    storageKey,
+  ]);
   const multi = (key: string) => (value: string[]) =>
     setValues((current) => ({ ...current, [key]: value }));
   const scalar = (key: string) => (value: string | number) =>
@@ -335,6 +402,7 @@ export function ObservationEditor({
       };
     setError("");
     onSave(observation);
+    localStorage.removeItem(storageKey);
     setReasoningSummary("");
     setExtendedComments("");
   };

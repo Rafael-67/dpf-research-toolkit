@@ -39,6 +39,26 @@ describe("session lifecycle", () => {
       )?.sessionId,
     ).toBe("draft");
   });
+
+  it("resumes the newest matching draft when legacy duplicates exist", () => {
+    const older = {
+      ...minimal("older", "in_progress"),
+      fieldResponses: [{ fieldId: "F1", narrativeAnswer: "o" }],
+    } as EvaluationSession;
+    const newer = {
+      ...minimal("newer", "in_progress"),
+      fieldResponses: [{ fieldId: "F1", narrativeAnswer: "complete text" }],
+    } as EvaluationSession;
+
+    expect(
+      findResumableSession(
+        [older, newer],
+        "E1",
+        "r1",
+        "s1",
+      )?.sessionId,
+    ).toBe("newer");
+  });
   it("abandons an active session older than 24 hours on load", () => {
     const draft = {
       ...minimal("draft", "in_progress"),

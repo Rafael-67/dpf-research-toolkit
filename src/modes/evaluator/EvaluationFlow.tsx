@@ -80,6 +80,9 @@ export function EvaluationFlow() {
         scenarioId ?? "",
       )
     : undefined;
+  const [sessionId] = useState(
+    () => resumableSession?.sessionId ?? crypto.randomUUID(),
+  );
   const [step, setStep] = useState<number | "review" | "taxonomy" | "closing">(
     0,
   );
@@ -125,7 +128,7 @@ export function EvaluationFlow() {
     status: EvaluationSession["evaluationStatus"],
   ) => {
     const session = makeSession(
-      resumableSession?.sessionId ?? crypto.randomUUID(),
+      sessionId,
       next,
       status,
     );
@@ -307,6 +310,7 @@ export function EvaluationFlow() {
         field={localizedFields[step]}
         response={responses[step]}
         position={step}
+        observationDraftKey={`${sessionId}:${localizedFields[step].fieldId}`}
         onChange={(value) => {
           const next = [...responses];
           next[step] = value;

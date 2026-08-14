@@ -12,6 +12,7 @@ export function FieldQuestion({
   field,
   response,
   position,
+  observationDraftKey,
   onChange,
   onBack,
   onNext,
@@ -19,6 +20,7 @@ export function FieldQuestion({
   field: FrameworkFieldDefinition;
   response: FieldResponse;
   position: number;
+  observationDraftKey: string;
   onChange: (value: FieldResponse) => void;
   onBack: () => void;
   onNext: () => void;
@@ -211,7 +213,9 @@ export function FieldQuestion({
             );
           })}
           <ObservationEditor
+            key={observationDraftKey}
             fieldId={field.fieldId}
+            draftKey={observationDraftKey}
             onSave={(observation) =>
               set("observations", [
                 ...(response.observations ?? []),

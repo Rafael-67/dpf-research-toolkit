@@ -19,7 +19,7 @@ export function findResumableSession(
   roundId: string,
   scenarioId: string,
 ): EvaluationSession | undefined {
-  return sessions.find(
+  return [...sessions].reverse().find(
     (session) =>
       session.evaluatorPseudonym === evaluatorPseudonym &&
       session.roundId === roundId &&
