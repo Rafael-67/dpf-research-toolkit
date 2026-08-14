@@ -108,6 +108,10 @@ export interface ClosingValues {
   usefulness: string;
   confirmed: boolean;
 }
+export type ClosingFeedbackDraft = Pick<
+  ClosingValues,
+  "burden" | "ambiguity" | "usefulness" | "confirmed"
+>;
 interface ClosingDraft extends Omit<ClosingValues, "rtlx" | "sus"> {
   rtlx: Array<number | null>;
   sus: Array<number | null>;
@@ -115,22 +119,37 @@ interface ClosingDraft extends Omit<ClosingValues, "rtlx" | "sus"> {
 export function ClosingSurvey({
   includeRtlx,
   includeSus,
+  initialFeedback,
+  onDraftChange,
   onSubmit,
 }: {
   includeRtlx: boolean;
   includeSus: boolean;
+  initialFeedback?: ClosingFeedbackDraft;
+  onDraftChange?: (values: ClosingFeedbackDraft) => void;
   onSubmit: (values: ClosingValues) => void;
 }) {
   const { language, t } = useLanguage();
   const [values, setValues] = useState<ClosingDraft>({
     rtlx: Array(6).fill(null),
     sus: Array(10).fill(null),
-    burden: "",
-    ambiguity: "",
-    usefulness: "",
-    confirmed: false,
+    burden: initialFeedback?.burden ?? "",
+    ambiguity: initialFeedback?.ambiguity ?? "",
+    usefulness: initialFeedback?.usefulness ?? "",
+    confirmed: initialFeedback?.confirmed ?? false,
   });
   const [error, setError] = useState("");
+  const updateValues = (update: (current: ClosingDraft) => ClosingDraft) =>
+    setValues((current) => {
+      const next = update(current);
+      onDraftChange?.({
+        burden: next.burden,
+        ambiguity: next.ambiguity,
+        usefulness: next.usefulness,
+        confirmed: next.confirmed,
+      });
+      return next;
+    });
   return (
     <main>
       <p className="eyebrow">{t("Closing survey")}</p>
@@ -188,9 +207,11 @@ export function ClosingSurvey({
                       : String(values.rtlx[index])
                   }
                   onChange={(e) => {
-                    const next = [...values.rtlx];
-                    next[index] = Number(e.target.value);
-                    setValues({ ...values, rtlx: next });
+                    updateValues((current) => {
+                      const next = [...current.rtlx];
+                      next[index] = Number(e.target.value);
+                      return { ...current, rtlx: next };
+                    });
                   }}
                 />
                 <span>
@@ -217,9 +238,11 @@ export function ClosingSurvey({
                 value={values.sus[index] ?? 0}
                 max={5}
                 onChange={(value) => {
-                  const next = [...values.sus];
-                  next[index] = value;
-                  setValues({ ...values, sus: next });
+                  updateValues((current) => {
+                    const next = [...current.sus];
+                    next[index] = value;
+                    return { ...current, sus: next };
+                  });
                 }}
               />
             ))}
@@ -229,7 +252,12 @@ export function ClosingSurvey({
           {t("Burden feedback")}
           <textarea
             value={values.burden}
-            onChange={(e) => setValues({ ...values, burden: e.target.value })}
+            onChange={(e) =>
+              updateValues((current) => ({
+                ...current,
+                burden: e.target.value,
+              }))
+            }
           />
         </label>
         <label>
@@ -237,7 +265,10 @@ export function ClosingSurvey({
           <textarea
             value={values.ambiguity}
             onChange={(e) =>
-              setValues({ ...values, ambiguity: e.target.value })
+              updateValues((current) => ({
+                ...current,
+                ambiguity: e.target.value,
+              }))
             }
           />
         </label>
@@ -246,7 +277,10 @@ export function ClosingSurvey({
           <textarea
             value={values.usefulness}
             onChange={(e) =>
-              setValues({ ...values, usefulness: e.target.value })
+              updateValues((current) => ({
+                ...current,
+                usefulness: e.target.value,
+              }))
             }
           />
         </label>
@@ -256,7 +290,10 @@ export function ClosingSurvey({
             type="checkbox"
             checked={values.confirmed}
             onChange={(e) =>
-              setValues({ ...values, confirmed: e.target.checked })
+              updateValues((current) => ({
+                ...current,
+                confirmed: e.target.checked,
+              }))
             }
           />
           {t(

@@ -40,6 +40,11 @@ describe("session lifecycle", () => {
     ).toBe("draft");
   });
 
+  it("resumes a session saved at the review stage", () => {
+    const review = minimal("review", "in_review");
+    expect(findResumableSession([review], "E1", "r1", "s1")).toBe(review);
+  });
+
   it("resumes the newest matching draft when legacy duplicates exist", () => {
     const older = {
       ...minimal("older", "in_progress"),

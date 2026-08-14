@@ -21,7 +21,7 @@ export function FieldQuestion({
   response: FieldResponse;
   position: number;
   observationDraftKey: string;
-  onChange: (value: FieldResponse) => void;
+  onChange: (update: (current: FieldResponse) => FieldResponse) => void;
   onBack: () => void;
   onNext: () => void;
 }) {
@@ -29,15 +29,45 @@ export function FieldQuestion({
   const heading = useRef<HTMLHeadingElement>(null);
   const [error, setError] = useState("");
   useEffect(() => heading.current?.focus(), [field.fieldId]);
+  const update = (transform: (current: FieldResponse) => FieldResponse) =>
+    onChange((current) => ({
+      ...transform(current),
+      revisionCount: current.revisionCount + 1,
+    }));
   const set = <K extends keyof FieldResponse>(
     key: K,
     value: FieldResponse[K],
   ) =>
-    onChange({
-      ...response,
+    update((current) => ({
+      ...current,
       [key]: value,
-      revisionCount: response.revisionCount + 1,
-    });
+    }));
+  const setFieldSummary = (
+    patch: Partial<NonNullable<FieldResponse["fieldSummary"]>>,
+  ) =>
+    update((current) => ({
+      ...current,
+      fieldSummary: {
+        fieldId: current.fieldId,
+        dominantCategories:
+          current.fieldSummary?.dominantCategories ??
+          (current.observations ?? []).map((item) =>
+            typeof item.category === "string"
+              ? { value: item.category }
+              : item.category,
+          ),
+        overallAnalyticalRelevance:
+          current.fieldSummary?.overallAnalyticalRelevance ?? 3,
+        informationSufficiency:
+          current.fieldSummary?.informationSufficiency ?? 3,
+        internalConsistencyOfEvidence:
+          current.fieldSummary?.internalConsistencyOfEvidence ?? 3,
+        consensusPriority: current.fieldSummary?.consensusPriority ?? 3,
+        reasoningSummary: current.fieldSummary?.reasoningSummary ?? "",
+        extendedComments: current.fieldSummary?.extendedComments,
+        ...patch,
+      },
+    }));
   const continueIfComplete = () => {
     if (!response.observations?.length && !response.noObservationReason) {
       setError(
@@ -145,16 +175,19 @@ export function FieldQuestion({
                     type="button"
                     className="secondary"
                     onClick={() =>
-                      set("observations", [
-                        ...(response.observations ?? []),
-                        {
-                          ...observation,
-                          ...(current
-                            ? { observationId: crypto.randomUUID() }
-                            : { id: crypto.randomUUID() }),
-                          createdAt: new Date().toISOString(),
-                        },
-                      ])
+                      update((latest) => ({
+                        ...latest,
+                        observations: [
+                          ...(latest.observations ?? []),
+                          {
+                            ...observation,
+                            ...(current
+                              ? { observationId: crypto.randomUUID() }
+                              : { id: crypto.randomUUID() }),
+                            createdAt: new Date().toISOString(),
+                          },
+                        ],
+                      }))
                     }
                   >
                     Duplicate
@@ -164,12 +197,16 @@ export function FieldQuestion({
                     className="secondary"
                     disabled={index === 0}
                     onClick={() => {
-                      const next = [...(response.observations ?? [])];
-                      [next[index - 1], next[index]] = [
-                        next[index],
-                        next[index - 1],
-                      ];
-                      set("observations", next);
+                      update((latest) => {
+                        const observations = [
+                          ...(latest.observations ?? []),
+                        ];
+                        [observations[index - 1], observations[index]] = [
+                          observations[index],
+                          observations[index - 1],
+                        ];
+                        return { ...latest, observations };
+                      });
                     }}
                   >
                     Move up
@@ -181,12 +218,16 @@ export function FieldQuestion({
                       index === (response.observations?.length ?? 0) - 1
                     }
                     onClick={() => {
-                      const next = [...(response.observations ?? [])];
-                      [next[index], next[index + 1]] = [
-                        next[index + 1],
-                        next[index],
-                      ];
-                      set("observations", next);
+                      update((latest) => {
+                        const observations = [
+                          ...(latest.observations ?? []),
+                        ];
+                        [observations[index], observations[index + 1]] = [
+                          observations[index + 1],
+                          observations[index],
+                        ];
+                        return { ...latest, observations };
+                      });
                     }}
                   >
                     Move down
@@ -200,10 +241,12 @@ export function FieldQuestion({
                           `Delete observation ${index + 1}? This cannot be undone.`,
                         )
                       )
-                        set(
-                          "observations",
-                          response.observations?.filter((_, i) => i !== index),
-                        );
+                        update((latest) => ({
+                          ...latest,
+                          observations: latest.observations?.filter(
+                            (_, i) => i !== index,
+                          ),
+                        }));
                     }}
                   >
                     Delete
@@ -217,10 +260,13 @@ export function FieldQuestion({
             fieldId={field.fieldId}
             draftKey={observationDraftKey}
             onSave={(observation) =>
-              set("observations", [
-                ...(response.observations ?? []),
-                observation,
-              ])
+              update((current) => ({
+                ...current,
+                observations: [
+                  ...(current.observations ?? []),
+                  observation,
+                ],
+              }))
             }
           />
           <label>
@@ -274,30 +320,8 @@ export function FieldQuestion({
                       ] ?? 3
                     }
                     onChange={(event) =>
-                      set("fieldSummary", {
-                        fieldId: response.fieldId,
-                        dominantCategories:
-                          response.fieldSummary?.dominantCategories ??
-                          response.observations!.map((item) =>
-                            typeof item.category === "string"
-                              ? { value: item.category }
-                              : item.category,
-                          ),
-                        overallAnalyticalRelevance:
-                          response.fieldSummary?.overallAnalyticalRelevance ??
-                          3,
-                        informationSufficiency:
-                          response.fieldSummary?.informationSufficiency ?? 3,
-                        internalConsistencyOfEvidence:
-                          response.fieldSummary
-                            ?.internalConsistencyOfEvidence ?? 3,
-                        consensusPriority:
-                          response.fieldSummary?.consensusPriority ?? 3,
-                        reasoningSummary:
-                          response.fieldSummary?.reasoningSummary ?? "",
-                        ...{
-                          [key]: Number(event.target.value),
-                        },
+                      setFieldSummary({
+                        [key]: Number(event.target.value),
                       })
                     }
                   >
@@ -313,25 +337,7 @@ export function FieldQuestion({
                   maxLength={500}
                   value={response.fieldSummary?.reasoningSummary ?? ""}
                   onChange={(event) =>
-                    set("fieldSummary", {
-                      fieldId: response.fieldId,
-                      dominantCategories: response.observations!.map((item) =>
-                        typeof item.category === "string"
-                          ? { value: item.category }
-                          : item.category,
-                      ),
-                      overallAnalyticalRelevance:
-                        response.fieldSummary?.overallAnalyticalRelevance ?? 3,
-                      informationSufficiency:
-                        response.fieldSummary?.informationSufficiency ?? 3,
-                      internalConsistencyOfEvidence:
-                        response.fieldSummary?.internalConsistencyOfEvidence ??
-                        3,
-                      consensusPriority:
-                        response.fieldSummary?.consensusPriority ?? 3,
-                      reasoningSummary: event.target.value,
-                      extendedComments: response.fieldSummary?.extendedComments,
-                    })
+                    setFieldSummary({ reasoningSummary: event.target.value })
                   }
                 />
               </label>
@@ -341,11 +347,7 @@ export function FieldQuestion({
                   maxLength={2000}
                   value={response.fieldSummary?.extendedComments ?? ""}
                   onChange={(event) =>
-                    response.fieldSummary &&
-                    set("fieldSummary", {
-                      ...response.fieldSummary,
-                      extendedComments: event.target.value,
-                    })
+                    setFieldSummary({ extendedComments: event.target.value })
                   }
                 />
               </details>
@@ -371,14 +373,13 @@ export function FieldQuestion({
             type="checkbox"
             checked={response.insufficientInformation}
             onChange={(e) =>
-              onChange({
-                ...response,
+              update((current) => ({
+                ...current,
                 insufficientInformation: e.target.checked,
                 noObservationReason: e.target.checked
                   ? "insufficient_information"
-                  : response.noObservationReason,
-                revisionCount: response.revisionCount + 1,
-              })
+                  : current.noObservationReason,
+              }))
             }
           />
           {t("Insufficient information to rate this field")}

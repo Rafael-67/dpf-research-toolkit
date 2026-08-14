@@ -60,7 +60,7 @@ or execute a native program.
 The SHA-256 checksum of the portable ZIP is:
 
 ```text
-62DCDFCCBD13AD697607B30668CCD5AA591BBA138EB5291DF1A1BAD91AF2E053
+99B480C55CB6B8294FCBFB4E29E9171DEDB8B29D4485A0841CFE2829E5A10ECA
 ```
 
 ### What else is included in this repository?

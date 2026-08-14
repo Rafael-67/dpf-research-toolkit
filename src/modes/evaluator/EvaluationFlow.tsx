@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import type {
   EvaluationSession,
@@ -14,7 +14,11 @@ import { useLanguage } from "../../i18n/LanguageContext";
 import { findResumableSession } from "../../domain/sessionLifecycle";
 import { saveEvaluationRecord, saveRecord } from "../../storage/localStore";
 import { useApp } from "../../state/AppContext";
-import { ClosingSurvey, type ClosingValues } from "./ClosingSurvey";
+import {
+  ClosingSurvey,
+  type ClosingFeedbackDraft,
+  type ClosingValues,
+} from "./ClosingSurvey";
 import { FieldQuestion } from "./FieldQuestion";
 import { SessionProgress } from "./SessionProgress";
 import { SessionReview } from "./SessionReview";
@@ -104,6 +108,17 @@ export function EvaluationFlow() {
       resumableSession?.fieldResponses ??
       frameworkFields.map((f) => blank(f.fieldId)),
   );
+  const [closingFeedback, setClosingFeedback] = useState<ClosingFeedbackDraft>(
+    () => ({
+      burden: resumableSession?.openFeedback.burden ?? "",
+      ambiguity: resumableSession?.openFeedback.ambiguity ?? "",
+      usefulness: resumableSession?.openFeedback.usefulness ?? "",
+      confirmed: resumableSession?.fictionalScenarioConfirmed ?? false,
+    }),
+  );
+  const currentSession = useRef<EvaluationSession | null>(
+    resumableSession ?? null,
+  );
   const startedAt = useMemo(
     () => resumableSession?.startedAt ?? new Date().toISOString(),
     [resumableSession?.startedAt],
@@ -132,9 +147,31 @@ export function EvaluationFlow() {
       next,
       status,
     );
+    currentSession.current = session;
     saveEvaluationRecord(session);
     dispatch({ type: "session", value: session });
     return session;
+  };
+  const saveClosingFeedback = (feedback: ClosingFeedbackDraft) => {
+    setClosingFeedback(feedback);
+    const latestResponses =
+      currentSession.current?.fieldResponses ?? responses;
+    const session = {
+      ...makeSession(
+        sessionId,
+        latestResponses,
+        currentSession.current?.evaluationStatus ?? "in_review",
+      ),
+      openFeedback: {
+        burden: feedback.burden,
+        ambiguity: feedback.ambiguity,
+        usefulness: feedback.usefulness,
+      },
+      fictionalScenarioConfirmed: feedback.confirmed,
+    };
+    currentSession.current = session;
+    saveEvaluationRecord(session);
+    dispatch({ type: "session", value: session });
   };
   const makeSession = (
     sessionId: string,
@@ -142,6 +179,7 @@ export function EvaluationFlow() {
     status: EvaluationSession["evaluationStatus"],
     closing?: ClosingValues,
   ): EvaluationSession => ({
+    ...(currentSession.current ?? resumableSession),
     sessionId,
     evaluatorPseudonym,
     studyId: resumableSession?.studyId ?? study.studyId,
@@ -189,28 +227,42 @@ export function EvaluationFlow() {
             "frustration",
           ].map((key, i) => [key, closing.rtlx[i]]),
         ) as EvaluationSession["nasaTlx"])
-      : null,
-    sus: closing ? { itemScores: closing.sus } : null,
-    openFeedback: {
-      burden: closing?.burden ?? "",
-      ambiguity: closing?.ambiguity ?? "",
-      usefulness: closing?.usefulness ?? "",
-    },
-    fictionalScenarioConfirmed: closing?.confirmed ?? false,
+      : (currentSession.current ?? resumableSession)?.nasaTlx ?? null,
+    sus: closing
+      ? { itemScores: closing.sus }
+      : (currentSession.current ?? resumableSession)?.sus ?? null,
+    openFeedback: closing
+      ? {
+          burden: closing.burden,
+          ambiguity: closing.ambiguity,
+          usefulness: closing.usefulness,
+        }
+      : (currentSession.current ?? resumableSession)?.openFeedback ?? {
+          burden: "",
+          ambiguity: "",
+          usefulness: "",
+        },
+    fictionalScenarioConfirmed:
+      closing?.confirmed ??
+      (currentSession.current ?? resumableSession)
+        ?.fictionalScenarioConfirmed ??
+      false,
     startedAt,
     reviewedAt:
       status === "in_review" ||
       status === "completed" ||
       status === "submitted" ||
       status === "resubmitted"
-        ? new Date().toISOString()
-        : null,
+        ? (currentSession.current ?? resumableSession)?.reviewedAt ??
+          new Date().toISOString()
+        : (currentSession.current ?? resumableSession)?.reviewedAt ?? null,
     finishedAt:
       status === "completed" ||
       status === "submitted" ||
       status === "resubmitted"
-        ? new Date().toISOString()
-        : null,
+        ? (currentSession.current ?? resumableSession)?.finishedAt ??
+          new Date().toISOString()
+        : (currentSession.current ?? resumableSession)?.finishedAt ?? null,
     abandonedAt: null,
     resumedAt,
     dataSchemaVersion: "1.2",
@@ -219,8 +271,9 @@ export function EvaluationFlow() {
       status === "completed" ||
       status === "submitted" ||
       status === "resubmitted"
-        ? new Date().toISOString()
-        : null,
+        ? (currentSession.current ?? resumableSession)?.completedAt ??
+          new Date().toISOString()
+        : (currentSession.current ?? resumableSession)?.completedAt ?? null,
     documentSnapshots:
       resumableSession?.documentSnapshots ??
       state.documentLinks
@@ -246,8 +299,9 @@ export function EvaluationFlow() {
     },
     submittedAt:
       status === "submitted" || status === "resubmitted"
-        ? new Date().toISOString()
-        : null,
+        ? (currentSession.current ?? resumableSession)?.submittedAt ??
+          new Date().toISOString()
+        : (currentSession.current ?? resumableSession)?.submittedAt ?? null,
     lockedAt: null,
     exclusionReason: null,
     assignedEvaluatorId: state.profiles.find(
@@ -256,6 +310,28 @@ export function EvaluationFlow() {
         profile.role === "evaluator",
     )?.profileId,
   });
+  const saveTaxonomyDraft = (
+    nextRatings: NonNullable<EvaluationSession["taxonomyItemRatings"]>,
+    nextReview: NonNullable<EvaluationSession["taxonomyReview"]>,
+  ) => {
+    const latestResponses =
+      currentSession.current?.fieldResponses ?? responses;
+    const session = {
+      ...makeSession(
+        sessionId,
+        latestResponses,
+        currentSession.current?.evaluationStatus ?? "in_review",
+      ),
+      taxonomyItemRatings: nextRatings,
+      taxonomyReview: {
+        ...nextReview,
+        taxonomyItemRatings: Object.values(nextRatings).flat(),
+      },
+    };
+    currentSession.current = session;
+    saveEvaluationRecord(session);
+    dispatch({ type: "session", value: session });
+  };
   if (step === "review")
     return (
       <SessionReview
@@ -268,9 +344,15 @@ export function EvaluationFlow() {
     return (
       <TaxonomyReview
         values={taxonomyItemRatings}
-        onChange={setTaxonomyItemRatings}
+        onChange={(next) => {
+          setTaxonomyItemRatings(next);
+          saveTaxonomyDraft(next, taxonomyReview);
+        }}
         review={taxonomyReview}
-        onReviewChange={setTaxonomyReview}
+        onReviewChange={(next) => {
+          setTaxonomyReview(next);
+          saveTaxonomyDraft(taxonomyItemRatings, next);
+        }}
         onContinue={() => setStep("closing")}
       />
     );
@@ -279,6 +361,8 @@ export function EvaluationFlow() {
       <ClosingSurvey
         includeRtlx={study.config.includeRtlx}
         includeSus={study.config.includeSus}
+        initialFeedback={closingFeedback}
+        onDraftChange={saveClosingFeedback}
         onSubmit={(closing) => {
           const existing = saveDraft(responses, "in_progress");
           const completed = makeSession(
@@ -312,8 +396,10 @@ export function EvaluationFlow() {
         position={step}
         observationDraftKey={`${sessionId}:${localizedFields[step].fieldId}`}
         onChange={(value) => {
-          const next = [...responses];
-          next[step] = value;
+          const latest =
+            currentSession.current?.fieldResponses ?? responses;
+          const next = [...latest];
+          next[step] = value(latest[step]);
           setResponses(next);
           saveDraft(next, "in_progress");
         }}

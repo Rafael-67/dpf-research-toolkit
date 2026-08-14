@@ -24,9 +24,12 @@ export function findResumableSession(
       session.evaluatorPseudonym === evaluatorPseudonym &&
       session.roundId === roundId &&
       session.scenarioId === scenarioId &&
-      ["not_started", "in_progress", "returned_for_revision"].includes(
-        session.evaluationStatus,
-      ),
+      [
+        "not_started",
+        "in_progress",
+        "in_review",
+        "returned_for_revision",
+      ].includes(session.evaluationStatus),
   );
 }
 

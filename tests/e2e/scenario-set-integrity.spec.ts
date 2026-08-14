@@ -21,8 +21,12 @@ test("reference and exploratory scenarios remain in separate studies and rounds"
   await referenceStudy.getByRole("link", { name: "Open study" }).click();
   await page.getByRole("link", { name: "Open round" }).click();
 
-  await expect(page.getByText(/E1: Repetitive pipetting/)).toBeVisible();
-  await expect(page.getByText(/E5: Static microscopy/)).toBeVisible();
+  await expect(
+    page.locator("strong").filter({ hasText: /E1: Repetitive pipetting/ }),
+  ).toBeVisible();
+  await expect(
+    page.locator("strong").filter({ hasText: /E5: Static microscopy/ }),
+  ).toBeVisible();
   await expect(page.getByText(/ORG-01:/)).toHaveCount(0);
   await expect(page.getByText(/INC-01:/)).toHaveCount(0);
 });
