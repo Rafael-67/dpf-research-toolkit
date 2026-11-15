@@ -1,5 +1,9 @@
 # Fase D milestone summary
 
+> Historical development record. Findings and recorded checks refer to the
+> development stage described below; they are not current release validation.
+> See RELEASE_CHECKLIST.md for publication checks.
+
 ## Specification mapping
 
 - `docs/methodology.md`: confirmed Phase 0 data flow, agreement inputs, RTLX/SUS interpretation, and human decision boundaries.

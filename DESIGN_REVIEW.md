@@ -1,5 +1,9 @@
 # Design Review — Delivered Protection Framework Research Toolkit
 
+> Historical development record. Findings and recorded checks refer to the
+> development stage described below; they are not current release validation.
+> See RELEASE_CHECKLIST.md for publication checks.
+
 > **Architectural consolidation complete — 23 July 2026.** DPF-RP now has one
 > structured hybrid instrument, one current workflow and one data model.
 > Narrative-only material is retained solely for importing historical records.
@@ -50,12 +54,12 @@
 
 The structured-response export vocabulary is still internally inconsistent:
 
-| Concept | `DPF_STRUCTURED_RESPONSE_SPEC.md` | Instrument v1.1 / Variable Dictionary |
-|---|---|---|
-| Task phases | `taskPhase` containing strings | `taskPhases` containing `TaskPhaseSelection` objects |
-| Certainty | `certainty` | `evaluatorCertainty` |
-| F3 recovery deviation | `unscripted_recovery` | `unscripted_recovery_action` |
-| CSV certainty column | `{field}_obs_{n}_certainty` | No matching canonical column name stated after the variable rename |
+| Concept               | `DPF_STRUCTURED_RESPONSE_SPEC.md` | Instrument v1.1 / Variable Dictionary                              |
+| --------------------- | --------------------------------- | ------------------------------------------------------------------ |
+| Task phases           | `taskPhase` containing strings    | `taskPhases` containing `TaskPhaseSelection` objects               |
+| Certainty             | `certainty`                       | `evaluatorCertainty`                                               |
+| F3 recovery deviation | `unscripted_recovery`             | `unscripted_recovery_action`                                       |
+| CSV certainty column  | `{field}_obs_{n}_certainty`       | No matching canonical column name stated after the variable rename |
 
 These four names were reconciled in `DPF_STRUCTURED_RESPONSE_SPEC.md`. The
 Variable Dictionary was then extended to cover the complete structured schema,

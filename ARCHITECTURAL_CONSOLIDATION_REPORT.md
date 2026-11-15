@@ -1,5 +1,9 @@
 # DPF-RP architectural consolidation report
 
+> Historical development record. Findings and recorded checks refer to the
+> development stage described below; they are not current release validation.
+> See RELEASE_CHECKLIST.md for publication checks.
+
 **Date:** 23 July 2026  
 **Decision:** one instrument, one workflow, one data model.
 

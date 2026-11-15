@@ -23,118 +23,39 @@ data handling and a suggested 10-minute walkthrough, see
 
 ## Reviewer quick start
 
-The anonymous repository displays and distributes the source code; it does not
-run the application itself. A portable peer-review build is provided so that
-reviewers can evaluate the complete application without installing software,
-creating an account or using an external server.
+Open [DPF-RP on GitHub Pages](https://rafael-67.github.io/dpf-research-toolkit/)
+(available after the first successful deployment). No installation or account is required.
+Use the included fictional cases only. See [QUICK_USER_GUIDE.md](QUICK_USER_GUIDE.md)
+for a suggested ten-minute walkthrough.
 
-### Two complementary review options
+The application runs in your browser. Evaluation data stay in that browser's
+local storage unless you explicitly export them. Export a backup before clearing
+browser data or changing browsers or site addresses.
 
-This repository offers two ways to review the **same DPF-RP application**:
+## Source code and reproducibility
 
-1. **Portable functional review (recommended):** download
-   `DPF-RP-PORTABLE-PEER-REVIEW.zip`, extract it and open
-   `OPEN_DPF_RP.html`. No installation is required.
-2. **Source-code and reproducibility review (optional):** inspect the remaining
-   repository files or rebuild the application using the development commands
-   below. This route requires Node.js and initial dependency installation.
-
-The portable ZIP is a pre-built, self-contained distribution supplied solely
-to simplify functional peer review. It is not a different application. Do not
-select **Full repo ZIP** when following the portable route; that control
-downloads the complete source repository instead.
-
-### Portable version — no installation required
-
-1. Download `DPF-RP-PORTABLE-PEER-REVIEW.zip` from the repository file list.
-2. Extract the complete ZIP to a normal folder. Do not open the HTML file from
-   inside the ZIP archive.
-3. Double-click `OPEN_DPF_RP.html`.
-4. Use a current version of Chrome, Edge or Firefox.
-
-The portable build works locally and does not require Node.js, npm, an account,
-credentials or an internet connection. If a browser displays a warning about
-opening a local file, choose the option to open it; the package does not install
-or execute a native program.
-
-The SHA-256 checksum of the portable ZIP is:
-
-```text
-99B480C55CB6B8294FCBFB4E29E9171DEDB8B29D4485A0841CFE2829E5A10ECA
-```
-
-### What else is included in this repository?
-
-The files outside the portable ZIP support transparent technical and
-reproducibility review. They are not required to use the portable application.
-
-- `src/` — complete application source code.
-- `data/` — fictional scenarios and versioned study configurations.
-- `tests/` — unit, integration, accessibility and browser tests.
-- `specifications/` — versioned research and technical specifications.
-- `docs/` — methodology, privacy, deployment and research-use documentation.
-- `scripts/` — schema, validation and reproducibility utilities.
-- `package.json` and lock files — dependencies and commands for rebuilding and
-  testing the application.
-- `ARCHITECTURE.md`, `DATA_SCHEMA.md` and `SCIENTIFIC_CONSTRAINTS.md` — detailed
-  architecture, data-model and scientific-scope documentation.
-
-### Source-code execution (optional)
-
-The following procedure is provided for reviewers who wish to build the
-application from source or run its automated validation suite.
-
-### Requirements
-
-- Node.js 20.19 or later (Node.js 22 LTS is recommended).
-- An internet connection for the initial dependency installation only.
-
-### Run the application
-
-1. Select **Full repo ZIP** in the anonymous repository and extract the ZIP.
-2. Open a terminal in the extracted directory (the directory containing
-   `package.json`).
-3. Run:
-
-   ```sh
-   npm install
-   npm run dev
-   ```
-
-4. Open the local address printed by Vite in the terminal.
-
-The application runs entirely in the browser. Evaluation data remain in that
-browser's local storage unless a user explicitly exports them. Use only the
-included fictional/demo scenarios; do not enter real personal, institutional,
-agent, protocol or incident information.
-
-### Run the validation checks
-
-The principal automated checks are:
+Source code, fictional data, schemas and tests are available in this repository.
+For development, use Node.js 22 LTS and pnpm 10.11.0:
 
 ```sh
-npm run typecheck
-npm run test:unit
-npm run lint
-npm run build
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-The optional end-to-end browser suite requires one additional installation:
+Open the address printed by Vite. To run the checks:
 
 ```sh
-npx playwright install chromium
-npm run test:e2e
+pnpm typecheck
+pnpm test:unit
+pnpm lint
+pnpm build
+pnpm exec playwright install chromium
+pnpm test:e2e
 ```
 
-### Troubleshooting
+See [docs/deployment.md](docs/deployment.md) for GitHub Pages setup.
 
-- Run the commands from the extracted directory containing `package.json`.
-- If the default port is occupied, use the alternative URL printed in the
-  terminal.
-- If `npm` is not recognised, install or update Node.js and reopen the terminal.
-- Stop the local development server with `Ctrl+C`.
-
-## Current state — v0.1.0-rc.2 anonymous-review candidate
+## Current state — v0.1.0-rc.2 research prototype
 
 - Hash-based Administrator and Evaluator navigation.
 - Versioned Study, Round, Scenario, EvaluationSession, and FieldResponse models.
@@ -201,35 +122,26 @@ database and distributed collaboration remain future-platform work.
 ## Development
 
 ```sh
-npm install
-npm run typecheck
-npm test
-npm run lint
-npm run format
-npm run build
+pnpm install --frozen-lockfile
+pnpm typecheck
+pnpm test
+pnpm lint
+pnpm format
+pnpm build
 ```
 
-The Vite base path is `/Delivered-Protection-Framework/`. Update it together with repository metadata if the eventual GitHub repository uses another name.
+The Vite base path is `/dpf-research-toolkit/`. Update it together with repository metadata if the eventual GitHub repository uses another name.
 
 ## Privacy
 
 No telemetry or analytics are included. The application makes no network call that transmits evaluation data. Persistence remains in the current browser until a human deletes it; JSON/CSV files move only through explicit human export/import actions.
 
-## Anonymous review package
+## Reproducibility and releases
 
-The **About / Manifest** screen exposes the implemented versions, scenario-set
-policy and scientific boundaries. It can export a reproducibility package with
-the local datasets and a SHA-256 hash for each dataset as a ZIP. The same
-screen provides full local backup and preview-before-restore.
+The About / Manifest screen exports local datasets with SHA-256 hashes and
+supports local backup and preview-before-restore. Simulated evaluations are
+excluded from normal scientific exports.
 
-Administrators may load three unmistakably simulated E1 evaluations to exercise
-the charts and agreement views, then delete only those simulations. The
-simulation registry keeps them out of normal Phase 0 scientific exports.
-
-Run `pnpm schemas`, `pnpm audit:anonymity`, the full quality gates, and
-`pnpm build`. The automated anonymity audit supplements—without replacing—the
-manual metadata and Git-history review. Upload the prepared source repository
-to anonymous.4open.science; use `dist/` only as the optional static-site
-artifact. Keep identities, private manuscript metadata, original Git history,
-tokens, analytics, and real participant data out of the review repository. See
-`docs/deployment.md` and `RELEASE_CHECKLIST.md`.
+Use GitHub Releases to identify the reviewed source version. Cite its exact tag
+and repository URL; the GitHub Pages site follows the latest successful deploy
+from main and can change. See [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).

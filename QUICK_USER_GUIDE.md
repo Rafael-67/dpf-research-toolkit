@@ -68,14 +68,14 @@ reproducibility-package functions.
 
 ## The six fields
 
-| Field | Focus |
-| --- | --- |
-| F1 | Critical task |
-| F2 | Physical and cognitive performance demands |
-| F3 | Biological hazard / release consequence |
-| F4 | Critical vector / material |
-| F5 | Integrated control strategy |
-| F6 | Candidate performance-degradation indicators |
+| Field | Focus                                        |
+| ----- | -------------------------------------------- |
+| F1    | Critical task                                |
+| F2    | Physical and cognitive performance demands   |
+| F3    | Biological hazard / release consequence      |
+| F4    | Critical vector / material                   |
+| F5    | Integrated control strategy                  |
+| F6    | Candidate performance-degradation indicators |
 
 The fields support structured observation and concise expert reasoning. They do
 not constitute a numerical risk-scoring algorithm.
@@ -131,4 +131,3 @@ application.
   action. The portable package does not install a native executable.
 - Source-code execution and automated tests are optional and are documented in
   `README.md`.
-

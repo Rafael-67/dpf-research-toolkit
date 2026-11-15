@@ -1,5 +1,9 @@
 # DPF-RP v1.1 structured-quantitative test report
 
+> Historical development record. Findings and recorded checks refer to the
+> development stage described below; they are not current release validation.
+> See RELEASE_CHECKLIST.md for publication checks.
+
 **Date:** 23 July 2026  
 **Data schema:** `1.2`  
 **Candidate taxonomy:** `0.1-exploratory`

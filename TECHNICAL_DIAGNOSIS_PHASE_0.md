@@ -1,5 +1,9 @@
 # DPF-RP Phase 0 — Diagnóstico técnico
 
+> Historical development record. Findings and recorded checks refer to the
+> development stage described below; they are not current release validation.
+> See RELEASE_CHECKLIST.md for publication checks.
+
 Fecha: 2026-07-24. Repositorio evaluado:
 the local project working tree (absolute user path intentionally omitted).
 

@@ -2,7 +2,7 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/Delivered-Protection-Framework/",
+  base: "/dpf-research-toolkit/",
   plugins: [react()],
   build: {
     chunkSizeWarningLimit: 550,

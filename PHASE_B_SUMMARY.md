@@ -1,5 +1,9 @@
 # Fase B milestone summary
 
+> Historical development record. Findings and recorded checks refer to the
+> development stage described below; they are not current release validation.
+> See RELEASE_CHECKLIST.md for publication checks.
+
 ## Specification mapping
 
 - `phase-b-design.md` §1: Vite, React, strict TypeScript, hash routing, Context/reducer state, and plain CSS scaffold.

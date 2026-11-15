@@ -6,6 +6,6 @@ version: 0.1.0-rc.2
 date-released: 2026-07-22
 authors:
   - name: "Anonymous authors"
-repository-code: "https://anonymous.4open.science/"
-notes: "Anonymous review candidate; replace anonymous metadata only after peer review."
+repository-code: "https://github.com/Rafael-67/dpf-research-toolkit"
+notes: "Author metadata retained from the source snapshot; maintainers should verify authorship and release date before citing."
 license: MIT

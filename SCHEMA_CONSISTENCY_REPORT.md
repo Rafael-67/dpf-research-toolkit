@@ -1,5 +1,9 @@
 # DPF-RP v1.1 structured-quantitative schema consistency report
 
+> Historical development record. Findings and recorded checks refer to the
+> development stage described below; they are not current release validation.
+> See RELEASE_CHECKLIST.md for publication checks.
+
 > **Consolidated interpretation — 23 July 2026.** The schema below is the
 > single current instrument model. Statements about preserving v1.0 refer only
 > to importing/exporting historical records, not to retaining a separate
