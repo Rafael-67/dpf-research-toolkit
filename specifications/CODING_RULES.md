@@ -11,6 +11,7 @@
 > selection, and taxonomy-review exports and never sum ratings or generate
 > biological-risk, containment, approval, or safety classifications.
 > Instrument v1.0 remains unchanged.
+
 ## Mandatory implementation constraints
 
 **Status:** Authoritative engineering rules for all implementations of the DPF Research Platform (DPF-RP).  
@@ -204,10 +205,11 @@ Version values must be copied into the session record at session start and must 
 8. Undefined default values are prohibited.
 9. Missing data must remain missing; it must not be converted to zero, false, or a substantive category unless explicitly specified.
 10. Changes to a variable require, before code changes:
-   - an update to the Variable Dictionary;
-   - an instrument-version decision;
-   - a migration or compatibility decision;
-   - updated tests.
+
+- an update to the Variable Dictionary;
+- an instrument-version decision;
+- a migration or compatibility decision;
+- updated tests.
 
 If a requested variable does not exist in the dictionary, implementation must stop and report: `MISSING VARIABLE DEFINITION`.
 

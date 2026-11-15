@@ -22,7 +22,7 @@
 > the complete structured-primary hybrid schema in the current implementation
 > brief. Canonical `BaseObservation` properties are `observationId`,
 > `taskPhases`, `category: Selection<string>`, `evidenceSources:
-> EvidenceSourceSelection[]`, `ratings: QuantitativeObservationRatings`,
+EvidenceSourceSelection[]`, `ratings: QuantitativeObservationRatings`,
 > required `reasoningSummary` (maximum 500 characters; 80–300 recommended), and
 > optional `extendedComments` (maximum 2,000 characters). Ratings are separate
 > 1–5 `analyticalRelevance`, `evidenceStrength`,
@@ -42,6 +42,7 @@
 > `redundantItems`. Relevance, clarity, distinctiveness, expected frequency,
 > missing context, replacement and comments remain separate variables. Only
 > explicit relevance ratings may support content-validity calculations.
+
 ## Delivered Protection Framework — Variable Specification
 
 **Status:** Current version covers DPF Instrument v1.0 variables in full; DPF Instrument v2.0 variables marked as `[v2.0 — pending Phase 0]`.  
@@ -57,6 +58,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `scenarioId`
+
 - **Version:** v1.0
 - **Type:** String (unique identifier)
 - **Values:** Free text, e.g., "demo-E2"
@@ -66,6 +68,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `scenarioVersion`
+
 - **Version:** v1.0
 - **Type:** String
 - **Values:** Semantic version string, e.g., "1.0"
@@ -75,6 +78,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `frameworkVersion`
+
 - **Version:** v1.0
 - **Type:** String
 - **Values:** e.g., "0.1.0-draft"
@@ -84,6 +88,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `fieldDefinitionVersions`
+
 - **Version:** v1.0
 - **Type:** Object `{F1: string, F2: string, F3: string, F4: string, F5: string, F6: string}`
 - **Values:** One version string per field
@@ -93,6 +98,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `isDemo`
+
 - **Version:** v1.0
 - **Entity:** Scenario
 - **Type:** Boolean
@@ -111,6 +117,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `evaluatorPseudonym`
+
 - **Version:** v1.0
 - **Type:** String
 - **Values:** Free text (evaluator-chosen, not system-assigned)
@@ -121,6 +128,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `institutionCode`
+
 - **Version:** v1.0 (optional field, admin-configurable)
 - **Type:** String (categorical)
 - **Values:** Admin-defined codes, e.g., "SITE-01", "SITE-02"
@@ -130,6 +138,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `professionalProfile`
+
 - **Version:** v1.0 (optional, admin-configurable)
 - **Type:** Categorical
 - **Values:** biosafety professional / laboratory operator / ergonomist / human-factors specialist / occupational-health professional / other
@@ -139,6 +148,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `experienceLevel`
+
 - **Version:** v1.0 (optional, admin-configurable)
 - **Type:** Ordinal
 - **Values:** < 2 years / 2–5 years / 6–10 years / > 10 years
@@ -147,6 +157,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `evaluationStatus`
+
 - **Version:** v1.0
 - **Type:** Categorical (state machine)
 - **Values:** not_started / in_progress / in_review / completed / abandoned
@@ -162,6 +173,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `startedAt` / `finishedAt` / `reviewedAt` / `abandonedAt`
+
 - **Version:** v1.0
 - **Type:** ISO 8601 UTC timestamp string
 - **Definition:** Timestamps for key session lifecycle events
@@ -170,6 +182,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `totalDurationSeconds`
+
 - **Version:** v1.0
 - **Type:** Integer (seconds)
 - **Definition:** Elapsed time from `startedAt` to `finishedAt`
@@ -178,6 +191,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `fieldDurations`
+
 - **Version:** v1.0
 - **Type:** Object `{F1: integer, F2: integer, F3: integer, F4: integer, F5: integer, F6: integer}` (seconds)
 - **Definition:** Time spent on each field screen
@@ -186,6 +200,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `completionStatus`
+
 - **Version:** v1.0
 - **Type:** Categorical
 - **Values:** complete / incomplete (missing_fields) / incomplete (abandoned)
@@ -194,6 +209,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `editCount`
+
 - **Version:** v1.0
 - **Type:** Integer (per field: `{F1: n, F2: n, …}`)
 - **Definition:** Number of times the evaluator returned to a field and made a change after first completing it
@@ -202,6 +218,7 @@ These variables characterise the scenario, not the evaluator's response.
 ---
 
 ### `fictionalScenarioConfirmed`
+
 - **Version:** v1.0
 - **Type:** Boolean
 - **Definition:** Whether the evaluator explicitly confirmed they understood the scenario as fictional before session export
@@ -216,6 +233,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_narrativeAnswer`
+
 - **Version:** v1.0 primary; v2.0 optional
 - **Type:** String (free text)
 - **Definition:** The evaluator's substantive narrative response to the field prompt
@@ -225,6 +243,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_relevance`
+
 - **Version:** v1.0
 - **Type:** Ordinal (1–4)
 - **Scale:**
@@ -238,6 +257,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_clarity`
+
 - **Version:** v1.0
 - **Type:** Ordinal (1–4)
 - **Scale:**
@@ -251,6 +271,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_exhaustiveness`
+
 - **Version:** v1.0
 - **Type:** Ordinal (1–4)
 - **Scale:**
@@ -264,6 +285,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_redundancy`
+
 - **Version:** v1.0
 - **Type:** Ordinal (1–4)
 - **Scale:**
@@ -277,6 +299,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_applicability`
+
 - **Version:** v1.0
 - **Type:** Ordinal (1–4)
 - **Scale:**
@@ -290,6 +313,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_interpretationDifficulty`
+
 - **Version:** v1.0
 - **Type:** Ordinal (1–4)
 - **Scale:**
@@ -303,6 +327,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_confidenceRating`
+
 - **Version:** v1.0
 - **Type:** Ordinal (1–4)
 - **Scale:**
@@ -316,6 +341,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_insufficientInformation`
+
 - **Version:** v1.0
 - **Type:** Boolean
 - **Definition:** Whether the evaluator flagged this field response as based on insufficient information provided in the scenario
@@ -325,6 +351,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_openComment`
+
 - **Version:** v1.0
 - **Type:** String (free text)
 - **Definition:** The evaluator's qualitative notes on this field (clarity, ambiguity, potential improvements)
@@ -333,6 +360,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ---
 
 ### `{Fn}_changeProposal`
+
 - **Version:** v1.0
 - **Type:** String (free text)
 - **Definition:** The evaluator's proposed change to this field's prompt, structure, or scale
@@ -343,6 +371,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ## Part D — Field 3 structured variables (v1.0 optional, v2.0 required)
 
 ### `F3_exposureRoutes`
+
 - **Version:** v1.0 (optional), v2.0 (required)
 - **Type:** Multi-select categorical
 - **Values:** aerosol / splash_droplet / percutaneous / surface_contact / environmental
@@ -350,12 +379,14 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 - **Notes:** Multiple selection permitted.
 
 ### `F3_releaseScenarioTypes`
+
 - **Version:** v2.0
 - **Type:** Multi-select categorical
 - **Values:** motor_control_error / omission / sequencing_error / identification_error / equipment_failure
 - **Definition:** The type of performance deviation that leads to the described release scenario
 
 ### `F3_ergonomicContextSeverity` `[v2.0 — pending Phase 0]`
+
 - **Version:** v2.0
 - **Type:** Ordinal (0–3)
 - **Scale:**
@@ -371,18 +402,22 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ## Part E — Field 4 structured variables (v2.0)
 
 ### `F4_agentType` `[v2.0]`
+
 - **Type:** Categorical
 - **Values:** lentiviral_vector / AAV / adenoviral_vector / other_viral / non_viral
 
 ### `F4_vectorGeneration` `[v2.0]`
+
 - **Type:** Categorical
 - **Values:** 3rd_gen_SIN / 2nd_gen / 1st_gen / not_applicable / unknown
 
 ### `F4_integrationCompetence` `[v2.0]`
+
 - **Type:** Categorical
 - **Values:** integrating / non_integrating / unknown
 
 ### `F4_concentrationLevel` `[v2.0 — intratask comparison only]`
+
 - **Type:** Ordinal (0–3)
 - **Scale (intratask, not absolute):**
   - 0 = Lower than other phases in this task
@@ -392,6 +427,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 - **Definition:** Relative concentration at the critical step compared to other phases of the same task. Absolute thresholds (e.g., ≥10× working titer) are not used — they imply agent-independent risk classifications that risk displacing the instrument toward conventional risk assessment.
 
 ### `F4_volumeLevel` `[v2.0 — intratask comparison only]`
+
 - **Type:** Ordinal (0–3)
 - **Scale (intratask, not absolute):**
   - 0 = Lower than other phases in this task
@@ -405,35 +441,42 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ## Part F — Field 5 structured variables (v1.0 optional, v2.0 required)
 
 ### `F5_engineeringControls`
+
 - **Version:** v1.0 optional, v2.0 required
 - **Type:** Multi-select categorical
 - **Values:** BSC_class_II / BSC_class_III / sealed_rotor / closed_system / secondary_containment / HEPA / other: [text]
 
 ### `F5_administrativeControls`
+
 - **Version:** v1.0 optional, v2.0 required
 - **Type:** Multi-select categorical
 - **Values:** validated_SOP / trained_operator / buddy_system / rotation / scheduled_pause / IBC_oversight / other: [text]
 
 ### `F5_ppeControls`
+
 - **Version:** v1.0 optional, v2.0 required
 - **Type:** Multi-select categorical
 - **Values:** single_gloves / double_gloves / respirator / eye_protection / gown / face_shield / other: [text]
 
 ### `F5_recoveryControls`
+
 - **Version:** v1.0 optional, v2.0 required
 - **Type:** Multi-select categorical
 - **Values:** spill_kit / emergency_SOP / decontamination_protocol / incident_reporting / other: [text]
 
 ### `F5_gapPresent` `[v2.0]`
+
 - **Type:** Categorical
 - **Values:** yes / no / uncertain
 - **Definition:** Whether there is at least one sub-step where no engineering control addresses the precision-failure release pathway
 
 ### `F5_gapDescription` `[v2.0]`
+
 - **Type:** String (required if `F5_gapPresent = yes`, ≤ 500 characters)
 - **Definition:** Description of the identified control gap
 
 ### `F5_controlRobustnessScore` `[v2.0]`
+
 - **Type:** Integer (0–12, computed)
 - **Definition:** Sum of four layer-completeness ratings (engineering, administrative, PPE, recovery), each rated 0–3 by the evaluator
 - **CONSTRAINT:** Not a risk score or compliance certificate. Display as "control-layer completeness profile."
@@ -443,6 +486,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ## Part G — Field 2 structured variables `[v2.0 — pending Phase 0]`
 
 ### Physical demand subscales (each 0–3)
+
 - `F2_posturalLoad`: 0 Neutral → 3 Very forced
 - `F2_repetitiveLoad`: 0 Non-repetitive → 3 Continuous
 - `F2_forceDemand`: 0 Negligible → 3 High
@@ -452,6 +496,7 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 **`F2_physicalDemandScore`** (computed, 0–15): sum of five subscales
 
 ### Cognitive demand subscales (each 0–3)
+
 - `F2_attentionalDemand`: 0 Low/routine → 3 Continuous vigilance
 - `F2_sequentialComplexity`: 0 Single step → 3 Multi-step, time-constrained
 - `F2_dualTaskDemand`: 0 Single task → 2 Three or more concurrent tasks
@@ -464,21 +509,25 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 ## Part H — Closing survey variables
 
 ### RTLX subscales
+
 - `rtlx_mental` / `rtlx_physical` / `rtlx_temporal` / `rtlx_performance` / `rtlx_effort` / `rtlx_frustration`
 - **Type:** Integer (0–100, standard NASA published scale)
 - **Notes:** Standard Raw TLX wording verbatim. No lab-adapted phrasing. Applied per scenario (non-standard use — see DPF Instrument Specification v1.0 §7).
 
 ### SUS items
+
 - `sus_item_01` … `sus_item_10`
 - **Type:** Integer (1–5, standard SUS Likert scale)
 - **Notes:** Standard SUS wording verbatim. Applied per scenario (non-standard use — visible in-app notice required).
 
 ### `sus_score` (computed)
+
 - **Formula:** Standard SUS scoring: sum of (item_n − 1) for odd items + (5 − item_n) for even items, × 2.5
 - **Range:** 0–100
 - **Notes:** Reported as descriptive statistic. No threshold ("good" / "poor") applied automatically.
 
 ### Open feedback
+
 - `feedback_burden` / `feedback_ambiguity` / `feedback_usefulness`
 - **Type:** String (free text)
 - **Definition:** Evaluator qualitative feedback on instrument burden, main ambiguity, and perceived usefulness
@@ -490,20 +539,24 @@ The following variables exist for each of the six fields. Prefix with field ID: 
 These variables exist at the round level, not the session level.
 
 ### `kappa_cohen_pairwise`
+
 - **Type:** Float (−1 to +1), per evaluator pair, per field, per rating variable
 - **Formula:** Cohen (1960)
 - **Validated against:** Landis & Koch (1977) worked example
 
 ### `kappa_fleiss_panel`
+
 - **Type:** Float (−1 to +1), per field, per rating variable, for ≥3 evaluators
 - **Formula:** Fleiss (1971)
 - **Validated against:** Fleiss (1971) worked example
 
 ### `percent_agreement`
+
 - **Type:** Float (0–100%), per field, per rating variable
 - **Formula:** (number of agreements / total possible agreements) × 100
 
 ### `ICVI`
+
 - **Type:** Float (0–1) `[v2.0]`
 - **Formula:** Number of evaluators rating relevance ≥ 3 / total evaluators (for panels of ≥5)
 - **Threshold:** I-CVI ≥ 0.78 (Lynn, 1986) for item retention in v2.0
@@ -511,27 +564,27 @@ These variables exist at the round level, not the session level.
 
 ### Landis & Koch interpretive bands (displayed alongside κ, never applied automatically)
 
-| κ range | Label |
-|---|---|
-| < 0.00 | Poor |
-| 0.00–0.20 | Slight |
-| 0.21–0.40 | Fair |
-| 0.41–0.60 | Moderate |
-| 0.61–0.80 | Substantial |
+| κ range   | Label          |
+| --------- | -------------- |
+| < 0.00    | Poor           |
+| 0.00–0.20 | Slight         |
+| 0.21–0.40 | Fair           |
+| 0.41–0.60 | Moderate       |
+| 0.61–0.80 | Substantial    |
 | 0.81–1.00 | Almost perfect |
 
 ---
 
 ## References
 
-- Cohen, J. (1960). A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 20(1), 37–46.
-- Fleiss, J.L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, 76(5), 378–382.
-- Landis, J.R., & Koch, G.G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, 33(1), 159–174.
-- Lynn, M.R. (1986). Determination and quantification of content validity. *Nursing Research*, 35(6), 382–385.
-- Hart, S.G., & Staveland, L.E. (1988). Development of NASA-TLX (Task Load Index). *Advances in Psychology*, 52, 139–183. [RTLX: Hart, 2006]
-- Brooke, J. (1996). SUS: A "quick and dirty" usability scale. In P. Jordan et al. (Eds.), *Usability Evaluation in Industry*. Taylor & Francis.
-- Hignett, S., & McAtamney, L. (2000). Rapid Entire Body Assessment (REBA). *Applied Ergonomics*, 31(2), 201–205. [Reference for F2 subscale anchors]
-- McAtamney, L., & Corlett, E.N. (1993). RULA: A survey method for the investigation of work-related upper limb disorders. *Applied Ergonomics*, 24(2), 91–99.
+- Cohen, J. (1960). A coefficient of agreement for nominal scales. _Educational and Psychological Measurement_, 20(1), 37–46.
+- Fleiss, J.L. (1971). Measuring nominal scale agreement among many raters. _Psychological Bulletin_, 76(5), 378–382.
+- Landis, J.R., & Koch, G.G. (1977). The measurement of observer agreement for categorical data. _Biometrics_, 33(1), 159–174.
+- Lynn, M.R. (1986). Determination and quantification of content validity. _Nursing Research_, 35(6), 382–385.
+- Hart, S.G., & Staveland, L.E. (1988). Development of NASA-TLX (Task Load Index). _Advances in Psychology_, 52, 139–183. [RTLX: Hart, 2006]
+- Brooke, J. (1996). SUS: A "quick and dirty" usability scale. In P. Jordan et al. (Eds.), _Usability Evaluation in Industry_. Taylor & Francis.
+- Hignett, S., & McAtamney, L. (2000). Rapid Entire Body Assessment (REBA). _Applied Ergonomics_, 31(2), 201–205. [Reference for F2 subscale anchors]
+- McAtamney, L., & Corlett, E.N. (1993). RULA: A survey method for the investigation of work-related upper limb disorders. _Applied Ergonomics_, 24(2), 91–99.
 
 ---
 
@@ -541,14 +594,14 @@ These variables exist at the round level, not the session level.
 
 Use the following wording **verbatim** for all six subscales. No laboratory-adapted phrasing.
 
-| Variable | Label | Prompt text (verbatim) | Low anchor | High anchor |
-|---|---|---|---|---|
-| `rtlx_mental` | Mental Demand | How much mental and perceptual activity was required? Was the task easy or demanding, simple or complex, exacting or forgiving? | Low | High |
-| `rtlx_physical` | Physical Demand | How much physical activity was required? Was the task easy or demanding, slack or strenuous, restful or laborious? | Low | High |
-| `rtlx_temporal` | Temporal Demand | How much time pressure did you feel due to the pace at which tasks or task elements occurred? Was the pace slow and leisurely or rapid and frantic? | Low | High |
-| `rtlx_performance` | Performance | How successful were you in accomplishing the goals set by the experimenter (or yourself)? How satisfied were you with your performance? | Good | Poor |
-| `rtlx_effort` | Effort | How hard did you have to work (mentally and physically) to accomplish your level of performance? | Low | High |
-| `rtlx_frustration` | Frustration | How irritated, stressed, and annoyed versus content, relaxed, and complacent did you feel during the task? | Low | High |
+| Variable           | Label           | Prompt text (verbatim)                                                                                                                              | Low anchor | High anchor |
+| ------------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ----------- |
+| `rtlx_mental`      | Mental Demand   | How much mental and perceptual activity was required? Was the task easy or demanding, simple or complex, exacting or forgiving?                     | Low        | High        |
+| `rtlx_physical`    | Physical Demand | How much physical activity was required? Was the task easy or demanding, slack or strenuous, restful or laborious?                                  | Low        | High        |
+| `rtlx_temporal`    | Temporal Demand | How much time pressure did you feel due to the pace at which tasks or task elements occurred? Was the pace slow and leisurely or rapid and frantic? | Low        | High        |
+| `rtlx_performance` | Performance     | How successful were you in accomplishing the goals set by the experimenter (or yourself)? How satisfied were you with your performance?             | Good       | Poor        |
+| `rtlx_effort`      | Effort          | How hard did you have to work (mentally and physically) to accomplish your level of performance?                                                    | Low        | High        |
+| `rtlx_frustration` | Frustration     | How irritated, stressed, and annoyed versus content, relaxed, and complacent did you feel during the task?                                          | Low        | High        |
 
 All subscales: 0–100 continuous or 21-point (0, 5, 10, … 100). DPF-RP implements 0–100 slider. Standard Raw TLX — no pairwise weighting step.
 
@@ -558,24 +611,24 @@ All subscales: 0–100 continuous or 21-point (0, 5, 10, … 100). DPF-RP implem
 
 Use the following wording **verbatim** for all ten items. No adaptation. Likert scale: 1 (Strongly disagree) → 5 (Strongly agree).
 
-| Variable | # | Item text (verbatim) |
-|---|---|---|
-| `sus_item_01` | 1 | I think that I would like to use this system frequently. |
-| `sus_item_02` | 2 | I found the system unnecessarily complex. |
-| `sus_item_03` | 3 | I thought the system was easy to use. |
-| `sus_item_04` | 4 | I think that I would need the support of a technical person to be able to use this system. |
-| `sus_item_05` | 5 | I found the various functions in this system were well integrated. |
-| `sus_item_06` | 6 | I thought there was too much inconsistency in this system. |
-| `sus_item_07` | 7 | I would imagine that most people would learn to use this system very quickly. |
-| `sus_item_08` | 8 | I found the system very cumbersome to use. |
-| `sus_item_09` | 9 | I felt very confident using the system. |
-| `sus_item_10` | 10 | I needed to learn a lot of things before I could get going with this system. |
+| Variable      | #   | Item text (verbatim)                                                                       |
+| ------------- | --- | ------------------------------------------------------------------------------------------ |
+| `sus_item_01` | 1   | I think that I would like to use this system frequently.                                   |
+| `sus_item_02` | 2   | I found the system unnecessarily complex.                                                  |
+| `sus_item_03` | 3   | I thought the system was easy to use.                                                      |
+| `sus_item_04` | 4   | I think that I would need the support of a technical person to be able to use this system. |
+| `sus_item_05` | 5   | I found the various functions in this system were well integrated.                         |
+| `sus_item_06` | 6   | I thought there was too much inconsistency in this system.                                 |
+| `sus_item_07` | 7   | I would imagine that most people would learn to use this system very quickly.              |
+| `sus_item_08` | 8   | I found the system very cumbersome to use.                                                 |
+| `sus_item_09` | 9   | I felt very confident using the system.                                                    |
+| `sus_item_10` | 10  | I needed to learn a lot of things before I could get going with this system.               |
 
 **Scoring:** (item_01 − 1) + (5 − item_02) + (item_03 − 1) + (5 − item_04) + (item_05 − 1) + (5 − item_06) + (item_07 − 1) + (5 − item_08) + (item_09 − 1) + (5 − item_10), then × 2.5. Range: 0–100.
 
-**Non-standard use notice (required in-app):** *"Note: The SUS is designed as a single end-of-session measure. In this study, it is administered once per scenario to measure the burden of applying the six-field instrument to each specific task — this is a non-standard use. Interpret results accordingly and report this limitation in any publication."*
+**Non-standard use notice (required in-app):** _"Note: The SUS is designed as a single end-of-session measure. In this study, it is administered once per scenario to measure the burden of applying the six-field instrument to each specific task — this is a non-standard use. Interpret results accordingly and report this limitation in any publication."_
 
-Source: Brooke, J. (1996). SUS: A "quick and dirty" usability scale. In P. Jordan et al. (Eds.), *Usability Evaluation in Industry*. Taylor & Francis.
+Source: Brooke, J. (1996). SUS: A "quick and dirty" usability scale. In P. Jordan et al. (Eds.), _Usability Evaluation in Industry_. Taylor & Francis.
 
 ---
 
@@ -586,6 +639,7 @@ These three fields extend the `Scenario` entity to distinguish reference scenari
 ---
 
 ### `scenarioClass`
+
 - **Version:** v1.1 (optional with default)
 - **Entity:** Scenario
 - **Type:** Categorical string
@@ -603,6 +657,7 @@ These three fields extend the `Scenario` entity to distinguish reference scenari
 ---
 
 ### `referenceSet`
+
 - **Version:** v1.1 (optional with default)
 - **Entity:** Scenario
 - **Type:** Boolean
@@ -615,6 +670,7 @@ These three fields extend the `Scenario` entity to distinguish reference scenari
 ---
 
 ### `studyAlignment`
+
 - **Version:** v1.1 (optional)
 - **Entity:** Scenario
 - **Type:** String (free text, controlled vocabulary recommended)
@@ -676,9 +732,15 @@ interface F1Observation extends BaseObservation {
 }
 
 interface F2Observation extends BaseObservation {
-  dominantDemandPrimary?: "physical" | "cognitive" | "perceptual" |
-    "temporal" | "organisational" | "recovery_related" | "mixed" |
-    "indeterminate";
+  dominantDemandPrimary?:
+    | "physical"
+    | "cognitive"
+    | "perceptual"
+    | "temporal"
+    | "organisational"
+    | "recovery_related"
+    | "mixed"
+    | "indeterminate";
   dominantDemandSecondary?: Array<F2Observation["dominantDemandPrimary"]>;
   peakDemandPhase?: TaskPhaseSelection;
   peakDemandCategory?: string;
@@ -702,17 +764,34 @@ interface F3Observation extends BaseObservation {
 }
 
 interface F4Observation extends BaseObservation {
-  concentrationComparison?: "lower_than_other_phases" | "unchanged" |
-    "higher_than_other_phases" | "not_comparable";
-  volumeComparison?: "lower_than_other_phases" | "unchanged" |
-    "higher_than_other_phases" | "not_comparable";
-  containerState?: "open_vessel" | "closed_sealed" | "transitioning" |
-    "variable" | "not_applicable";
+  concentrationComparison?:
+    | "lower_than_other_phases"
+    | "unchanged"
+    | "higher_than_other_phases"
+    | "not_comparable";
+  volumeComparison?:
+    | "lower_than_other_phases"
+    | "unchanged"
+    | "higher_than_other_phases"
+    | "not_comparable";
+  containerState?:
+    | "open_vessel"
+    | "closed_sealed"
+    | "transitioning"
+    | "variable"
+    | "not_applicable";
   informationSufficiency?: "complete" | "partial" | "insufficient";
-  absentInformation?: Array<"concentration" | "volume" |
-    "vector_design_features" | "tropism" | "integration_competence" |
-    "stability_over_time" | "inactivation_status" | "container_type" |
-    "other">;
+  absentInformation?: Array<
+    | "concentration"
+    | "volume"
+    | "vector_design_features"
+    | "tropism"
+    | "integration_competence"
+    | "stability_over_time"
+    | "inactivation_status"
+    | "container_type"
+    | "other"
+  >;
 }
 
 interface TaxonomyItemRating {
@@ -774,21 +853,24 @@ When a session uses the v1.1 response format, the export must include:
 When importing a v1.0 session (no `observations` array present):
 
 ```typescript
-if (typeof fieldResponse.narrativeAnswer === 'string' &&
-    !Array.isArray(fieldResponse.observations)) {
-  fieldResponse.responseMode = 'legacy_narrative';
+if (
+  typeof fieldResponse.narrativeAnswer === "string" &&
+  !Array.isArray(fieldResponse.observations)
+) {
+  fieldResponse.responseMode = "legacy_narrative";
   fieldResponse.observations = [];
 }
 ```
 
-The UI must display: *"Legacy narrative response — no structured
-observations were collected for this record."* Do NOT auto-convert the
+The UI must display: _"Legacy narrative response — no structured
+observations were collected for this record."_ Do NOT auto-convert the
 narrative text into a structured observation: the category, phase,
 evidence source, certainty, and relevance are unknown.
 
 ---
 
 ### `{Fn}_responseMode`
+
 - **Version:** v1.1
 - **Type:** Categorical string
 - **Values:** `"legacy_narrative"` | `"structured_narrative"`
@@ -801,6 +883,7 @@ evidence source, certainty, and relevance are unknown.
 ---
 
 ### `{Fn}_observations`
+
 - **Version:** v1.1 (optional in v1.0)
 - **Type:** `BaseObservation[]` (with field-specific extensions)
 - **Default when absent:** `[]` (v1.0 legacy); required ≥1 in v1.1 mode
@@ -809,6 +892,7 @@ evidence source, certainty, and relevance are unknown.
 ---
 
 ### `{Fn}_noObservationReason`
+
 - **Version:** v1.1
 - **Type:** Categorical string | null
 - **Values:** `"insufficient_information"` | `"field_not_applicable"` | `null`
@@ -816,6 +900,7 @@ evidence source, certainty, and relevance are unknown.
 - **Definition:** When `responseMode = "structured_narrative"` and `observations` is empty, this field must be set to explain why. `"insufficient_information"` means the scenario does not provide enough detail to characterise this field. `"field_not_applicable"` means this field is genuinely not relevant for this specific scenario. Both trigger the `insufficientInformation` flag and exclude this field from κ computation. A null value with an empty observations array is a validation error in v1.1 mode.
 
 ### `{Fn}_overallSynthesis`
+
 - **Version:** v1.1
 - **Type:** String (free text, ≤ 200 words)
 - **Default when absent:** `null`
@@ -833,27 +918,27 @@ without removing base ones.
 
 ```typescript
 interface BaseObservation {
-  id: string;                              // UUID, auto-generated
-  fieldId: "F1"|"F2"|"F3"|"F4"|"F5"|"F6";
-  category: string;                        // from field taxonomy or "other"
-  isOtherCategory: boolean;                // true if category = "other"
-  otherCategoryText?: string;              // required if isOtherCategory
-  taskPhases: TaskPhaseSelection[];        // one or more
+  id: string; // UUID, auto-generated
+  fieldId: "F1" | "F2" | "F3" | "F4" | "F5" | "F6";
+  category: string; // from field taxonomy or "other"
+  isOtherCategory: boolean; // true if category = "other"
+  otherCategoryText?: string; // required if isOtherCategory
+  taskPhases: TaskPhaseSelection[]; // one or more
   analyticalRelevance: AnalyticalRelevance;
-  evidenceSources: EvidenceSourceSelection[];  // one or more
-  evaluatorCertainty: EvaluatorCertainty;  // renamed from certainty
-  rationale: string;                       // ≤ 500 chars; required
-  createdAt: string;                       // ISO 8601
+  evidenceSources: EvidenceSourceSelection[]; // one or more
+  evaluatorCertainty: EvaluatorCertainty; // renamed from certainty
+  rationale: string; // ≤ 500 chars; required
+  createdAt: string; // ISO 8601
 }
 
 interface TaskPhaseSelection {
   value: TaskPhase;
-  otherText?: string;   // required if value = "other"
+  otherText?: string; // required if value = "other"
 }
 
 interface EvidenceSourceSelection {
   value: EvidenceSource;
-  otherText?: string;   // required if value = "other"
+  otherText?: string; // required if value = "other"
 }
 ```
 
@@ -862,6 +947,7 @@ interface EvidenceSourceSelection {
 ### Shared enumerated types
 
 #### `TaskPhase`
+
 - `"pre_task_preparation"`
 - `"initial_phase"`
 - `"intermediate_phase"`
@@ -874,6 +960,7 @@ interface EvidenceSourceSelection {
 - `"other"` (with free text)
 
 #### `AnalyticalRelevance`
+
 - `"low"` — the observation may be real but has little bearing on the
   Delivered Protection analysis for this task
 - `"moderate"` — contributes to the analysis but is not a determining factor
@@ -882,12 +969,13 @@ interface EvidenceSourceSelection {
   this task
 - `"undetermined"` — insufficient information to assess
 
-**Label in UI:** *"Analytical relevance within this field"*
-**Help text:** *"Rate how important this observation is for
+**Label in UI:** _"Analytical relevance within this field"_
+**Help text:** _"Rate how important this observation is for
 interpreting the current field. This is not a biological-risk or
-protection-level score."*
+protection-level score."_
 
 #### `EvidenceSource`
+
 - `"scenario_information"` — stated in the scenario description
 - `"sop_documentation"` — referenced SOP or procedural document
 - `"operator_interview"` — would require direct operator input
@@ -898,6 +986,7 @@ protection-level score."*
 - `"other"` (with free text)
 
 #### `EvaluatorCertainty`
+
 Renamed from `Certainty` to clarify that this measures the evaluator's confidence in their own assessment, **not** the availability of documentary evidence (which is captured by `evidenceSources` and `evidenceSufficiency`). An expert inference may warrant high certainty; a direct scenario statement may warrant low certainty if it is ambiguous.
 
 - `"high"` — the evaluator is confident in this assessment given the available information and their professional expertise
@@ -915,7 +1004,7 @@ interface F3Observation extends BaseObservation {
   deviationType?: F3DeviationType[];
   initiatingConditions?: F3InitiatingCondition[];
   operationalOutcome?: F3OperationalOutcome[];
-  releasePathway?: F3ReleasePathway[];  // optional; not required
+  releasePathway?: F3ReleasePathway[]; // optional; not required
 }
 ```
 
@@ -955,9 +1044,9 @@ interface F5Observation extends BaseObservation {
   controlLayer?: F5ControlLayer[];
   controlFunction?: F5ControlFunction[];
   humanPerformanceDependency?: "low" | "moderate" | "high" | "undetermined";
-  failureCondition?: string;         // ≤ 300 chars; specific failure mode
+  failureCondition?: string; // ≤ 300 chars; specific failure mode
   gapStatus?: "identified" | "not_identified" | "uncertain";
-  gapType?: string;                  // ≤ 300 chars; if gapStatus = "identified"
+  gapType?: string; // ≤ 300 chars; if gapStatus = "identified"
   recoveryControlStatus?: F5RecoveryStatus;
 }
 ```
@@ -984,10 +1073,10 @@ Simplified for v1.1. The `constructType`/`measurementForm` distinction is reserv
 
 ```typescript
 interface F6Observation extends BaseObservation {
-  indicatorName: string;              // required; ≤ 100 chars
-  indicatorType: F6IndicatorType;     // simplified single-dimension type
-  observationMethod: F6ObsMethod[];   // how it would be measured
-  expectedDirection?: F6Direction;    // optional
+  indicatorName: string; // required; ≤ 100 chars
+  indicatorType: F6IndicatorType; // simplified single-dimension type
+  observationMethod: F6ObsMethod[]; // how it would be measured
+  expectedDirection?: F6Direction; // optional
   protectiveAdaptationAmbiguity: "yes" | "no" | "uncertain";
   // rationale (from BaseObservation) must include disambiguation criterion
 }
@@ -1027,6 +1116,7 @@ The platform must:
 The research team reviews `Other — specify` entries after each round
 to determine whether any merit promotion to a formal category. Each
 reviewed entry must be explicitly marked as one of:
+
 - `incorporate` → add to taxonomy in next version
 - `merge` → assign to existing category with rationale
 - `retain_other` → keep as open text; insufficient frequency or clarity

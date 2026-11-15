@@ -198,9 +198,7 @@ export function FieldQuestion({
                     disabled={index === 0}
                     onClick={() => {
                       update((latest) => {
-                        const observations = [
-                          ...(latest.observations ?? []),
-                        ];
+                        const observations = [...(latest.observations ?? [])];
                         [observations[index - 1], observations[index]] = [
                           observations[index],
                           observations[index - 1],
@@ -219,9 +217,7 @@ export function FieldQuestion({
                     }
                     onClick={() => {
                       update((latest) => {
-                        const observations = [
-                          ...(latest.observations ?? []),
-                        ];
+                        const observations = [...(latest.observations ?? [])];
                         [observations[index], observations[index + 1]] = [
                           observations[index + 1],
                           observations[index],
@@ -262,10 +258,7 @@ export function FieldQuestion({
             onSave={(observation) =>
               update((current) => ({
                 ...current,
-                observations: [
-                  ...(current.observations ?? []),
-                  observation,
-                ],
+                observations: [...(current.observations ?? []), observation],
               }))
             }
           />

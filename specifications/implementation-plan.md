@@ -3,7 +3,7 @@
 **Status:** Planning document (Fase A deliverable). No code has been written yet.
 **Repository state:** Greenfield — this is a new repository, so "review the repository" (Fase A, step 1) has no prior codebase to assess. This plan substitutes for that step.
 
-This document exists to resolve architectural and methodological ambiguities *before* implementation starts, per the project's own instruction not to invent thresholds or scientific rules silently inside code.
+This document exists to resolve architectural and methodological ambiguities _before_ implementation starts, per the project's own instruction not to invent thresholds or scientific rules silently inside code.
 
 ---
 
@@ -13,12 +13,12 @@ The original brief specifies three full roles, ~15 export formats, six statistic
 
 This plan splits the work into two real milestones:
 
-| | v0.1 (this implementation) | v0.2 (deferred) |
-|---|---|---|
-| Roles | Study administrator, Expert evaluator | Analyst panel (full) |
-| Storage | localStorage, export/import JSON | — |
-| Statistics | Cohen's κ (pairwise), **Fleiss' κ (panel-wide, ≥3 evaluators)**, percent agreement, basic descriptives | weighted κ, ICC, I-CVI/S-CVI, NASA-TLX/SUS dashboards |
-| Purpose | Run Phase 0 with a small evaluator panel (realistically 3–6 people) and produce raw exportable data, with an agreement number the panel size can actually support | Analyze accumulated data once v0.1 has been used at least once |
+|            | v0.1 (this implementation)                                                                                                                                        | v0.2 (deferred)                                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Roles      | Study administrator, Expert evaluator                                                                                                                             | Analyst panel (full)                                           |
+| Storage    | localStorage, export/import JSON                                                                                                                                  | —                                                              |
+| Statistics | Cohen's κ (pairwise), **Fleiss' κ (panel-wide, ≥3 evaluators)**, percent agreement, basic descriptives                                                            | weighted κ, ICC, I-CVI/S-CVI, NASA-TLX/SUS dashboards          |
+| Purpose    | Run Phase 0 with a small evaluator panel (realistically 3–6 people) and produce raw exportable data, with an agreement number the panel size can actually support | Analyze accumulated data once v0.1 has been used at least once |
 
 **Revision note (see `specifications/phase-b-design.md` §0.6):** Fleiss' κ moved from v0.2 into v0.1. The original split put only Cohen's κ (defined for exactly two raters) in v0.1, while this same document already states realistic panels are 3–6 people — a v0.1 that cannot compute agreement for its own stated panel size was an internal inconsistency, not a deliberate scope boundary. Weighted κ and ICC remain in v0.2: they serve ordinal/continuous fields, which are not the default response type for the six fields (narrative-first at v0.1.0-draft).
 
@@ -37,7 +37,7 @@ The brief specifies per-evaluator local storage with no backend, and a separate 
 1. **Administrator** creates a study and scenario set locally, exports `study-config.json`, and distributes it to evaluators through email or a shared drive — **confirmed acceptable for a Phase 0 pilot at this scale (a 3–6-person evaluator panel, one-time file exchange per round)**; the app does not transmit anything. If the study later scales to many more evaluators or many recurring rounds, this channel should be revisited rather than assumed to still be adequate.
 2. **Evaluator** imports `study-config.json`, completes their evaluation locally, and exports `evaluation-<pseudonym>-<round>.json` at the end of their session.
 3. **Administrator** collects the individual evaluation files (again, out-of-band) and imports each one into a **merge view** — a screen that exists specifically to combine multiple evaluator JSON files into one dataset before any analysis happens.
-4. The merged dataset is what the Analyst panel (v0.2) reads. In v0.1, the merge view's own export (`merged-dataset.json` + CSVs) *is* the deliverable, to be opened by the research team in whatever stats package they already use for Phase 0's first pass.
+4. The merged dataset is what the Analyst panel (v0.2) reads. In v0.1, the merge view's own export (`merged-dataset.json` + CSVs) _is_ the deliverable, to be opened by the research team in whatever stats package they already use for Phase 0's first pass.
 
 This is documented as an explicit diagram in `docs/methodology.md` (not yet written), not left implicit in the UI.
 
@@ -50,15 +50,19 @@ This is documented as an explicit diagram in `docs/methodology.md` (not yet writ
 The brief correctly says not to invent scientific rules inside the implementation. These are the specific points where an implementer would otherwise have to guess:
 
 ### 3.1 NASA-TLX variant
+
 **Confirmed: RTLX (Raw TLX)** — six 0–100 subscales, no pairwise-weighting step. Full NASA-TLX's 15-pair weighting protocol is rarely used in software-usability contexts and adds a UI step disproportionate to what it buys here. Standard published subscale wording is used verbatim (sign-off item 8, also confirmed) — no lab-adapted phrasing.
 
 ### 3.2 ICC model
+
 **Decision: ICC(2,k)** — two-way random effects, average measures, absolute agreement — is the standard default when the same fixed panel of evaluators rates every scenario and the results are meant to generalize to the field of similar evaluators. **Deferred to v0.2** (ICC is not in v0.1's scope per §1). **Confirmed: every evaluator rates every scenario** (full crossed design, not a subset assignment) — this matches ICC(2,k)'s assumption directly, so no revisiting is needed before v0.2 starts.
 
 ### 3.3 Kappa confidence intervals
+
 Standard analytic CI (large-sample approximation) for v0.2, not bootstrap — simpler to verify against a published worked example (§4 below). Revisit only if sample sizes turn out to be small enough (<20 per comparison) that the asymptotic approximation is questionable.
 
 ### 3.4 "Relevant" threshold for I-CVI/S-CVI
+
 Deferred to v0.2 per scope split. When built, the scale-to-relevant mapping must remain analyst-configurable per the original brief (e.g., top-2-of-4 vs top-1-of-4) — never hardcoded.
 
 ---
@@ -78,9 +82,11 @@ Each of these becomes a named test file under `tests/statistics/`, not a generic
 ## 5. Two additions not in the original brief
 
 ### 5.1 Sensitive-content reminder (not a filter)
-Scenarios are demo/fictional, but nothing stops an evaluator from pasting a near-verbatim description of a real non-public protocol into a free-text field. v0.1 adds a static, non-blocking reminder above every free-text field in the evaluator form: *"Do not enter select-agent information or non-public protocol details. Use only the demo/fictional scenario as written."* No content scanning, no automatic redaction — just visibility at the point of entry, consistent with the project's instruction not to add AI or automated content judgment.
+
+Scenarios are demo/fictional, but nothing stops an evaluator from pasting a near-verbatim description of a real non-public protocol into a free-text field. v0.1 adds a static, non-blocking reminder above every free-text field in the evaluator form: _"Do not enter select-agent information or non-public protocol details. Use only the demo/fictional scenario as written."_ No content scanning, no automatic redaction — just visibility at the point of entry, consistent with the project's instruction not to add AI or automated content judgment.
 
 ### 5.2 Accessibility verification in CI
+
 WCAG 2.2 AA is a stated requirement but the original test plan has no automated check for it. v0.1 adds `axe-core` assertions inside the Playwright test suite so accessibility compliance is a CI gate, not an unverified claim in the README.
 
 ---
@@ -92,11 +98,11 @@ found to be out of sync with the real repository layout:** the three
 governing documents (`implementation-plan.md`, `phase-b-design.md`,
 `PROMPT_MASTER.md`) live in `specifications/` at the repository root —
 that is the folder Codex is instructed to read before writing any code,
-and it holds the documents that define *what to build and under what
-constraints*. `docs/` is reserved for the Fase D deliverables
+and it holds the documents that define _what to build and under what
+constraints_. `docs/` is reserved for the Fase D deliverables
 (`methodology.md`, `data-dictionary.md`, `privacy.md`, `deployment.md`,
 `research-use-limitations.md`, `screenshots/`) — documents that
-*describe the built system* once it exists, not documents that govern
+_describe the built system_ once it exists, not documents that govern
 building it. Do not move Fase D deliverables into `specifications/` and
 do not move the three governing documents into `docs/`; the split is by
 purpose, not by arbitrary convention.
@@ -194,7 +200,6 @@ without reinstating the stop condition there.
 
 Pending confirmation of the open questions in §7, Fase B (functional skeleton: React + TypeScript + Vite, navigation, storage, demo data, Administrator and Evaluator modes per the v0.1 scope in §1) can begin.
 
-
 ## Clarification: Agreement Statistics
 
 Agreement statistics are calculated only from categorical field-level variables, never from free narrative text.
@@ -207,9 +212,9 @@ Version 0.1 shall already collect every variable required for future I-CVI/S-CVI
 
 **Reconciliation note:** earlier drafts left it ambiguous whether Cohen's/Fleiss' κ and `RoundAgreementSummary.tsx` belong to Fase B or Fase D, since this table's original wording associated "validated statistics" with Fase D while §1's v0.1 scope table already placed both κ statistics in v0.1. These are not in tension once stated explicitly: **initial implementation of Cohen's κ and Fleiss' κ, passing the statistical correctness gate (§4), is a Fase B completion requirement** — the tool cannot claim its stated v0.1 scope is done without them. Fase D's "validated statistics" refers to accessibility/documentation/edge-case hardening around already-implemented statistics (e.g. confidence-interval display, additional worked-example fixtures), not their first implementation.
 
-| Phase | Deliverable | Completion criterion |
-|---|---|---|
-| B | Functional skeleton | Navigation, data model, storage, Study/Round/Scenario CRUD, and the evaluator six-field session flow working; Cohen's κ and Fleiss' κ implemented and passing the §4 correctness gate |
-| C | Complete workflow | Create, evaluate, import/export, and merge operational end-to-end, including `breakingChange`-aware conflict handling in the merge view |
-| D | Scientific quality | Accessibility (axe-core CI gate), full documentation set (`docs/methodology.md`, `data-dictionary.md`, `privacy.md`, etc.), and statistics-display hardening (edge cases, additional fixtures) |
-| E | Release | CI, GitHub Pages deployment, and release candidate |
+| Phase | Deliverable         | Completion criterion                                                                                                                                                                           |
+| ----- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| B     | Functional skeleton | Navigation, data model, storage, Study/Round/Scenario CRUD, and the evaluator six-field session flow working; Cohen's κ and Fleiss' κ implemented and passing the §4 correctness gate          |
+| C     | Complete workflow   | Create, evaluate, import/export, and merge operational end-to-end, including `breakingChange`-aware conflict handling in the merge view                                                        |
+| D     | Scientific quality  | Accessibility (axe-core CI gate), full documentation set (`docs/methodology.md`, `data-dictionary.md`, `privacy.md`, etc.), and statistics-display hardening (edge cases, additional fixtures) |
+| E     | Release             | CI, GitHub Pages deployment, and release candidate                                                                                                                                             |

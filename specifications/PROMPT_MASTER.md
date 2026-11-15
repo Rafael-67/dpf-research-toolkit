@@ -33,7 +33,7 @@ must be read in full before any code is written.
   been the document where the correction originates and
   `implementation-plan.md` reflects it — check both, do not assume one
   is globally senior to the other.
-- `PROMPT_MASTER.md` (this file) is authoritative for *process*:
+- `PROMPT_MASTER.md` (this file) is authoritative for _process_:
   how to work, when to stop, what counts as done. For general
   engineering style, it yields to the other two documents (see
   `## STACK DECISIONS ALREADY CLOSED`). **The safety, scientific-limits,
@@ -129,17 +129,17 @@ specific to this project's constraints, not by default:
 
 Do not ask approval for:
 
--   naming
--   file organization
--   component decomposition
--   helper functions
--   refactoring
--   typing
--   CSS organization (subject to the visual-language constraint above)
--   documentation improvements
--   tests
--   accessibility improvements
--   performance improvements
+- naming
+- file organization
+- component decomposition
+- helper functions
+- refactoring
+- typing
+- CSS organization (subject to the visual-language constraint above)
+- documentation improvements
+- tests
+- accessibility improvements
+- performance improvements
 
 Document decisions and continue.
 
@@ -176,14 +176,14 @@ underlying decision actually changed.
 
 Stop only if:
 
--   scientific requirements contradict each other;
--   this file conflicts with a governing document (see
-    `## GOVERNING DOCUMENTS AND PRECEDENCE`);
--   implementation would invalidate research data;
--   genuine scientific ambiguity exists;
--   new scientific methodology would need to be invented;
--   explicit legal/security approval is required;
--   an item in `## MANDATORY SIGN-OFF ITEMS` is reached.
+- scientific requirements contradict each other;
+- this file conflicts with a governing document (see
+  `## GOVERNING DOCUMENTS AND PRECEDENCE`);
+- implementation would invalidate research data;
+- genuine scientific ambiguity exists;
+- new scientific methodology would need to be invented;
+- explicit legal/security approval is required;
+- an item in `## MANDATORY SIGN-OFF ITEMS` is reached.
 
 ## DEVELOPMENT STYLE
 
@@ -201,11 +201,11 @@ Exception: `## MANDATORY SIGN-OFF ITEMS`, where the reverse applies.
 
 The software must never:
 
--   calculate Delivered Protection;
--   calculate biological risk;
--   assign BSL;
--   recommend laboratory decisions;
--   infer scientific conclusions.
+- calculate Delivered Protection;
+- calculate biological risk;
+- assign BSL;
+- recommend laboratory decisions;
+- infer scientific conclusions.
 
 It is a research-support platform only.
 
@@ -227,13 +227,13 @@ context. This constraint applies equally to `RoundAgreementSummary.tsx`.
 
 Keep separate:
 
--   Scientific Domain (the six framework fields, their definitions and
-    versions — `specifications/phase-b-design.md` §2.1, §2.6)
--   Study Engine (Study / Round / RoundScenario / EvaluationSession —
-    §2.2–2.5)
--   Statistics Engine (`src/statistics/`, subject to the
-    correctness gate below)
--   Presentation Layer
+- Scientific Domain (the six framework fields, their definitions and
+  versions — `specifications/phase-b-design.md` §2.1, §2.6)
+- Study Engine (Study / Round / RoundScenario / EvaluationSession —
+  §2.2–2.5)
+- Statistics Engine (`src/statistics/`, subject to the
+  correctness gate below)
+- Presentation Layer
 
 No scientific logic inside React components.
 
@@ -253,13 +253,13 @@ routine schema addition.
 
 Every feature requires:
 
--   unit tests
--   integration tests
--   end-to-end tests (Playwright)
--   accessibility tests (axe-core assertions inside the Playwright
-    suite — WCAG 2.2 AA is a stated requirement and must be a CI gate,
-    not an unverified claim in the README)
--   statistical validation tests, subject to the correctness gate below
+- unit tests
+- integration tests
+- end-to-end tests (Playwright)
+- accessibility tests (axe-core assertions inside the Playwright
+  suite — WCAG 2.2 AA is a stated requirement and must be a CI gate,
+  not an unverified claim in the README)
+- statistical validation tests, subject to the correctness gate below
 
 ### Statistical correctness gate (blocking)
 
@@ -297,18 +297,18 @@ fails this gate is not a completed milestone item.
 A phase (Fase B, C, D, or E per `specifications/implementation-plan.md`) is not
 complete until all of the following hold simultaneously:
 
--   `npm install` succeeds from a clean checkout;
--   `npm run build` succeeds with no errors;
--   `npm test` passes, including the statistical correctness gate;
--   the linter (ESLint) and formatter (Prettier) report no violations;
--   `npm run typecheck` (or equivalent strict TypeScript check) passes;
--   the app deploys to GitHub Pages via the configured GitHub Action;
--   no errors appear in the browser console during normal use;
--   every route survives a hard page reload (validates hash routing is
-    correctly applied everywhere, not just on initial navigation);
--   `README.md` describes the actual current state of the project, not
-    an aspirational one — update it as part of the same change, not as
-    a follow-up.
+- `npm install` succeeds from a clean checkout;
+- `npm run build` succeeds with no errors;
+- `npm test` passes, including the statistical correctness gate;
+- the linter (ESLint) and formatter (Prettier) report no violations;
+- `npm run typecheck` (or equivalent strict TypeScript check) passes;
+- the app deploys to GitHub Pages via the configured GitHub Action;
+- no errors appear in the browser console during normal use;
+- every route survives a hard page reload (validates hash routing is
+  correctly applied everywhere, not just on initial navigation);
+- `README.md` describes the actual current state of the project, not
+  an aspirational one — update it as part of the same change, not as
+  a follow-up.
 
 ## GIT AND REVIEW WORKFLOW
 
@@ -355,7 +355,7 @@ reasonable default.
    management, or storage choices already made for reasons specific to
    GitHub Pages deployment and this app's data-flow constraints.
 5. **Added `## DEFINITION OF DONE`** and **`## GIT AND REVIEW
-   WORKFLOW`**, both present in the original project brief but absent
+WORKFLOW`**, both present in the original project brief but absent
    from v1.0 of this file.
 6. **Added the statistical correctness gate explicitly** (§ under
    `## TESTING`) instead of the generic "statistical validation tests,"

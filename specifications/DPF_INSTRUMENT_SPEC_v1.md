@@ -11,6 +11,7 @@
 > ratings are the principal analysable data, a concise reasoning summary is
 > required, and extended comments are optional. Both run in DPF-RP v1.1 with
 > study/round version locking and without silent pooling across versions.
+
 ## Delivered Protection Framework — Instrument Specification
 
 **Status:** Narrative response model. Implemented in DPF-RP v1.1.  
@@ -43,7 +44,7 @@ The DPF Instrument v1.0 provides a standardised structure for expert evaluators 
 - exports pseudonymised evaluation data for offline analysis;
 - enables computation of inter-rater agreement statistics (Cohen's κ, Fleiss' κ, percent agreement) across evaluator panels.
 
-The instrument captures *how expert evaluators characterise a task* using the six-field structure. It does not interpret those characterisations, compute a score, or produce a recommendation.
+The instrument captures _how expert evaluators characterise a task_ using the six-field structure. It does not interpret those characterisations, compute a score, or produce a recommendation.
 
 ---
 
@@ -67,14 +68,14 @@ These prohibitions must be enforced at the platform level (user interface, expor
 
 ### Instrument-level principles
 
-All six fields apply to a **single, specific task** as actually performed — not to a procedure category or class of work. The evaluator is instructed to describe what they observe or would observe, not what a protocol specifies should happen. Each field has a defined *category role* within the framework: Fields 1–4 are **inputs** (characterising the task and its context); Field 5 is a **modifier** (characterising the control response); Field 6 is an **indicator** (proposing observable precursors).
+All six fields apply to a **single, specific task** as actually performed — not to a procedure category or class of work. The evaluator is instructed to describe what they observe or would observe, not what a protocol specifies should happen. Each field has a defined _category role_ within the framework: Fields 1–4 are **inputs** (characterising the task and its context); Field 5 is a **modifier** (characterising the control response); Field 6 is an **indicator** (proposing observable precursors).
 
 ---
 
 ### Field 1 — Critical task `[Input]`
 
 **Prompt text:**  
-*"Describe the operation as it is actually performed, not the procedure category it belongs to. Where relevant, consider the following: distinct sub-phases with different demand profiles; interruptions or resumptions that alter how the procedure is executed; transitions between PPE states; changes in task ownership; and any other aspect of actual execution that may be relevant to the analysis. You are not limited to these dimensions — include any that apply."*
+_"Describe the operation as it is actually performed, not the procedure category it belongs to. Where relevant, consider the following: distinct sub-phases with different demand profiles; interruptions or resumptions that alter how the procedure is executed; transitions between PPE states; changes in task ownership; and any other aspect of actual execution that may be relevant to the analysis. You are not limited to these dimensions — include any that apply."_
 
 **Response format v1.0:** Narrative text (primary). No structured scales.  
 **Required:** Yes.  
@@ -99,30 +100,32 @@ Dimensions to consider: postural and static loading; repetitive load; force dema
 ### Field 3 — Performance deviation and potential release pathway `[Input]`
 
 **Prompt text:**  
-*"Describe the material that could be released or transferred following a performance deviation; the release mechanism; and the plausible exposure route. Consider motor-control errors, omissions, sequencing errors, and misidentification — not only loss of motor control."*
+_"Describe the material that could be released or transferred following a performance deviation; the release mechanism; and the plausible exposure route. Consider motor-control errors, omissions, sequencing errors, and misidentification — not only loss of motor control."_
 
-**Response format v1.0:** Narrative text (primary). Exposure-route checklist (secondary, optional):  
-- ☐ Aerosol  
-- ☐ Splash / droplet  
-- ☐ Percutaneous  
-- ☐ Surface contact / transfer  
-- ☐ Environmental (ambient)  
+**Response format v1.0:** Narrative text (primary). Exposure-route checklist (secondary, optional):
+
+- ☐ Aerosol
+- ☐ Splash / droplet
+- ☐ Percutaneous
+- ☐ Surface contact / transfer
+- ☐ Environmental (ambient)
 
 **Required:** Yes.  
-**CRITICAL CONSTRAINT:** Field 3 describes the *context of potential exposure* — it does not score or rate the biological risk of the agent. Evaluators describe what could be released, how, and via which route. They do not assign a severity rating to the agent. The exposure-route checklist captures the pathway, not a risk level. Any feature that would convert Field 3 responses into a biological risk score is prohibited in v1.0 and is deferred to a separate, future assessment model.
+**CRITICAL CONSTRAINT:** Field 3 describes the _context of potential exposure_ — it does not score or rate the biological risk of the agent. Evaluators describe what could be released, how, and via which route. They do not assign a severity rating to the agent. The exposure-route checklist captures the pathway, not a risk level. Any feature that would convert Field 3 responses into a biological risk score is prohibited in v1.0 and is deferred to a separate, future assessment model.
 
 ---
 
 ### Field 4 — Critical vector / material `[Input]`
 
 **Prompt text:**  
-*"Describe the specific agent and, where relevant, its titer, concentration, volume, and design characteristics that affect the consequence of exposure — including vector design (integration competence, pseudotype, tropism). Agent identity alone is insufficient."*
+_"Describe the specific agent and, where relevant, its titer, concentration, volume, and design characteristics that affect the consequence of exposure — including vector design (integration competence, pseudotype, tropism). Agent identity alone is insufficient."_
 
-**Response format v1.0:** Narrative text (primary). Optional structured fields:  
-- Agent type: [free text or dropdown: lentiviral / AAV / adenoviral / other]  
-- Titer/concentration: [free text, e.g., "fictional ~10¹² vg/mL"]  
-- Volume at critical step: [free text]  
-- Pseudotype / tropism (if applicable): [free text]  
+**Response format v1.0:** Narrative text (primary). Optional structured fields:
+
+- Agent type: [free text or dropdown: lentiviral / AAV / adenoviral / other]
+- Titer/concentration: [free text, e.g., "fictional ~10¹² vg/mL"]
+- Volume at critical step: [free text]
+- Pseudotype / tropism (if applicable): [free text]
 
 **Required:** Yes.  
 **Notes:** The structured subfields are optional metadata that improve downstream analysis. The narrative remains the primary response.
@@ -132,7 +135,7 @@ Dimensions to consider: postural and static loading; repetitive load; force dema
 ### Field 5 — Integrated control strategy `[Modifier]`
 
 **Prompt text:**  
-*"Describe the layered response across elimination/substitution, engineering, procedural, organisational, and PPE controls, together with recovery and emergency measures. For each layer, note its specific failure mode — what it does NOT prevent and under what conditions it fails."*
+_"Describe the layered response across elimination/substitution, engineering, procedural, organisational, and PPE controls, together with recovery and emergency measures. For each layer, note its specific failure mode — what it does NOT prevent and under what conditions it fails."_
 
 **Response format v1.0:** Narrative text (primary). Optional control-presence checklist (secondary):
 
@@ -156,11 +159,12 @@ Dimensions to consider: postural and static loading; repetitive load; force dema
 ### Field 6 — Candidate performance-degradation indicators `[Indicator]`
 
 **Prompt text:**  
-*"Propose observable precursors that precede, rather than record, a performance incident. For each candidate, specify what observable measurement or criterion would distinguish a degradation signal from a protective adaptation. These are candidates to be validated, not confirmed indicators."*
+_"Propose observable precursors that precede, rather than record, a performance incident. For each candidate, specify what observable measurement or criterion would distinguish a degradation signal from a protective adaptation. These are candidates to be validated, not confirmed indicators."_
 
 **Response format v1.0:** Narrative text (primary). Optional candidate list with observability tag:
 
 For each candidate indicator, the evaluator records:
+
 - Indicator description: [text]
 - Type: ☐ Physical / ☐ Cognitive / ☐ Behavioural / ☐ Temporal
 - Observability: ☐ Direct observation / ☐ Video review / ☐ Instrumented measurement / ☐ Post-task measurement
@@ -175,20 +179,22 @@ For each candidate indicator, the evaluator records:
 
 After completing each field, the evaluator rates the **field itself** (not their answer) on four dimensions. These ratings are the primary input to κ statistics and content-validity analysis:
 
-| Rating variable | Scale | What it measures |
-|---|---|---|
-| `relevance` | 1–4 | Is this field relevant to assessing the described task? |
-| `clarity` | 1–4 | Is the field prompt clear and unambiguous? |
-| `exhaustiveness` | 1–4 | Does the field capture all important aspects of this domain? |
-| `interpretationDifficulty` | 1–4 | How difficult was this field to interpret and complete? |
+| Rating variable            | Scale | What it measures                                             |
+| -------------------------- | ----- | ------------------------------------------------------------ |
+| `relevance`                | 1–4   | Is this field relevant to assessing the described task?      |
+| `clarity`                  | 1–4   | Is the field prompt clear and unambiguous?                   |
+| `exhaustiveness`           | 1–4   | Does the field capture all important aspects of this domain? |
+| `interpretationDifficulty` | 1–4   | How difficult was this field to interpret and complete?      |
 
 Additional per-field metadata:
+
 - `confidenceRating` (1–4): evaluator's confidence in their own response
 - `insufficientInformation` (boolean): if true, this field response is excluded from κ computation
 - `openComment` (text): notes on the field
 - `changeProposal` (text): proposed revision to the field prompt or structure
 
 Scale anchors (all four-point scales):
+
 - 1 = Not at all / Very low / Very unclear / Not difficult
 - 2 = Slightly / Low / Somewhat unclear / Slightly difficult
 - 3 = Moderately / Moderate / Mostly clear / Moderately difficult
@@ -200,17 +206,17 @@ Scale anchors (all four-point scales):
 
 Each evaluation is conducted on a **fictional task scenario**. Scenarios must never contain real agent names, real institutional identifiers, real protocol numbers, or any information traceable to an actual laboratory. Each scenario must include:
 
-| Field | Description |
-|---|---|
-| `title` | Short descriptive label (e.g., "E2: Lentiviral vector concentration by ultracentrifugation") |
-| `taskDescription` | What the operator does, step by step |
-| `operatingConditions` | Posture, duration, environment, PPE worn |
-| `availableInformation` | What SOPs, certifications, or assessments are on file |
-| `vectorMaterialDescription` | The biological material involved (fictional) |
-| `volumeOrConcentration` | Quantity at the critical step (fictional) |
-| `existingControls` | Controls in place before the evaluator's assessment |
-| `contextualConstraints` | Scheduling, staffing, or organisational constraints |
-| `intendedEvaluatorGroup` | Target evaluator background |
+| Field                       | Description                                                                                  |
+| --------------------------- | -------------------------------------------------------------------------------------------- |
+| `title`                     | Short descriptive label (e.g., "E2: Lentiviral vector concentration by ultracentrifugation") |
+| `taskDescription`           | What the operator does, step by step                                                         |
+| `operatingConditions`       | Posture, duration, environment, PPE worn                                                     |
+| `availableInformation`      | What SOPs, certifications, or assessments are on file                                        |
+| `vectorMaterialDescription` | The biological material involved (fictional)                                                 |
+| `volumeOrConcentration`     | Quantity at the critical step (fictional)                                                    |
+| `existingControls`          | Controls in place before the evaluator's assessment                                          |
+| `contextualConstraints`     | Scheduling, staffing, or organisational constraints                                          |
+| `intendedEvaluatorGroup`    | Target evaluator background                                                                  |
 
 The five aligned demonstration scenarios (E1–E5) are fully specified in Supplementary Material S1 (condensed) and, for E2–E4, in Supplementary Material S2 (narrative).
 
@@ -221,11 +227,13 @@ The five aligned demonstration scenarios (E1–E5) are fully specified in Supple
 After completing all six fields, the evaluator completes:
 
 **Raw Task Load Index (RTLX):** six subscales, 0–100 each, standard published wording verbatim (no lab adaptation):
+
 - Mental demand / Physical demand / Temporal demand / Performance / Effort / Frustration
 
 **System Usability Scale (SUS):** ten items, 1–5 Likert, standard published wording verbatim. Note: SUS is administered per scenario in v1.0, which is a non-standard use of the instrument (SUS was designed as a single end-of-experience measure). This limitation must be visible to evaluators via an in-app notice and reported in any publication using these data.
 
 **Open feedback:** three text fields:
+
 - Perceived burden: overall experience of completing the instrument
 - Main ambiguity: the most unclear aspect encountered
 - Perceived usefulness: whether the instrument surfaced information not otherwise captured
@@ -267,6 +275,7 @@ All data stored in `localStorage` (key prefix `dpft:`). No server transmission. 
 ## 10. Relationship to DPF Instrument v2.0
 
 DPF Instrument v1.0 must be fully validated before v2.0 development begins. Specifically:
+
 - Phase 0 must confirm which fields and sub-dimensions have sufficient inter-evaluator reliability (κ ≥ 0.60) to merit structured scaling
 - Field 6 (candidate indicators) must not be converted to ordinal scales until Phase 1 has identified which indicators are empirically associated with performance changes
 - Field 3 (biological release consequence) must remain narrative-only in v1.0 to avoid any feature that could be interpreted as biological risk scoring

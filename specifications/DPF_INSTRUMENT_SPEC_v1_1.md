@@ -13,6 +13,7 @@
 > workflows, dashboards, institutional taxonomies, predictive models and
 > automatic interpretation remain reserved for v2. All candidate taxonomy
 > values remain provisional and revisable, not validated classifications.
+
 ## Delivered Protection Framework — Semi-Structured Observation Model
 
 **Status:** Exploratory extension of DPF Instrument v1.0. Adds
@@ -36,17 +37,18 @@ DPF Instrument v1.1 adds a **structured observation layer** to each
 field response. The primary narrative (`narrativeAnswer`) is retained
 without change. No v1.0 variable is removed or replaced.
 
-| Element | v1.0 | v1.1 |
-|---|---|---|
-| `narrativeAnswer` | Required; primary response | Retained; required |
-| `observations` | Not present | Required ≥ 1 per field (or `noObservationReason`) |
-| `overallSynthesis` | Not present | Optional (≤ 200 words) |
-| `responseMode` | Not present | `"structured_narrative"` |
-| `structuredItemSetVersion` | Not present | `"0.1-exploratory"` |
-| Category lists | Not present | Provisional; subject to Phase 0 validation |
-| Taxonomy review screen | Not present | Required at end of round |
+| Element                    | v1.0                       | v1.1                                              |
+| -------------------------- | -------------------------- | ------------------------------------------------- |
+| `narrativeAnswer`          | Required; primary response | Retained; required                                |
+| `observations`             | Not present                | Required ≥ 1 per field (or `noObservationReason`) |
+| `overallSynthesis`         | Not present                | Optional (≤ 200 words)                            |
+| `responseMode`             | Not present                | `"structured_narrative"`                          |
+| `structuredItemSetVersion` | Not present                | `"0.1-exploratory"`                               |
+| Category lists             | Not present                | Provisional; subject to Phase 0 validation        |
+| Taxonomy review screen     | Not present                | Required at end of round                          |
 
 What does NOT change from v1.0:
+
 - The six conceptual fields and their definitions
 - The framework version (`0.1.0-draft`)
 - The per-field evaluator ratings (relevance, clarity, exhaustiveness,
@@ -74,6 +76,7 @@ encouraged when the task has distinct phases or multiple mechanisms.
 ### Obligation rule
 
 When `responseMode = "structured_narrative"` (v1.1):
+
 - `observations` must contain **at least one** record, OR
 - `noObservationReason` must be set to `"insufficient_information"` or
   `"field_not_applicable"`
@@ -86,10 +89,10 @@ in this state.
 
 Evaluators must be instructed:
 
-> *"Consider, where relevant, the following — you may identify
+> _"Consider, where relevant, the following — you may identify
 > additional items not listed. For each item included, specify the task
 > phase, its analytical relevance, the evidence supporting it, your
-> certainty, and a brief rationale."*
+> certainty, and a brief rationale."_
 
 Do NOT present categories as a mandatory checklist. `Other — specify`
 must always be visible and its usage is recorded as primary data.
@@ -103,20 +106,21 @@ Full schema in `DPF_VARIABLE_DICTIONARY.md` Part J. Summary:
 ```typescript
 interface BaseObservation {
   id: string;
-  fieldId: "F1"|"F2"|"F3"|"F4"|"F5"|"F6";
+  fieldId: "F1" | "F2" | "F3" | "F4" | "F5" | "F6";
   category: string;
   isOtherCategory: boolean;
   otherCategoryText?: string;
-  taskPhases: TaskPhaseSelection[];        // {value: TaskPhase; otherText?}
+  taskPhases: TaskPhaseSelection[]; // {value: TaskPhase; otherText?}
   analyticalRelevance: AnalyticalRelevance;
   evidenceSources: EvidenceSourceSelection[]; // {value: EvidenceSource; otherText?}
-  evaluatorCertainty: EvaluatorCertainty;  // evaluator's confidence, not doc availability
-  rationale: string;                       // ≤ 500 chars; required
+  evaluatorCertainty: EvaluatorCertainty; // evaluator's confidence, not doc availability
+  rationale: string; // ≤ 500 chars; required
   createdAt: string;
 }
 ```
 
 Field-specific extensions:
+
 - **F3:** `F3Observation` adds `deviationType[]`, `initiatingConditions[]`, `operationalOutcome[]`, optional `releasePathway[]`
 - **F5:** `F5Observation` adds `controlLayer[]`, `controlFunction[]`, `humanPerformanceDependency`, `gapStatus`, `recoveryControlStatus`
 - **F6:** `F6Observation` adds `indicatorName`, `indicatorType`, `observationMethod[]`, `expectedDirection?`, `protectiveAdaptationAmbiguity`
@@ -136,12 +140,13 @@ category-level content validation.
 For each field, display every category that appears in the field's
 taxonomy (including `Other — specify` items entered in this session):
 
-> *"After completing this evaluation, please rate the relevance of each
+> _"After completing this evaluation, please rate the relevance of each
 > category below to the six-field framework in general (not to the
 > specific scenario you evaluated). This helps us improve the category
-> lists."*
+> lists."_
 
 Rating scale per category:
+
 - 1 = Not relevant to this field
 - 2 = Somewhat relevant
 - 3 = Quite relevant
@@ -194,6 +199,7 @@ picture by excluding identification disagreements.
 Categories selected by almost all evaluators (high prevalence) or
 almost none (low prevalence) will produce low κ despite high percent
 agreement. Always report:
+
 - Percent agreement
 - κ
 - Gwet AC1 (where implemented)
@@ -209,14 +215,14 @@ The platform must export per-category prevalence in the round summary.
 text. After each Phase 0 round, the research team reviews all `Other`
 entries and decides for each:
 
-| Decision | Action |
-|---|---|
-| `incorporate` | Add to taxonomy in next version (`0.1 → 0.2`) |
-| `revise` | Keep concept; improve label or definition |
-| `merge` | Assign to existing category with documented rationale |
-| `split` | Separate heterogeneous category |
-| `remove` | Insufficient frequency or relevance |
-| `promote` | Frequent `Other` text → new formal category |
+| Decision      | Action                                                |
+| ------------- | ----------------------------------------------------- |
+| `incorporate` | Add to taxonomy in next version (`0.1 → 0.2`)         |
+| `revise`      | Keep concept; improve label or definition             |
+| `merge`       | Assign to existing category with documented rationale |
+| `split`       | Separate heterogeneous category                       |
+| `remove`      | Insufficient frequency or relevance                   |
+| `promote`     | Frequent `Other` text → new formal category           |
 
 Each decision is logged with rationale. The `structuredItemSetVersion`
 increments with each taxonomy change.
@@ -225,15 +231,15 @@ increments with each taxonomy change.
 
 ## 7. Naming conventions
 
-| Entity | Name |
-|---|---|
-| Framework | DPF Framework 0.1.0-draft |
-| Instrument (narrative only) | DPF Instrument v1.0 |
-| Instrument (semi-structured) | DPF Instrument v1.1 |
-| Platform | DPF-RP v1.1.x |
-| Data schema (v1.0 sessions) | dataSchemaVersion: "1.0" |
-| Data schema (v1.1 sessions) | dataSchemaVersion: "1.1" |
-| Taxonomy set | taxonomySetVersion: "0.1-exploratory" |
+| Entity                       | Name                                  |
+| ---------------------------- | ------------------------------------- |
+| Framework                    | DPF Framework 0.1.0-draft             |
+| Instrument (narrative only)  | DPF Instrument v1.0                   |
+| Instrument (semi-structured) | DPF Instrument v1.1                   |
+| Platform                     | DPF-RP v1.1.x                         |
+| Data schema (v1.0 sessions)  | dataSchemaVersion: "1.0"              |
+| Data schema (v1.1 sessions)  | dataSchemaVersion: "1.1"              |
+| Taxonomy set                 | taxonomySetVersion: "0.1-exploratory" |
 
 DPF-RP platform version (1.1.x) and DPF Instrument version (1.0 or
 1.1) are independent. The same platform can run studies using either

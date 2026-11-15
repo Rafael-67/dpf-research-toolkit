@@ -1,4 +1,5 @@
 # DPF Instrument — Development Roadmap
+
 ## From Narrative to Structured Response: Planned Evolution
 
 **Purpose of this document:** to describe the intended development
@@ -117,6 +118,7 @@ content of field responses (not only on meta-ratings of field quality),
 without requiring manual post-hoc coding.
 
 **Gate conditions:** v2.0 development begins only when:
+
 1. Phase 0 with v1.0 (or v1.1) is complete
 2. Phase 0 identifies which field dimensions have sufficient evaluator
    agreement and content-validity index to warrant structured scaling
@@ -197,9 +199,9 @@ The prohibitions in Section 2 are permanent.
 
 ## 7. Naming conventions
 
-| Version | Response format | Platform | When |
-|---|---|---|---|
-| v1.0 | Narrative (primary) | DPF-RP v1.1 | Now (Phase 0) |
-| v1.1 | Narrative + structured observations (exploratory) | DPF-RP v1.1 | Before or during Phase 0 |
-| v2.0 | Structured scales (primary) + narrative (optional) | DPF-RP v2.0 | After Phase 0 gate |
-| v3.0 | Validated psychometric instrument | Future | After Phase 2 |
+| Version | Response format                                    | Platform    | When                     |
+| ------- | -------------------------------------------------- | ----------- | ------------------------ |
+| v1.0    | Narrative (primary)                                | DPF-RP v1.1 | Now (Phase 0)            |
+| v1.1    | Narrative + structured observations (exploratory)  | DPF-RP v1.1 | Before or during Phase 0 |
+| v2.0    | Structured scales (primary) + narrative (optional) | DPF-RP v2.0 | After Phase 0 gate       |
+| v3.0    | Validated psychometric instrument                  | Future      | After Phase 2            |

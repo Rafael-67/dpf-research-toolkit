@@ -19,18 +19,20 @@ export function findResumableSession(
   roundId: string,
   scenarioId: string,
 ): EvaluationSession | undefined {
-  return [...sessions].reverse().find(
-    (session) =>
-      session.evaluatorPseudonym === evaluatorPseudonym &&
-      session.roundId === roundId &&
-      session.scenarioId === scenarioId &&
-      [
-        "not_started",
-        "in_progress",
-        "in_review",
-        "returned_for_revision",
-      ].includes(session.evaluationStatus),
-  );
+  return [...sessions]
+    .reverse()
+    .find(
+      (session) =>
+        session.evaluatorPseudonym === evaluatorPseudonym &&
+        session.roundId === roundId &&
+        session.scenarioId === scenarioId &&
+        [
+          "not_started",
+          "in_progress",
+          "in_review",
+          "returned_for_revision",
+        ].includes(session.evaluationStatus),
+    );
 }
 
 export const ABANDON_AFTER_MS = 24 * 60 * 60 * 1000;

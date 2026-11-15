@@ -62,14 +62,14 @@ decision** (implementation-plan.md §3.4) — leaving `categoricalOptions`
 undefined for all six is a deliberate absence, not an oversight to fill in
 during Fase B.
 
-| fieldId | name | promptText | Category (manuscript) |
-|---|---|---|---|
-| F1 | Critical task | "Describe the operation as it is actually performed, not the procedure category it belongs to." | Input |
-| F2 | Physical and cognitive performance demands | "Describe the specific postural, repetitive, force-related, or attentional demand (e.g., static forearm loading, cubital deviation, doubled-glove tactile attenuation, sustained vigilance)." | Input — performance demand |
-| F3 | Biological hazard / release consequence | "Describe the material that could be released or transferred following a performance deviation (not limited to loss of motor control, but including omissions, sequencing errors, or misidentification), the release mechanism, and the plausible exposure route (aerosol, surface contamination, percutaneous exposure)." | Input — hazard/consequence |
-| F4 | Critical vector / material | "Describe the specific agent and, where relevant, its titer — consequence severity depends on agent characteristics, vector design, transgene, concentration, volume, and plausible exposure route, not just agent identity." | Input — material/agent |
-| F5 | Integrated control strategy | "Describe the layered response across elimination/substitution, engineering, procedural, organizational, and PPE controls, together with recovery and emergency measures, rather than only PPE-based." | Modifier |
-| F6 | Candidate performance-degradation indicators | "Describe observable precursors (e.g. movement variability, volumetric error rate, sequence deviation, unplanned pauses, self-reported fatigue) that precede, rather than record, an incident. Not every deviation from baseline is degradation — an unplanned pause may instead reflect protective adaptation. Treat these as candidate signals to be validated, not confirmed indicators of decline." | Indicator |
+| fieldId | name                                         | promptText                                                                                                                                                                                                                                                                                                                                                                                              | Category (manuscript)      |
+| ------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| F1      | Critical task                                | "Describe the operation as it is actually performed, not the procedure category it belongs to."                                                                                                                                                                                                                                                                                                         | Input                      |
+| F2      | Physical and cognitive performance demands   | "Describe the specific postural, repetitive, force-related, or attentional demand (e.g., static forearm loading, cubital deviation, doubled-glove tactile attenuation, sustained vigilance)."                                                                                                                                                                                                           | Input — performance demand |
+| F3      | Biological hazard / release consequence      | "Describe the material that could be released or transferred following a performance deviation (not limited to loss of motor control, but including omissions, sequencing errors, or misidentification), the release mechanism, and the plausible exposure route (aerosol, surface contamination, percutaneous exposure)."                                                                              | Input — hazard/consequence |
+| F4      | Critical vector / material                   | "Describe the specific agent and, where relevant, its titer — consequence severity depends on agent characteristics, vector design, transgene, concentration, volume, and plausible exposure route, not just agent identity."                                                                                                                                                                           | Input — material/agent     |
+| F5      | Integrated control strategy                  | "Describe the layered response across elimination/substitution, engineering, procedural, organizational, and PPE controls, together with recovery and emergency measures, rather than only PPE-based."                                                                                                                                                                                                  | Modifier                   |
+| F6      | Candidate performance-degradation indicators | "Describe observable precursors (e.g. movement variability, volumetric error rate, sequence deviation, unplanned pauses, self-reported fatigue) that precede, rather than record, an incident. Not every deviation from baseline is degradation — an unplanned pause may instead reflect protective adaptation. Treat these as candidate signals to be validated, not confirmed indicators of decline." | Indicator                  |
 
 ### 2.2 Study (was: Project)
 
@@ -243,8 +243,6 @@ exports and cannot be imported or overwritten via the standard import
 flow. The canonical worked examples for E2, E3, E4 (from Supplementary
 Material S2) and ORG-01, INC-01 (from research-extension documentation)
 are the initial fixture set.
-
-
 
 ### 2.5 Evaluation session (revised)
 
@@ -445,7 +443,6 @@ Any earlier versions of this section that listed four inline scenario
 blocks (`demo-1` through `demo-4`) are superseded by the above. Those
 identifiers and their content must not be used in any implementation.
 
-
 ## 5. Component inventory (revised)
 
 ```
@@ -526,8 +523,8 @@ With items 1–10 now confirmed across both governing documents, Fase B implemen
 ## 8. Engineering and schema definitions (added per Design Review findings 8–24)
 
 All decisions below are engineering-level and do not require research-team
-sign-off — they define *how* the already-specified data model is stored and
-moved, not *what* is being measured. One exception is flagged explicitly in
+sign-off — they define _how_ the already-specified data model is stored and
+moved, not _what_ is being measured. One exception is flagged explicitly in
 §8.16.
 
 ### 8.1 JSON Schema generation and location
@@ -716,9 +713,9 @@ though it is a naming detail, not a scientific or methodological one.**
   special-casing needed at implementation time.
 
 **Not resolved here, now formally tracked as §7 sign-off item 6:** whether SUS is measuring
-the burden of rating *one scenario* with the six-field instrument (the
+the burden of rating _one scenario_ with the six-field instrument (the
 current model — `sus` lives on each `EvaluationSession`) or the burden of
-the *tool overall* across a sitting (would need a session-independent SUS,
+the _tool overall_ across a sitting (would need a session-independent SUS,
 separate from any one scenario). This is not purely an engineering
 question — SUS was designed as a single-use, end-of-experience measure, and
 administering it repeatedly per scenario is a departure from its standard

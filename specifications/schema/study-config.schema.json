@@ -50,22 +50,14 @@
               },
               "status": {
                 "type": "string",
-                "enum": [
-                  "draft",
-                  "active",
-                  "closed",
-                  "archived"
-                ]
+                "enum": ["draft", "active", "closed", "archived"]
               },
               "config": {
                 "type": "object",
                 "properties": {
                   "instrumentVersion": {
                     "type": "string",
-                    "enum": [
-                      "1.0.0",
-                      "1.1.0"
-                    ]
+                    "enum": ["1.0.0", "1.1.0"]
                   },
                   "includeRtlx": {
                     "type": "boolean"
@@ -133,17 +125,11 @@
               },
               "instrumentVersion": {
                 "type": "string",
-                "enum": [
-                  "1.0.0",
-                  "1.1.0"
-                ]
+                "enum": ["1.0.0", "1.1.0"]
               },
               "status": {
                 "type": "string",
-                "enum": [
-                  "open",
-                  "locked"
-                ]
+                "enum": ["open", "locked"]
               },
               "evaluatorGroup": {
                 "type": "string",
@@ -200,11 +186,7 @@
                 "minLength": 1
               }
             },
-            "required": [
-              "roundId",
-              "scenarioId",
-              "scenarioVersion"
-            ],
+            "required": ["roundId", "scenarioId", "scenarioVersion"],
             "additionalProperties": {}
           }
         },
@@ -268,11 +250,7 @@
               },
               "scenarioClass": {
                 "type": "string",
-                "enum": [
-                  "reference",
-                  "research-extension",
-                  "user"
-                ]
+                "enum": ["reference", "research-extension", "user"]
               },
               "referenceSet": {
                 "type": "boolean"
@@ -320,14 +298,7 @@
               },
               "fieldId": {
                 "type": "string",
-                "enum": [
-                  "F1",
-                  "F2",
-                  "F3",
-                  "F4",
-                  "F5",
-                  "F6"
-                ]
+                "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
               },
               "previousDefinitionVersion": {
                 "type": "string"
@@ -456,11 +427,7 @@
               },
               "status": {
                 "type": "string",
-                "enum": [
-                  "assigned",
-                  "completed",
-                  "withdrawn"
-                ]
+                "enum": ["assigned", "completed", "withdrawn"]
               }
             },
             "required": [
@@ -494,14 +461,7 @@
               },
               "fieldId": {
                 "type": "string",
-                "enum": [
-                  "F1",
-                  "F2",
-                  "F3",
-                  "F4",
-                  "F5",
-                  "F6"
-                ]
+                "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
               },
               "sourceSessionIds": {
                 "minItems": 2,
@@ -515,11 +475,7 @@
               },
               "decision": {
                 "type": "string",
-                "enum": [
-                  "retain",
-                  "revise",
-                  "unresolved"
-                ]
+                "enum": ["retain", "revise", "unresolved"]
               },
               "rationale": {
                 "type": "string"
@@ -626,12 +582,7 @@
           }
         }
       },
-      "required": [
-        "studies",
-        "rounds",
-        "scenarios",
-        "changelog"
-      ],
+      "required": ["studies", "rounds", "scenarios", "changelog"],
       "additionalProperties": {}
     }
   },

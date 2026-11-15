@@ -13,6 +13,7 @@
 > median and interquartile range. Agreement method selection and interpretation
 > remain the research team's responsibility. No total observation or field
 > score is calculated.
+
 ## Delivered Protection Framework — Empirical Validation Programme
 
 **Status:** Protocol specification, derived from manuscript Section 5.  
@@ -52,7 +53,7 @@ At each gate, a null or mixed result triggers a **framework revision process**, 
 
 ### 2.1 Purpose
 
-To determine whether the six-field instrument has acceptable content validity and inter-rater reliability before any mechanism or effectiveness claim is tested. Phase 0 answers the question: *Do trained experts agree on how to characterise a task using this instrument?* It does not test whether the instrument predicts anything.
+To determine whether the six-field instrument has acceptable content validity and inter-rater reliability before any mechanism or effectiveness claim is tested. Phase 0 answers the question: _Do trained experts agree on how to characterise a task using this instrument?_ It does not test whether the instrument predicts anything.
 
 **Feasibility:** High. Phase 0 can be conducted entirely with fictional scenarios and without access to real laboratory data.
 
@@ -72,12 +73,14 @@ To determine whether the six-field instrument has acceptable content validity an
 Phase 0 may be conducted using DPF Instrument v1.0 (narrative only) or v1.1 (narrative + structured observations). The chosen version must be specified in the pre-registration and held constant across all evaluators within a round. Do not mix v1.0 and v1.1 responses within the same primary analysis round.
 
 **If v1.1 is used, the Phase 0 validates two levels:**
+
 1. The six fields (content validity of the field-level instrument)
 2. The structured observation taxonomies (content validity of the category lists)
 
 This is an implementation of **Strategy B (hybrid Phase 0)**: taxonomies are provided as provisional structured items and evaluated empirically during Phase 0 rather than derived inductively from free-text coding. Strategy B must be declared in the pre-registration.
 
 **Primary outcomes (field-level):**
+
 - Cohen's κ (pairwise) per rating variable (`relevance`, `clarity`, `exhaustiveness`) per field
 - Weighted Cohen's κ is preferred over unweighted κ for the 4-point ordinal rating scales
 - Fleiss' κ (panel-wide) per rating variable per field
@@ -85,6 +88,7 @@ This is an implementation of **Strategy B (hybrid Phase 0)**: taxonomies are pro
 - S-CVI/Ave: mean I-CVI across all six fields
 
 **Additional primary outcomes for v1.1 (taxonomy-level):**
+
 - Frequency of each structured category per field across evaluators
 - Proportion of observations using `Other — specify` per field
 - Category selection frequency per field (proportion of sessions in which each category was selected ≥1 time)
@@ -100,6 +104,7 @@ At the end of each v1.1 round, evaluators complete a taxonomy review screen (spe
 
 **Phase 0 taxonomy decisions (post-round review):**
 For each structured category, the research team must decide:
+
 - `incorporate`: sufficient frequency and clarity → retain in v1.1 taxonomy
 - `revise`: concept valid but label or definition unclear → revise label
 - `merge`: overlaps with another category → combine
@@ -110,6 +115,7 @@ For each structured category, the research team must decide:
 These decisions are made before Phase 1 begins and must be logged in the `FrameworkChangeLogEntry` system with `changeType: "taxonomy_revision"` and full rationale.
 
 **Secondary outcomes:**
+
 - Percent agreement per field per rating variable
 - Mean `interpretationDifficulty` per field
 - Mean `confidenceRating` per field
@@ -124,14 +130,14 @@ The following thresholds are set before data collection. They are not adjusted a
 **Primary gate variable:** `relevance` rating (I-CVI per field).  
 **Secondary indicators (revision criteria, not gate):** `clarity` and `exhaustiveness`.
 
-| Criterion | Threshold | Statistic | Basis |
-|---|---|---|---|
-| Field relevance (I-CVI) | ≥ 0.78 | Proportion rating ≥3 | Lynn (1986), panel ≥5 |
-| Fields passing relevance gate | ≥ 4 of 6 | — | Conservative acceptance |
-| S-CVI/Ave | ≥ 0.90 | Mean I-CVI | Polit & Beck (2006) |
-| Category identification agreement (v1.1) | Report only | % agreement + κ + AC1 | Gwet (2008) |
-| Category I-CVI (taxonomy review screen) | ≥ 0.78 per retained category | Lynn (1986) | Taxonomy validation |
-| Weighted κ on `relevance` (multi-rater) | ≥ 0.60 as secondary check | Landis & Koch (1977) | Weighted preferred for ordinal |
+| Criterion                                | Threshold                    | Statistic             | Basis                          |
+| ---------------------------------------- | ---------------------------- | --------------------- | ------------------------------ |
+| Field relevance (I-CVI)                  | ≥ 0.78                       | Proportion rating ≥3  | Lynn (1986), panel ≥5          |
+| Fields passing relevance gate            | ≥ 4 of 6                     | —                     | Conservative acceptance        |
+| S-CVI/Ave                                | ≥ 0.90                       | Mean I-CVI            | Polit & Beck (2006)            |
+| Category identification agreement (v1.1) | Report only                  | % agreement + κ + AC1 | Gwet (2008)                    |
+| Category I-CVI (taxonomy review screen)  | ≥ 0.78 per retained category | Lynn (1986)           | Taxonomy validation            |
+| Weighted κ on `relevance` (multi-rater)  | ≥ 0.60 as secondary check    | Landis & Koch (1977)  | Weighted preferred for ordinal |
 
 **A field "passes"** when its I-CVI ≥ 0.78. `clarity` and `exhaustiveness` below a threshold trigger revision, not rejection. Cohen's κ and Fleiss' κ are computed and reported for all rating variables but are secondary to I-CVI for the gate decision. Fleiss' κ (unweighted) does not exploit ordinality — this limitation must be noted in any publication reporting Phase 0 results. Gwet AC1 is recommended as a prevalence-robust complement where implemented.
 
@@ -151,6 +157,7 @@ The following thresholds are set before data collection. They are not adjusted a
 ### 2.6 Cognitive interviews (companion study)
 
 Alongside the rating study, conduct cognitive interviews with a subset of evaluators (n = 3–5) to understand how they interpret each field prompt and (in v1.1) each structured category. Specifically:
+
 - Which prompts are interpreted differently by different evaluators?
 - Are any field boundaries ambiguous (content that evaluators are unsure which field to put in)?
 - Does Field 6 (candidate indicators) require a worked example to produce consistent responses?
@@ -194,16 +201,18 @@ To test whether the ergonomic demand characterised in Field 2 is empirically ass
 ### 3.3 Measurement
 
 **Field 2 (ergonomic demand) — measurement method:**
+
 - If DPF Instrument v1.0 is used: expert evaluator assessment of the task using the six-field instrument (Phase 0-validated)
 - If DPF Instrument v2.0 is used: structured subscale ratings (F2_physicalDemandScore, F2_cognitiveDemandScore) supplemented by wearable sensors (EMG, IMU) where feasible
 
 **Field 6 (precision outcomes) — candidate indicators from Phase 0:**
+
 - Pipetting-related: per-cycle fill duration, fill-volume variance across a sequence
 - Postural: sustained shoulder-elevation duration (IMU or video goniometry)
 - Behavioural: self-reported fatigue VAS, verbalization rate, pause frequency
 - To be confirmed by Phase 0 Field 6 evaluations
 
-**Note:** Phase 1 tests *candidate indicators* selected from Phase 0 output. Only indicators that achieved I-CVI ≥ 0.78 in Phase 0 are included in Phase 1 measurement. Indicators flagged as "protective adaptation ambiguity" require a separate disambiguation protocol before inclusion.
+**Note:** Phase 1 tests _candidate indicators_ selected from Phase 0 output. Only indicators that achieved I-CVI ≥ 0.78 in Phase 0 are included in Phase 1 measurement. Indicators flagged as "protective adaptation ambiguity" require a separate disambiguation protocol before inclusion.
 
 ### 3.4 Gate criteria
 
@@ -257,6 +266,7 @@ To test whether the DPF instrument can be used at scale without creating an unac
 Use Phase 0 and Phase 2 RTLX and SUS data from DPF-RP v1.1 (and v2.0 if used) as the primary data source. Supplement with structured usability interviews.
 
 **Primary analysis:**
+
 - Mean RTLX total score across six subscales
 - Mean SUS score per scenario per evaluator
 - Distribution of `fieldDurations` (completion time proxy)
@@ -274,18 +284,22 @@ Use Phase 0 and Phase 2 RTLX and SUS data from DPF-RP v1.1 (and v2.0 if used) as
 This section is pre-specified before any data collection begins. It follows the manuscript Section 5.6 directly and ensures that non-confirmatory results are not interpreted as implementation failures unless evidence supports that interpretation.
 
 ### H3 null result
-*No association between F2 demand and precision outcomes.*  
+
+_No association between F2 demand and precision outcomes._  
 **Interpretation:** The central causal claim of the framework is not supported. This is a theoretical revision trigger, not a measurement failure. Before proceeding, the research team must determine whether: (a) the candidate indicators were insufficiently sensitive (→ revise Phase 1 indicators); (b) the measured tasks did not have sufficient demand variance (→ replicate with higher-demand tasks); or (c) the mechanism is genuinely absent (→ revise or abandon the theoretical framework).
 
 ### H4 null result after H3 confirmation
-*Association between demand and precision, but intervention does not reduce near-misses.*  
+
+_Association between demand and precision, but intervention does not reduce near-misses._  
 **Interpretation:** Process evaluation first. If fidelity is confirmed, consider: (a) the intervention was not targeted correctly (→ refine the translation from assessment to intervention); (b) near-miss rate is an insufficiently sensitive outcome (→ seek different Phase 2 outcomes); or (c) there is genuine lack of benefit despite the mechanism being present (→ revise the intervention model, not the framework).
 
 ### H5 null result after H4 confirmation
-*Unacceptable burden despite Phase 2 benefit.*  
+
+_Unacceptable burden despite Phase 2 benefit._  
 **Interpretation:** The instrument should not be recommended for adoption as-is. A simplified version must be designed (fewer fields, structured scales) and retested from Phase 0. The Phase 2 benefit finding is retained as evidence of concept validity even if the instrument form requires revision.
 
 ### Full positive result (H3 + H4 + H5 confirmed)
+
 **Interpretation:** Proceed to DPF Instrument v3.0 development — a fully validated psychometric instrument with a Delivered Protection Profile (DPP) derived from v2.0 subscales, with normative data from Phase 1–2 samples, and a formal reliability and validity study (multi-site ICC, convergent validity with REBA/RULA, predictive validity against Phase 2 outcomes).
 
 ---
@@ -303,6 +317,7 @@ This section is pre-specified before any data collection begins. It follows the 
 ## 8. Pre-registration
 
 Before data collection begins at any phase:
+
 1. Register the study design, hypotheses, primary outcome variables, and gate criteria on an appropriate registry (e.g., OSF, ClinicalTrials.gov for any Phase 2 human subjects component)
 2. File the pre-registration link in the study's DPF-RP Study metadata
 3. Any deviation from the pre-registered protocol must be documented as a protocol amendment before analysis
@@ -311,9 +326,9 @@ Before data collection begins at any phase:
 
 ## 9. References
 
-- Landis, J.R., & Koch, G.G. (1977). The measurement of observer agreement for categorical data. *Biometrics*, 33(1), 159–174.
-- Fleiss, J.L. (1971). Measuring nominal scale agreement among many raters. *Psychological Bulletin*, 76(5), 378–382.
-- Lynn, M.R. (1986). Determination and quantification of content validity. *Nursing Research*, 35(6), 382–385.
-- Polit, D.F., & Beck, C.T. (2006). The content validity index: Are you sure you know what's being reported? Critique and recommendations. *Research in Nursing & Health*, 29(5), 489–497.
-- Bangor, A., Kortum, P., & Miller, J. (2009). Determining what individual SUS scores mean: Adding an adjective rating scale. *Journal of Usability Studies*, 4(3), 114–123. [SUS ≥ 68 = above average]
+- Landis, J.R., & Koch, G.G. (1977). The measurement of observer agreement for categorical data. _Biometrics_, 33(1), 159–174.
+- Fleiss, J.L. (1971). Measuring nominal scale agreement among many raters. _Psychological Bulletin_, 76(5), 378–382.
+- Lynn, M.R. (1986). Determination and quantification of content validity. _Nursing Research_, 35(6), 382–385.
+- Polit, D.F., & Beck, C.T. (2006). The content validity index: Are you sure you know what's being reported? Critique and recommendations. _Research in Nursing & Health_, 29(5), 489–497.
+- Bangor, A., Kortum, P., & Miller, J. (2009). Determining what individual SUS scores mean: Adding an adjective rating scale. _Journal of Usability Studies_, 4(3), 114–123. [SUS ≥ 68 = above average]
 - Manuscript Section 5: "Proposed Empirical Validation Study" (see accompanying paper for full theoretical rationale)

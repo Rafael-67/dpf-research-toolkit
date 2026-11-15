@@ -33,6 +33,7 @@ have a defined, subordinate relationship to those three.
   mandatory for all implementation work. Read before writing any code.
 
 ### Instrument specification documents (read before touching any field,
+
 variable, or statistical computation)
 
 - `specifications/DPF_INSTRUMENT_SPEC_v1.md` — **read this before
@@ -108,7 +109,7 @@ specification and storage rules.
 If `implementation-plan.md` and `phase-b-design.md` appear to disagree
 on scope, data model, or methodology, **do not silently pick one —
 report the inconsistency before implementing.** If either of them
-appears to disagree with a *process* rule in `PROMPT_MASTER.md`, the
+appears to disagree with a _process_ rule in `PROMPT_MASTER.md`, the
 design document wins on that point, and the disagreement is itself
 something to report, not something to resolve silently.
 

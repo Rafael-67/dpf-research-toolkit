@@ -13,6 +13,7 @@
 > value remains valid. Long catalogues use grouped searchable controls and
 > progressive disclosure. No rating is summed or converted into a
 > biological-risk, containment, approval, or safety decision.
+
 ## Provisional Taxonomies and Semi-Structured Observation Format
 
 **Status:** Exploratory / provisional. All category lists in this
@@ -23,6 +24,7 @@ not validated items. `Other — specify` must always be available.
 **Schema version:** 1.1  
 **Taxonomy set version:** `0.1-exploratory`  
 **Relationship to other specs:**
+
 - Schema: `DPF_VARIABLE_DICTIONARY.md` Part J
 - Gate conditions: `DPF_VALIDATION_PROTOCOL.md` §2
 - Roadmap context: `DPF_INSTRUMENT_ROADMAP_v2.md` §5
@@ -38,6 +40,7 @@ Each field response consists of one or more `BaseObservation` records
 The primary narrative (`narrativeAnswer`) is retained in all versions.
 
 **An observation is not a sentence — it is a structured record:**
+
 - what was identified (`category`)
 - when in the task it applies (`taskPhases[]`)
 - how important it is (`analyticalRelevance`)
@@ -51,6 +54,7 @@ task has distinct sub-phases or multiple relevant mechanisms.
 ### 1.1b Obligation rule (v1.1 mode)
 
 When `responseMode = "structured_narrative"`:
+
 - `observations[]` must contain **at least one** record per field, OR
 - `noObservationReason` must be set to `"insufficient_information"` or `"field_not_applicable"`
 
@@ -61,10 +65,10 @@ The platform must prevent form submission in this state.
 
 Present categories to evaluators as:
 
-> *"Consider, where relevant, the following — you may identify additional
+> _"Consider, where relevant, the following — you may identify additional
 > items not listed. For each item included, specify the task phase, its
 > analytical relevance, the evidence supporting it, your level of
-> certainty, and a brief rationale."*
+> certainty, and a brief rationale."_
 
 Do **not** present them as a mandatory checklist. Do **not** require
 the evaluator to address every category. The goal is structured recall
@@ -314,6 +318,7 @@ environmental / not_determinable_from_scenario
 ```
 
 **Causal chain (brief structured summary):**
+
 ```
 [condition or demand] → [deviation type] → [operational outcome]
 ```
@@ -499,9 +504,11 @@ will be defined after Phase 0 data reveal which observation properties
 are systematically missing from `BaseObservation` for these fields.
 
 Candidates for F1 extension:
+
 - `subPhaseStructure`: array of sub-phase records (name, actions, material state, duration, critical flag)
 
 Candidates for F4 extension:
+
 - `materialChangeType`: none / concentration / volume / container / state / certainty
 - `phaseOfMaximumMaterialRelevance`: TaskPhase selection
 
@@ -518,22 +525,27 @@ Each field screen has an **"Add observation"** button. The form uses
 **progressive disclosure** — do not present all inputs simultaneously.
 
 **Step 1 — Category selection**
+
 - Show 6–8 most common categories for this field
 - "Show more" expander + text search for full taxonomy
 - "Other — specify" always visible
 - Definitions shown on hover only, not inline
 
 **Step 2 — Task phase** (after category selected)
+
 - Multi-select from shared phase list; store each selection as a `TaskPhaseSelection` object
 - "Whole task" as quick-select default
 
 **Step 3 — Field-specific extensions** (F3, F5, F6 only; collapsed by default)
+
 - Expand on tap/click
 
 **Step 4 — Relevance / evidence / certainty** (one compact screen)
+
 - Radio buttons or segmented controls
 
 **Step 5 — Rationale** (required last step)
+
 - Text area ≤ 500 chars with live counter
 - F6 prompt: "Describe what distinguishes degradation from protective adaptation"
 
@@ -603,10 +615,7 @@ Each `FieldResponse` in the evaluation session JSON must include:
       "fieldId": "F2",
       "category": "prospective_memory",
       "isOtherCategory": false,
-      "taskPhases": [
-        { "value": "resumption" },
-        { "value": "final_phase" }
-      ],
+      "taskPhases": [{ "value": "resumption" }, { "value": "final_phase" }],
       "analyticalRelevance": "high",
       "evidenceSources": ["scenario_information", "evaluator_inference"],
       "evaluatorCertainty": "moderate",
@@ -634,6 +643,7 @@ For each field and each observation slot (n = 1, 2, 3, …):
 ```
 
 Plus field-level summaries:
+
 ```
 {field}_obs_count
 {field}_has_other_category

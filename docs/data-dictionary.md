@@ -14,18 +14,18 @@ All timestamps are ISO 8601 UTC; identifiers are opaque UUIDs except fixed demo 
 
 ## FieldResponse
 
-| Field | Type | Meaning |
-|---|---|---|
-| `fieldId` | F1–F6 | Framework-field identity. |
-| `narrativeAnswer` | string | Qualitative substantive response; never statistically aggregated. |
-| `categoricalAnswer` | optional string | Reserved for a future categorical/ordinal field definition. |
-| `openComment` | string | Qualitative methodological comment. |
-| `changeProposal` | string | Suggested field revision. |
-| `confidenceRating` | integer | 1 through configured confidence scale. |
-| `relevance`, `clarity` | integer | 1 through configured relevance/clarity scale; future CVI inputs. |
-| `exhaustiveness`, `redundancy`, `applicability`, `interpretationDifficulty` | integer | Fixed 1–4 ordinal ratings. |
-| `insufficientInformation` | boolean | Excludes this response from agreement/CVI input. |
-| `timeSpentSeconds`, `revisionCount`, `helpAccessedCount` | non-negative number | Automatically recorded usability metadata. |
+| Field                                                                       | Type                | Meaning                                                           |
+| --------------------------------------------------------------------------- | ------------------- | ----------------------------------------------------------------- |
+| `fieldId`                                                                   | F1–F6               | Framework-field identity.                                         |
+| `narrativeAnswer`                                                           | string              | Qualitative substantive response; never statistically aggregated. |
+| `categoricalAnswer`                                                         | optional string     | Reserved for a future categorical/ordinal field definition.       |
+| `openComment`                                                               | string              | Qualitative methodological comment.                               |
+| `changeProposal`                                                            | string              | Suggested field revision.                                         |
+| `confidenceRating`                                                          | integer             | 1 through configured confidence scale.                            |
+| `relevance`, `clarity`                                                      | integer             | 1 through configured relevance/clarity scale; future CVI inputs.  |
+| `exhaustiveness`, `redundancy`, `applicability`, `interpretationDifficulty` | integer             | Fixed 1–4 ordinal ratings.                                        |
+| `insufficientInformation`                                                   | boolean             | Excludes this response from agreement/CVI input.                  |
+| `timeSpentSeconds`, `revisionCount`, `helpAccessedCount`                    | non-negative number | Automatically recorded usability metadata.                        |
 
 ## Exchange envelopes
 

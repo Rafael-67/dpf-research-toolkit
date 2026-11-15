@@ -58,11 +58,7 @@
               },
               "scenarioClass": {
                 "type": "string",
-                "enum": [
-                  "reference",
-                  "research-extension",
-                  "user"
-                ]
+                "enum": ["reference", "research-extension", "user"]
               },
               "referenceSet": {
                 "type": "boolean"
@@ -79,10 +75,7 @@
               },
               "instrumentVersion": {
                 "type": "string",
-                "enum": [
-                  "1.0.0",
-                  "1.1.0"
-                ]
+                "enum": ["1.0.0", "1.1.0"]
               },
               "frameworkVersion": {
                 "type": "string",
@@ -92,27 +85,13 @@
                 "type": "object",
                 "propertyNames": {
                   "type": "string",
-                  "enum": [
-                    "F1",
-                    "F2",
-                    "F3",
-                    "F4",
-                    "F5",
-                    "F6"
-                  ]
+                  "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                 },
                 "additionalProperties": {
                   "type": "string",
                   "minLength": 1
                 },
-                "required": [
-                  "F1",
-                  "F2",
-                  "F3",
-                  "F4",
-                  "F5",
-                  "F6"
-                ]
+                "required": ["F1", "F2", "F3", "F4", "F5", "F6"]
               },
               "evaluationStatus": {
                 "type": "string",
@@ -142,10 +121,7 @@
                   },
                   "viewportClass": {
                     "type": "string",
-                    "enum": [
-                      "desktop",
-                      "tablet"
-                    ]
+                    "enum": ["desktop", "tablet"]
                   },
                   "locale": {
                     "type": "string",
@@ -169,14 +145,7 @@
                   "properties": {
                     "fieldId": {
                       "type": "string",
-                      "enum": [
-                        "F1",
-                        "F2",
-                        "F3",
-                        "F4",
-                        "F5",
-                        "F6"
-                      ]
+                      "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                     },
                     "narrativeAnswer": {
                       "type": "string"
@@ -293,10 +262,7 @@
                     },
                     "responseMode": {
                       "type": "string",
-                      "enum": [
-                        "legacy_narrative",
-                        "structured_narrative"
-                      ]
+                      "enum": ["legacy_narrative", "structured_narrative"]
                     },
                     "observations": {
                       "type": "array",
@@ -310,14 +276,7 @@
                               },
                               "fieldId": {
                                 "type": "string",
-                                "enum": [
-                                  "F1",
-                                  "F2",
-                                  "F3",
-                                  "F4",
-                                  "F5",
-                                  "F6"
-                                ]
+                                "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                               },
                               "category": {
                                 "type": "object",
@@ -329,9 +288,7 @@
                                     "type": "string"
                                   }
                                 },
-                                "required": [
-                                  "value"
-                                ],
+                                "required": ["value"],
                                 "additionalProperties": false
                               },
                               "taskPhases": {
@@ -347,9 +304,7 @@
                                       "type": "string"
                                     }
                                   },
-                                  "required": [
-                                    "value"
-                                  ],
+                                  "required": ["value"],
                                   "additionalProperties": false
                                 }
                               },
@@ -366,9 +321,7 @@
                                       "type": "string"
                                     }
                                   },
-                                  "required": [
-                                    "value"
-                                  ],
+                                  "required": ["value"],
                                   "additionalProperties": false
                                 }
                               },
@@ -444,14 +397,7 @@
                               },
                               "fieldId": {
                                 "type": "string",
-                                "enum": [
-                                  "F1",
-                                  "F2",
-                                  "F3",
-                                  "F4",
-                                  "F5",
-                                  "F6"
-                                ]
+                                "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                               },
                               "category": {
                                 "type": "string"
@@ -475,9 +421,7 @@
                                       "type": "string"
                                     }
                                   },
-                                  "required": [
-                                    "value"
-                                  ],
+                                  "required": ["value"],
                                   "additionalProperties": false
                                 }
                               },
@@ -503,19 +447,13 @@
                                       "type": "string"
                                     }
                                   },
-                                  "required": [
-                                    "value"
-                                  ],
+                                  "required": ["value"],
                                   "additionalProperties": false
                                 }
                               },
                               "evaluatorCertainty": {
                                 "type": "string",
-                                "enum": [
-                                  "low",
-                                  "moderate",
-                                  "high"
-                                ]
+                                "enum": ["low", "moderate", "high"]
                               },
                               "rationale": {
                                 "type": "string",
@@ -576,14 +514,7 @@
                           "properties": {
                             "fieldId": {
                               "type": "string",
-                              "enum": [
-                                "F1",
-                                "F2",
-                                "F3",
-                                "F4",
-                                "F5",
-                                "F6"
-                              ]
+                              "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                             },
                             "dominantCategories": {
                               "minItems": 1,
@@ -598,9 +529,7 @@
                                     "type": "string"
                                   }
                                 },
-                                "required": [
-                                  "value"
-                                ],
+                                "required": ["value"],
                                 "additionalProperties": false
                               }
                             },
@@ -705,9 +634,7 @@
                         }
                       }
                     },
-                    "required": [
-                      "itemScores"
-                    ],
+                    "required": ["itemScores"],
                     "additionalProperties": false
                   },
                   {
@@ -728,11 +655,7 @@
                     "type": "string"
                   }
                 },
-                "required": [
-                  "burden",
-                  "ambiguity",
-                  "usefulness"
-                ],
+                "required": ["burden", "ambiguity", "usefulness"],
                 "additionalProperties": false
               },
               "fictionalScenarioConfirmed": {
@@ -796,11 +719,7 @@
               },
               "dataSchemaVersion": {
                 "type": "string",
-                "enum": [
-                  "1.0",
-                  "1.1",
-                  "1.2"
-                ]
+                "enum": ["1.0", "1.1", "1.2"]
               },
               "structuredItemSetVersion": {
                 "type": "string",
@@ -820,14 +739,7 @@
                         "properties": {
                           "fieldId": {
                             "type": "string",
-                            "enum": [
-                              "F1",
-                              "F2",
-                              "F3",
-                              "F4",
-                              "F5",
-                              "F6"
-                            ]
+                            "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                           },
                           "taxonomyGroup": {
                             "type": "string"
@@ -880,14 +792,7 @@
                         "properties": {
                           "fieldId": {
                             "type": "string",
-                            "enum": [
-                              "F1",
-                              "F2",
-                              "F3",
-                              "F4",
-                              "F5",
-                              "F6"
-                            ]
+                            "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                           },
                           "categoryId": {
                             "type": "string"
@@ -901,11 +806,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "fieldId",
-                          "categoryId",
-                          "rating"
-                        ],
+                        "required": ["fieldId", "categoryId", "rating"],
                         "additionalProperties": false
                       }
                     ]
@@ -926,14 +827,7 @@
                       "properties": {
                         "fieldId": {
                           "type": "string",
-                          "enum": [
-                            "F1",
-                            "F2",
-                            "F3",
-                            "F4",
-                            "F5",
-                            "F6"
-                          ]
+                          "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                         },
                         "taxonomyGroup": {
                           "type": "string"
@@ -945,11 +839,7 @@
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "fieldId",
-                        "taxonomyGroup",
-                        "proposedValue"
-                      ],
+                      "required": ["fieldId", "taxonomyGroup", "proposedValue"],
                       "additionalProperties": false
                     }
                   },
@@ -960,14 +850,7 @@
                       "properties": {
                         "fieldId": {
                           "type": "string",
-                          "enum": [
-                            "F1",
-                            "F2",
-                            "F3",
-                            "F4",
-                            "F5",
-                            "F6"
-                          ]
+                          "enum": ["F1", "F2", "F3", "F4", "F5", "F6"]
                         },
                         "taxonomyGroup": {
                           "type": "string"
@@ -1064,9 +947,7 @@
           }
         }
       },
-      "required": [
-        "sessions"
-      ],
+      "required": ["sessions"],
       "additionalProperties": false
     }
   },

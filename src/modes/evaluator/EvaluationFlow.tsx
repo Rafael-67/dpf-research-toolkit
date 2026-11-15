@@ -142,11 +142,7 @@ export function EvaluationFlow() {
     next: FieldResponse[],
     status: EvaluationSession["evaluationStatus"],
   ) => {
-    const session = makeSession(
-      sessionId,
-      next,
-      status,
-    );
+    const session = makeSession(sessionId, next, status);
     currentSession.current = session;
     saveEvaluationRecord(session);
     dispatch({ type: "session", value: session });
@@ -154,8 +150,7 @@ export function EvaluationFlow() {
   };
   const saveClosingFeedback = (feedback: ClosingFeedbackDraft) => {
     setClosingFeedback(feedback);
-    const latestResponses =
-      currentSession.current?.fieldResponses ?? responses;
+    const latestResponses = currentSession.current?.fieldResponses ?? responses;
     const session = {
       ...makeSession(
         sessionId,
@@ -227,21 +222,21 @@ export function EvaluationFlow() {
             "frustration",
           ].map((key, i) => [key, closing.rtlx[i]]),
         ) as EvaluationSession["nasaTlx"])
-      : (currentSession.current ?? resumableSession)?.nasaTlx ?? null,
+      : ((currentSession.current ?? resumableSession)?.nasaTlx ?? null),
     sus: closing
       ? { itemScores: closing.sus }
-      : (currentSession.current ?? resumableSession)?.sus ?? null,
+      : ((currentSession.current ?? resumableSession)?.sus ?? null),
     openFeedback: closing
       ? {
           burden: closing.burden,
           ambiguity: closing.ambiguity,
           usefulness: closing.usefulness,
         }
-      : (currentSession.current ?? resumableSession)?.openFeedback ?? {
+      : ((currentSession.current ?? resumableSession)?.openFeedback ?? {
           burden: "",
           ambiguity: "",
           usefulness: "",
-        },
+        }),
     fictionalScenarioConfirmed:
       closing?.confirmed ??
       (currentSession.current ?? resumableSession)
@@ -253,16 +248,16 @@ export function EvaluationFlow() {
       status === "completed" ||
       status === "submitted" ||
       status === "resubmitted"
-        ? (currentSession.current ?? resumableSession)?.reviewedAt ??
-          new Date().toISOString()
-        : (currentSession.current ?? resumableSession)?.reviewedAt ?? null,
+        ? ((currentSession.current ?? resumableSession)?.reviewedAt ??
+          new Date().toISOString())
+        : ((currentSession.current ?? resumableSession)?.reviewedAt ?? null),
     finishedAt:
       status === "completed" ||
       status === "submitted" ||
       status === "resubmitted"
-        ? (currentSession.current ?? resumableSession)?.finishedAt ??
-          new Date().toISOString()
-        : (currentSession.current ?? resumableSession)?.finishedAt ?? null,
+        ? ((currentSession.current ?? resumableSession)?.finishedAt ??
+          new Date().toISOString())
+        : ((currentSession.current ?? resumableSession)?.finishedAt ?? null),
     abandonedAt: null,
     resumedAt,
     dataSchemaVersion: "1.2",
@@ -271,9 +266,9 @@ export function EvaluationFlow() {
       status === "completed" ||
       status === "submitted" ||
       status === "resubmitted"
-        ? (currentSession.current ?? resumableSession)?.completedAt ??
-          new Date().toISOString()
-        : (currentSession.current ?? resumableSession)?.completedAt ?? null,
+        ? ((currentSession.current ?? resumableSession)?.completedAt ??
+          new Date().toISOString())
+        : ((currentSession.current ?? resumableSession)?.completedAt ?? null),
     documentSnapshots:
       resumableSession?.documentSnapshots ??
       state.documentLinks
@@ -299,9 +294,9 @@ export function EvaluationFlow() {
     },
     submittedAt:
       status === "submitted" || status === "resubmitted"
-        ? (currentSession.current ?? resumableSession)?.submittedAt ??
-          new Date().toISOString()
-        : (currentSession.current ?? resumableSession)?.submittedAt ?? null,
+        ? ((currentSession.current ?? resumableSession)?.submittedAt ??
+          new Date().toISOString())
+        : ((currentSession.current ?? resumableSession)?.submittedAt ?? null),
     lockedAt: null,
     exclusionReason: null,
     assignedEvaluatorId: state.profiles.find(
@@ -314,8 +309,7 @@ export function EvaluationFlow() {
     nextRatings: NonNullable<EvaluationSession["taxonomyItemRatings"]>,
     nextReview: NonNullable<EvaluationSession["taxonomyReview"]>,
   ) => {
-    const latestResponses =
-      currentSession.current?.fieldResponses ?? responses;
+    const latestResponses = currentSession.current?.fieldResponses ?? responses;
     const session = {
       ...makeSession(
         sessionId,
@@ -396,8 +390,7 @@ export function EvaluationFlow() {
         position={step}
         observationDraftKey={`${sessionId}:${localizedFields[step].fieldId}`}
         onChange={(value) => {
-          const latest =
-            currentSession.current?.fieldResponses ?? responses;
+          const latest = currentSession.current?.fieldResponses ?? responses;
           const next = [...latest];
           next[step] = value(latest[step]);
           setResponses(next);
