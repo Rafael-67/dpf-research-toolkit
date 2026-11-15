@@ -6,7 +6,7 @@ export function PrototypeBanner() {
     <div className="prototype-banner" role="note">
       <strong>{t("Research prototype.")}</strong>{" "}
       {t(
-        "Do not use for real studies without institutional data-protection review. Use fictional/demo information only.",
+        "Do not use for real studies without institutional data-protection review. Use invented or de-identified details only.",
       )}
     </div>
   );

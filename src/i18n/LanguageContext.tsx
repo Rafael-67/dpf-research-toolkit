@@ -33,8 +33,8 @@ const es: Record<string, string> = {
   Issues: "Incidencias",
   "Fictional/demo data only": "Solo datos ficticios o de demostración",
   "Research prototype.": "Prototipo de investigación.",
-  "Do not use for real studies without institutional data-protection review. Use fictional/demo information only.":
-    "No usar en estudios reales sin una revisión institucional de protección de datos. Utilice únicamente información ficticia o de demostración.",
+  "Do not use for real studies without institutional data-protection review. Use invented or de-identified details only.":
+    "No usar en estudios reales sin una revisión institucional de protección de datos. Utilice únicamente detalles inventados o desidentificados.",
   Language: "Idioma",
   English: "English",
   Spanish: "Español",
