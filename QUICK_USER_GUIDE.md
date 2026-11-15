@@ -1,133 +1,69 @@
-# DPF-RP Brief User Guide
+# 10-minute walkthrough
 
-## Purpose
+This walkthrough shows what the instrument produces. Your entries are stored in this browser unless you explicitly export and share them.
 
-The Delivered Protection Framework Research Platform (DPF-RP) is a
-browser-based research prototype for Phase 0 content and usability evaluation
-of a six-field conceptual framework. It allows fictional task scenarios to be
-organised into studies and rounds, independently reviewed by evaluators, and
-summarised descriptively for research-method development.
+## 1 · Open the administrator screen (2 min).
 
-DPF-RP does **not** calculate biological risk, Delivered Protection, residual
-risk or biosafety/containment levels. It does not validate a procedure or make
-operational safety recommendations. The included scenarios are fictional
-demonstrations, not protocols or safety guidance.
+Five illustrative scenarios (E1–E5) are loaded by default. Open a study, its round and a scenario to see how the scenario is specified. These are examples for evaluating the instrument, not laboratory instructions.
 
-## Fastest way to open it
+## 2 · Inspect or create a round (1 min).
 
-1. Download `DPF-RP-PORTABLE-PEER-REVIEW.zip` from the repository.
-2. Extract the complete ZIP to a normal folder.
-3. Open `OPEN_DPF_RP.html` in a current version of Chrome, Edge or Firefox.
+A round records the instrument version used for evaluations. Inspect the existing round or create a new one and assign scenarios. Version control supports comparison between evaluators; it does not by itself establish validity or agreement.
 
-No account, installation, Node.js, npm, database or application server is
-required. Do not use **Full repo ZIP** for this route; that option downloads the
-complete source repository for optional technical review.
+## 3 · Evaluate a scenario (5 min).
 
-## Main areas
+Switch to the evaluator screen, save a pseudonym and start an assigned scenario. Review the six fields one at a time, adding structured observations, ratings and concise reasoning where applicable, or an explicit no-observation reason. Review your responses and complete the enabled closing questionnaires. The Raw Task Load Index (RTLX) concerns the workload of using the instrument.
 
-### Administrator
+## 4 · Look at the output (2 min).
 
-Use Administrator mode to inspect or create studies, rounds and fictional
-scenarios; assign scenarios to rounds; lock rounds; import exported evaluator
-sessions; examine descriptive summaries; and export study or merged datasets.
+Return to the administrator screen or Scientific Dashboard. With suitable completed evaluations, inspect descriptive distributions and agreement statistics, including raw agreement, Cohen’s, weighted and Fleiss’ kappa, Krippendorff’s alpha and the intraclass correlation coefficient. Each statistic requires an appropriate data structure and sufficient observations; multiple evaluations alone do not make every statistic applicable. The tool does not interpret these results.
 
-For a quick review, open the included demonstration study and inspect its round
-and the five fictional reference scenarios E1-E5. Creating a new study is not
-necessary unless the reviewer specifically wants to test administration.
+## Optional
 
-### Evaluator
+Export the available datasets as JSON or CSV, or use About / Manifest to generate a reproducibility package with SHA-256 checksums. Export a backup before deleting data. “Delete all local data” is available in the page footer.
 
-Use Evaluator mode to complete the structured assessment workflow:
+## What this tool does not do
 
-1. Enter a fictional or study-issued pseudonym — never a real name or
-   institutional identifier.
-2. Select the demonstration study, round and assigned scenario.
-3. Work through F1-F6 one field at a time.
-4. Save or continue the draft, review the responses, and complete the closing
-   workload/usability questions.
-5. Complete the session and export it if the file-transfer workflow is being
-   tested.
+It does not calculate Delivered Protection, biological risk or containment levels, and it does not produce validated safety assessments or recommend laboratory decisions.
 
-Drafts are retained locally in the same browser. Completed sessions are treated
-as immutable records.
+## Scope and status
 
-### Scientific Dashboard
+The DPF Research Platform supports Phase 0 content and usability validation of the Integrated Ergonomic–Biological Interaction Framework: a six-field instrument for examining the gap between the protection a control is certified to provide and the protection actually delivered during a specific task.
 
-The dashboard displays study progress, completeness, session status,
-structured-category frequencies and descriptive agreement outputs. Agreement
-statistics require suitable completed sessions; locked-round summaries are
-descriptive and do not automatically accept, reject or validate a field or the
-framework.
+The framework has not been empirically validated. Its fields, indicators and illustrative thresholds are expert-consensus proposals, not measurements, and the platform exists to gather the evidence needed to test them. The platform records and summarises evaluator responses; it applies no scientific acceptance threshold and draws no scientific conclusion.
 
-### Supporting Documents and About / Manifest
+---
 
-Supporting Documents records versioned methodological material and review
-issues. About / Manifest reports the implemented versions, scientific
-boundaries and scenario-set policy, and provides local backup, restore and
-reproducibility-package functions.
+# Recorrido de 10 minutos
 
-## The six fields
+Este recorrido muestra los resultados que produce el instrumento. Lo que introduzcas se guarda en este navegador, salvo que lo exportes y compartas expresamente.
 
-| Field | Focus                                        |
-| ----- | -------------------------------------------- |
-| F1    | Critical task                                |
-| F2    | Physical and cognitive performance demands   |
-| F3    | Biological hazard / release consequence      |
-| F4    | Critical vector / material                   |
-| F5    | Integrated control strategy                  |
-| F6    | Candidate performance-degradation indicators |
+## 1 · Abre la pantalla de administración (2 min).
 
-The fields support structured observation and concise expert reasoning. They do
-not constitute a numerical risk-scoring algorithm.
+Se cargan por defecto cinco escenarios ilustrativos (E1–E5). Abre un estudio, su ronda y un escenario para ver cómo se describe. Son ejemplos para evaluar el instrumento, no instrucciones de laboratorio.
 
-## Suggested 10-minute reviewer walkthrough
+## 2 · Revisa o crea una ronda (1 min).
 
-1. Open the portable application and select **Administrator**.
-2. Inspect the demonstration study, its round and scenarios E1-E5.
-3. Select **Evaluator**, enter a fictional pseudonym and open one scenario.
-4. Enter sample responses in F1-F2 and confirm that the draft can be resumed.
-5. Continue through F3-F6, review the response and inspect the closing survey.
-6. Open **Scientific Dashboard** to view the descriptive interface.
-7. Open **About / Manifest** to confirm versions, limitations and local-data
-   controls.
+Una ronda registra la versión del instrumento utilizada en las evaluaciones. Revisa la ronda existente o crea otra y asígnale escenarios. El control de versiones facilita la comparación entre evaluadores; por sí solo no establece la validez ni el acuerdo.
 
-Reviewers do not need to complete every scenario to verify the main workflow.
+## 3 · Evalúa un escenario (5 min).
 
-## Data, privacy and reset
+Cambia a la pantalla de evaluación, guarda un seudónimo e inicia un escenario asignado. Revisa los seis campos uno a uno e incorpora observaciones estructuradas, valoraciones y razonamiento breve cuando corresponda, o un motivo explícito de ausencia de observaciones. Revisa las respuestas y completa los cuestionarios finales habilitados. El Raw Task Load Index (RTLX) se refiere a la carga de trabajo que supone utilizar el instrumento.
 
-- Application records remain in the current browser's local storage unless the
-  user explicitly exports a file.
-- There is no telemetry, cloud authentication or central application database.
-- Use only fictional demonstration information. Do not enter real personal,
-  institutional, laboratory, protocol, biological-agent or incident data.
-- JSON and CSV files are transferred only through explicit user export/import.
-- To start with a separate clean state, use a private browsing window.
-- The application's delete/reset controls permanently remove the corresponding
-  locally stored records. Export a backup first if anything must be retained.
+## 4 · Examina los resultados (2 min).
 
-## Repository contents
+Vuelve a administración o al Panel científico. Con evaluaciones completadas adecuadas, consulta las distribuciones descriptivas y los estadísticos de acuerdo: acuerdo bruto, kappa de Cohen, ponderada y de Fleiss, alfa de Krippendorff y coeficiente de correlación intraclase. Cada estadístico requiere una estructura de datos apropiada y observaciones suficientes; tener varias evaluaciones no hace aplicables todos los estadísticos. La herramienta no interpreta estos resultados.
 
-The portable ZIP is the recommended functional-review route. The remaining
-repository files support optional technical and reproducibility review:
+## Opcional
 
-- `src/` — complete application source code.
-- `data/` — fictional scenarios and study configurations.
-- `tests/` — automated unit, integration, accessibility and browser tests.
-- `specifications/` — versioned technical and research specifications.
-- `docs/` — methodology, privacy, deployment and research-use documentation.
-- `scripts/` — validation, schema and reproducibility utilities.
-- `ARCHITECTURE.md`, `DATA_SCHEMA.md` and `SCIENTIFIC_CONSTRAINTS.md` — detailed
-  architecture, data-model and scientific-scope documentation.
+Exporta los conjuntos disponibles como JSON o CSV, o genera un paquete reproducible con sumas de comprobación SHA-256 desde Acerca de / Manifiesto. Exporta una copia de seguridad antes de eliminar datos. «Eliminar todos los datos locales» está disponible en el pie de página.
 
-The portable package and the source-code repository represent the same reviewed
-application.
+## Lo que esta herramienta no hace
 
-## Troubleshooting
+No calcula la Protección Entregada (Delivered Protection), el riesgo biológico ni los niveles de contención; tampoco produce evaluaciones de seguridad validadas ni recomienda decisiones de laboratorio.
 
-- Extract the entire portable ZIP before opening `OPEN_DPF_RP.html`; do not
-  open it from inside the compressed-file preview.
-- Use an up-to-date version of Chrome, Edge or Firefox.
-- If the browser asks for confirmation before opening a local file, confirm the
-  action. The portable package does not install a native executable.
-- Source-code execution and automated tests are optional and are documented in
-  `README.md`.
+## Alcance y estado
+
+La plataforma de investigación DPF facilita la validación de contenido y usabilidad en Fase 0 del Marco Integrado de Interacción Ergonómico–Biológica (Integrated Ergonomic–Biological Interaction Framework): un instrumento de seis campos para examinar la diferencia entre la protección que un control está certificado para proporcionar y la que realmente se entrega durante una tarea concreta.
+
+El marco no ha sido validado empíricamente. Sus campos, indicadores y umbrales ilustrativos son propuestas de consenso experto, no mediciones; la plataforma permite reunir la evidencia necesaria para ponerlos a prueba. Registra y resume las respuestas de los evaluadores, sin aplicar umbrales de aceptación científica ni extraer conclusiones científicas.

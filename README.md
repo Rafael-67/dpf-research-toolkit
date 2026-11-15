@@ -15,7 +15,7 @@ Supporting Documents and an independent Issue review layer. See
 
 DPF-RP is a static, client-side research platform for Phase 0 content and usability validation of a six-field conceptual framework. It supports study/round/scenario setup, a one-field-at-a-time evaluator flow, local persistence, and descriptive Cohen/Fleiss agreement summaries.
 
-It does **not** calculate Delivered Protection, biological risk, or biosafety levels, and it does not recommend laboratory decisions. Use fictional/demo information only. Real research use requires institutional data-protection review.
+It does **not** calculate Delivered Protection, biological risk, or biosafety levels, and it does not recommend laboratory decisions. Use invented or de-identified details only. Do not enter real personal, institutional, agent, protocol or incident information. Real research use requires institutional data-protection review.
 
 For a concise explanation of the application's purpose, roles, F1-F6 workflow,
 data handling and a suggested 10-minute walkthrough, see
@@ -23,9 +23,9 @@ data handling and a suggested 10-minute walkthrough, see
 
 ## Reviewer quick start
 
-Open [DPF-RP on GitHub Pages](https://rafael-67.github.io/dpf-research-toolkit/)
-(available after the first successful deployment). No installation or account is required.
-Use the included fictional cases only. See [QUICK_USER_GUIDE.md](QUICK_USER_GUIDE.md)
+The application is live at [DPF-RP on GitHub Pages](https://rafael-67.github.io/dpf-research-toolkit/) — no installation, account or download is required. Reviewers can also create their own test studies, rounds and illustrative scenarios using invented or de-identified details only. Source code remains available below for inspection or rebuilding.
+
+Open the [10-minute walkthrough](https://rafael-67.github.io/dpf-research-toolkit/#/walkthrough). See [QUICK_USER_GUIDE.md](QUICK_USER_GUIDE.md)
 for a suggested ten-minute walkthrough.
 
 The application runs in your browser. Evaluation data stay in that browser's
@@ -34,7 +34,7 @@ browser data or changing browsers or site addresses.
 
 ## Source code and reproducibility
 
-Source code, fictional data, schemas and tests are available in this repository.
+Source code, illustrative scenario data, schemas and tests are available in this repository.
 For development, use Node.js 22 LTS and pnpm 10.11.0:
 
 ```sh
@@ -61,7 +61,7 @@ See [docs/deployment.md](docs/deployment.md) for GitHub Pages setup.
 - Versioned Study, Round, Scenario, EvaluationSession, and FieldResponse models.
 - One structured-hybrid instrument, version-locked by round and snapshotted in
   every evaluation. Candidate taxonomy is visibly `0.1-exploratory`.
-- Exactly five explicitly fictional demo scenarios (E1-E5), assigned through explicit Study-Round-Scenario records.
+- Exactly five explicitly illustrative scenarios (E1-E5), assigned through explicit Study-Round-Scenario records.
 - Local case import from native `study-config.json`, flexible JSON, CSV (comma or semicolon separated), labeled Word `.docx`, and labeled PDF files.
 - `localStorage` persistence under the `dpft:` namespace and confirmed delete-all action.
 - Study, Round, and Scenario creation; round lock controls.
@@ -155,3 +155,11 @@ excluded from normal scientific exports.
 Use GitHub Releases to identify the reviewed source version. Cite its exact tag
 and repository URL; the GitHub Pages site follows the latest successful deploy
 from main and can change. See [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md).
+
+## Guía en español
+
+La aplicación está disponible en https://rafael-67.github.io/dpf-research-toolkit/ sin instalación, cuenta ni descarga. Utiliza el selector de idioma para verla en español. Puedes crear estudios, rondas y escenarios ilustrativos propios con detalles inventados o desidentificados. No introduzcas información real de personas, instituciones, agentes, protocolos o incidentes.
+
+Versiones: Core 1.1 · Platform 1.2.0 · Schema 1.1. Consulta [el recorrido en español](docs/walkthrough.es.md) y [el recorrido en inglés](docs/walkthrough.en.md). Los datos se guardan en el navegador salvo exportación expresa; la eliminación de todos los datos locales está en el pie de página.
+
+El marco no está validado empíricamente. La plataforma no calcula riesgo biológico ni niveles de contención, no interpreta automáticamente los resultados y no recomienda decisiones de laboratorio.

@@ -1,3 +1,4 @@
+import { RESEARCH_COPY } from "../content/researchCopy";
 import {
   APPLICATION_MANIFEST,
   makeReproduciblePackage,
@@ -16,6 +17,7 @@ export function AboutManifest() {
   const { state } = useApp();
   const { language } = useLanguage();
   const es = language === "es";
+  const copy = RESEARCH_COPY[es ? "es" : "en"];
   const exportPackage = async () => {
     const scientificSessions = state.sessions.filter(
       ({ sessionId }) => !isSimulatedEvaluation(sessionId),
@@ -68,6 +70,17 @@ export function AboutManifest() {
           ? "Registro consultable de las versiones, conjuntos y límites científicos implementados por esta compilación."
           : "Inspectable record of the versions, sets and scientific boundaries implemented by this build."}
       </p>
+      <section aria-labelledby="scope-title">
+        <h2 id="scope-title">{copy.scopeTitle}</h2>
+        <p>{copy.scope}</p>
+        <p>{copy.status}</p>
+        <p>
+          {copy.license}:{" "}
+          <a href="https://github.com/Rafael-67/dpf-research-toolkit">
+            Rafael-67/dpf-research-toolkit
+          </a>
+        </p>
+      </section>
       <dl className="manifest-grid">
         <div>
           <dt>Release</dt>
@@ -123,7 +136,22 @@ export function AboutManifest() {
         <h2>{es ? "Límites científicos" : "Scientific boundaries"}</h2>
         <ul>
           {APPLICATION_MANIFEST.scientificBoundary.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>
+              {es
+                ? ((
+                    {
+                      "No biological-risk calculation":
+                        "Sin cálculo del riesgo biológico",
+                      "No containment or BSL recommendation":
+                        "Sin recomendaciones de contención o nivel de bioseguridad",
+                      "No automatic scientific acceptance or rejection":
+                        "Sin aceptación ni rechazo científico automático",
+                      "Research prototype pending validation":
+                        "Prototipo de investigación pendiente de validación",
+                    } as Record<string, string>
+                  )[item] ?? item)
+                : item}
+            </li>
           ))}
         </ul>
       </section>

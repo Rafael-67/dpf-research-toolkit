@@ -7,7 +7,7 @@ import {
 
 export const APPLICATION_MANIFEST = {
   product: "Delivered Protection Framework Research Platform",
-  release: "0.1.0-rc.2",
+  release: PLATFORM_VERSION,
   coreVersion: CORE_VERSION,
   platformVersion: PLATFORM_VERSION,
   schemaVersion: SCHEMA_VERSION,

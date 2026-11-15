@@ -1,3 +1,5 @@
+import { RESEARCH_COPY } from "./content/researchCopy";
+import { Walkthrough } from "./modes/Walkthrough";
 import { HashRouter, Link, Route, Routes } from "react-router-dom";
 import { RoundAgreementSummary } from "./modes/administrator/RoundAgreementSummary";
 import { ChangeLogEntryForm } from "./modes/administrator/ChangeLogEntryForm";
@@ -28,21 +30,26 @@ import {
 import { AboutManifest } from "./modes/AboutManifest";
 
 function Landing() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const copy = RESEARCH_COPY[language === "es" ? "es" : "en"];
   return (
     <main className="landing">
       <p className="eyebrow">Delivered Protection Framework</p>
       <h1>{t("Phase 0 research toolkit")}</h1>
-      <p className="lead">
-        {t(
-          "Collect structured expert feedback on a six-field research framework using fictional scenarios. This tool does not assess biological risk or recommend laboratory decisions.",
-        )}
+      <p className="lead">{copy.lead}</p>
+      <aside className="notice" aria-label={copy.ownTitle}>
+        <p>
+          <strong>{copy.ownTitle}</strong> {copy.own}
+        </p>
+      </aside>
+      <p>
+        <Link to="/walkthrough">{copy.link}</Link>
       </p>
       <div className="mode-grid">
         <Link className="mode-card" to="/admin">
           <span>{t("Configure")}</span>
           <h2>{t("Study administrator")}</h2>
-          <p>{t("Create studies, rounds, and fictional scenarios.")}</p>
+          <p>{copy.configure}</p>
         </Link>
         <Link className="mode-card" to="/evaluator">
           <span>{t("Evaluate")}</span>
@@ -85,6 +92,7 @@ function AppContent() {
         </header>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/walkthrough" element={<Walkthrough />} />
           <Route path="/admin" element={<StudyList />} />
           <Route
             path="/admin/import"
@@ -132,7 +140,7 @@ function AppContent() {
         <footer>
           <p>
             DPF-RP · Core {CORE_VERSION} · Platform {PLATFORM_VERSION} · Schema{" "}
-            {SCHEMA_VERSION} · {t("Fictional/demo data only")}
+            {SCHEMA_VERSION}
           </p>
           <DeleteAllData />
         </footer>
