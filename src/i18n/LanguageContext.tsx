@@ -12,8 +12,8 @@ type Variables = Record<string, string | number>;
 
 const es: Record<string, string> = {
   "Phase 0 research toolkit": "Herramienta de investigación de Fase 0",
-  "Collect structured expert feedback on a fictional six-field research framework. This tool does not assess biological risk or recommend laboratory decisions.":
-    "Recopila comentarios estructurados de expertos sobre un marco de investigación ficticio de seis campos. Esta herramienta no evalúa el riesgo biológico ni recomienda decisiones de laboratorio.",
+  "Collect structured expert feedback on a six-field research framework using fictional scenarios. This tool does not assess biological risk or recommend laboratory decisions.":
+    "Recopila comentarios estructurados de expertos sobre un marco de investigación de seis campos utilizando escenarios ficticios. Esta herramienta no evalúa el riesgo biológico ni recomienda decisiones de laboratorio.",
   Configure: "Configurar",
   "Study administrator": "Administración del estudio",
   "Create studies, rounds, and fictional scenarios.":

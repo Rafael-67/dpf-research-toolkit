@@ -35,7 +35,7 @@ function Landing() {
       <h1>{t("Phase 0 research toolkit")}</h1>
       <p className="lead">
         {t(
-          "Collect structured expert feedback on a fictional six-field research framework. This tool does not assess biological risk or recommend laboratory decisions.",
+          "Collect structured expert feedback on a six-field research framework using fictional scenarios. This tool does not assess biological risk or recommend laboratory decisions.",
         )}
       </p>
       <div className="mode-grid">

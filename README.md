@@ -55,7 +55,7 @@ pnpm test:e2e
 
 See [docs/deployment.md](docs/deployment.md) for GitHub Pages setup.
 
-## Current state — v0.1.0-rc.2 research prototype
+## Current state — Platform 1.2.0 research prototype
 
 - Hash-based Administrator and Evaluator navigation.
 - Versioned Study, Round, Scenario, EvaluationSession, and FieldResponse models.
@@ -135,6 +135,16 @@ The Vite base path is `/dpf-research-toolkit/`. Update it together with reposito
 ## Privacy
 
 No telemetry or analytics are included. The application makes no network call that transmits evaluation data. Persistence remains in the current browser until a human deletes it; JSON/CSV files move only through explicit human export/import actions.
+
+## Version identifiers
+
+The software package and release version is **Platform 1.2.0** (Git tag
+`v1.2.0`). **Core 1.1** identifies the conceptual framework, **Data Schema 1.1**
+identifies the schema version displayed by the platform, and **Taxonomy
+0.1-exploratory** identifies the exploratory taxonomy. These identifiers refer
+to different components and are not interchangeable. The previous package label
+`0.1.0-rc.2` is superseded by the platform version; this metadata alignment does
+not establish scientific validation.
 
 ## Reproducibility and releases
 

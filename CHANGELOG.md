@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Publication metadata and landing-page clarification
+
+- Clarified in English and Spanish that the scenarios are fictional, rather than the six-field research framework.
+- Aligned package and citation version metadata with Platform 1.2.0; documented the separate Core, Schema and Taxonomy identifiers.
+- No changes to scientific calculations, data schemas or evaluation behaviour.
+
 ### Fixed
 
 - Study and round scenario lists now resolve through explicit `RoundScenario` assignments instead of global scenario storage.
