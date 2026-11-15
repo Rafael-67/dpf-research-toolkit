@@ -30,8 +30,6 @@ describe("ObservationEditor draft persistence", () => {
     const restoredExtendedComments = screen
       .getByText("Extended comments (optional)")
       .parentElement?.querySelector("textarea");
-    expect(restoredExtendedComments).toHaveValue(
-      "Persisted extended comment",
-    );
+    expect(restoredExtendedComments).toHaveValue("Persisted extended comment");
   });
 });

@@ -56,12 +56,7 @@ describe("session lifecycle", () => {
     } as EvaluationSession;
 
     expect(
-      findResumableSession(
-        [older, newer],
-        "E1",
-        "r1",
-        "s1",
-      )?.sessionId,
+      findResumableSession([older, newer], "E1", "r1", "s1")?.sessionId,
     ).toBe("newer");
   });
   it("abandons an active session older than 24 hours on load", () => {
